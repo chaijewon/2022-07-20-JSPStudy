@@ -12,6 +12,7 @@ public class DataBoardDAO {
     private Connection conn;
     private PreparedStatement ps;
     private DBConnection dbconn=DBConnection.newInstance();
+    
     public List<DataBoardVO> databoardListData(int page)
     {
     	List<DataBoardVO> list=new ArrayList<DataBoardVO>();
