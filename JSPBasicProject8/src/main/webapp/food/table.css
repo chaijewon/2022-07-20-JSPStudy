@@ -1,0 +1,48 @@
+@charset "UTF-8";
+.table_content{
+	border-collapse: collapse; /*라인선 통합 */
+	border-top-width: 2px;
+	border-top-style: solid; /* solid : 일반 라인선 , dotted ...*/
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-top-color: #333;
+	border-bottom-color: #333;
+}
+.table_content th,td{
+	font-family: "맑은 고딕";
+	font-size: 9px;
+}
+.table_content th{
+	background-color: #999;
+	color:white;
+	height: 33px;
+}
+.table_content td{
+	height: 33px;
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+	border-bottom-color: #333;
+}
+.table_content .dataTr:hover{
+	background-color: FC6;
+	cursor: pointer;
+}
+.table_content a{
+	text-decoration: none;
+	color: black;
+}
+.table_content a:hover{
+	text-decoration: underline;
+	color: cyan;
+}
+input[type=button],
+input[type=submit]{
+	border-radius:5px;
+	background-color: pink;
+}
+
+
+
+
+
+

@@ -28,6 +28,37 @@
     	vo.setAddress(addr2);
     }
     int totalpage=dao.foodTotalPage(fd);
+    
+    List<FoodVO> cList=new ArrayList<FoodVO>();
+    // 쿠키 
+    Cookie[] cookies=request.getCookies();
+    /*
+       1. 생성 부분
+          new Cookie(키,값); => 값 9문자열로만 저장이 가능
+          setPath(): 쿠키 저장 경로 지정
+          setMaxAge() : 쿠키 저장 기간
+          ==> client에 쿠키 전송  response.addCookie()
+       2. 쿠키 읽기
+          Cookie[] cookies=request.getCookies();
+          getName() => key를 읽어 온다 
+          getValue() => 값을 읽어 온다 
+       3. 쿠키 삭제 
+          setMaxAge(0)
+          
+          ==> 5번 (fno)  ==> f5
+    */
+    if(cookies!=null)
+    {
+    	for(int i=cookies.length-1;i>=0;i--)
+    	{
+    		if(cookies[i].getName().startsWith("f"))
+    		{
+    			String no=cookies[i].getValue();
+    			FoodVO vo=dao.foodDetailData(Integer.parseInt(no));
+    			cList.add(vo);
+    		}
+    	}
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -79,7 +110,13 @@
           for(FoodVO vo:list)
           {
        %>
-        <a class="food">
+       <%--
+             response => 전송 
+             -------- 1) HTML 
+                      2) Cookie 
+                      ------------ 한개의 JSP에서는 두개를 동시 전송이 불가능 
+        --%>
+        <a class="food" href="detail_before.jsp?no=<%=vo.getFno()%>">
           <img src="<%=vo.getPoster() %>" style="width:230px;height: 150px">
           <div class="food_name"><%=vo.getName() %>&nbsp;<span style="color:orange"><%=vo.getScore() %></span></div>
           <div class="food_name"><%=vo.getType() %>-<%=vo.getAddress() %></div>
@@ -103,7 +140,42 @@
          %>
        
      </div>
-   
+     <%--
+           => php ,asp, node ...
+           *****request,response => C(요청)/S(응답)
+           *****session
+           application , out 
+           --------------------------------------------- 
+           cookie : 일반 객체 ==> 자동로그인 , 최신방문 (로그인 = 아마존) => id ,pwd 
+                                                -------------- 암호화  
+           => 자신 컴퓨터 (로컬)
+             1. 쿠키 사용법 ==> 쿠키의 단점 (저장되는 데이터가 문자열) , 세션 => Object
+                = 쿠키 생성 
+                  Cookie cookie=new Cookie(key,값)
+                = 저장위치 지정 
+                  setPath("/")
+                = 기간 설정 
+                  setMaxAge(초단위) => 60*60*24
+                = 클라이언트로 전송 
+                  addCookie
+      --%>
+     <h1>최신 본 맛집(쿠키)</h1>
+     <a href="cookie_delete.jsp">쿠키삭제</a>
+     <hr>
+     <div>
+       <%
+          int k=0;
+          for(FoodVO vo:cList)
+          {
+        	  if(k>9) break;
+       %>
+            <a href="food_detail.jsp?no=<%=vo.getFno()%>"><img src="<%=vo.getPoster().substring(0,vo.getPoster().indexOf("^")) %>" 
+                       width=100 height="100"></a>
+       <%
+             k++;
+          }
+       %>
+     </div>
 </body>
 </html>
 

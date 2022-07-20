@@ -13,7 +13,7 @@
   height: 180px;
 }
 .h3{
-   padding: 45px 60px;
+   padding: 80px 60px;
    color:white;
 }
 </style>

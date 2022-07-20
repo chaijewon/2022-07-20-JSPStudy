@@ -80,6 +80,41 @@ public class FoodDAO {
 	   return total;
    }
    // 상세 보기
+   public FoodVO foodDetailData(int no)
+   {
+	   FoodVO vo=new FoodVO();
+	   try
+	   {
+		   conn=dbconn.getConnection();
+		   String sql="SELECT fno,poster,name,tel,score,type,price,parking,menu,time,address "
+				     +"FROM food_location "
+				     +"WHERE fno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setFno(rs.getInt(1));
+		   vo.setPoster(rs.getString(2));
+		   vo.setName(rs.getString(3));
+		   vo.setTel(rs.getString(4));
+		   vo.setScore(rs.getDouble(5));
+		   vo.setType(rs.getString(6));
+		   vo.setPrice(rs.getString(7));
+		   vo.setParking(rs.getString(8));
+		   vo.setMenu(rs.getString(9));
+		   vo.setTime(rs.getString(10));
+		   vo.setAddress(rs.getString(11));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   dbconn.disConnection(ps);
+	   }
+	   return vo;
+   }
    // 로그인 처리
 }
 
