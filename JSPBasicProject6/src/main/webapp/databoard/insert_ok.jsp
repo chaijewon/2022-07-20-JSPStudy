@@ -52,9 +52,11 @@
          DataBoardDAO dao=new DataBoardDAO();
          dao.databoardInsert(vo);
          // 화면 이동 
-         response.sendRedirect("../main/main.jsp?mode=1");
+         //response.sendRedirect("../main/main.jsp?mode=1");
      }catch(Exception ex){}
 %>
+<a href="../main/main.jsp?mode=1">목록으로 이동</a>
+
 
 
 
