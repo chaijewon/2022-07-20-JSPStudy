@@ -22,6 +22,7 @@ public class BoardModel {
 	   request.setAttribute("totalpage", totalpage);
 	   request.setAttribute("count", count);
 	   request.setAttribute("list", list);
+	   request.setAttribute("msg", "관리자가 삭제한 게시물입니다");
 	   String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 	   request.setAttribute("today", today);
    }
@@ -128,6 +129,16 @@ public class BoardModel {
 	   boolean bCheck=dao.boardUpdate(vo);
 	   request.setAttribute("bCheck", bCheck);
 	   request.setAttribute("no", no);
+   }
+   public void boardDelete(HttpServletRequest request)
+   {
+	   String no=request.getParameter("no");
+	   String pwd=request.getParameter("pwd");
+	   //DAO연동 
+	   ReplyBoardDAO dao=new ReplyBoardDAO();
+	   //결과값 request에 담는다 
+	   String res=dao.boardDelete(Integer.parseInt(no), pwd);
+	   request.setAttribute("res", res);
    }
 }
 

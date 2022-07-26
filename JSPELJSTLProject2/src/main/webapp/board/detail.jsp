@@ -43,6 +43,36 @@ $(function(){ // window.onload (Java=main())
 			i=0;
 		}
 	})
+	
+	$('#delBtn').on("click",function(){
+		let pwd=$('#pwd').val();
+		if(pwd.trim()=="")
+		{
+			$('#pwd').focus();
+			return;
+		}
+		let no=$('#pwd').attr("data-no");
+		
+		$.ajax({
+			type:'post',
+			url:'delete.jsp',
+			data:{"no":no,"pwd":pwd}, //delete.jsp?no=1&pwd=1234
+			success:function(result)
+			{
+				let res=result.trim();
+				if(res=="yes")
+				{
+					location.href="list.jsp";
+				}
+				else
+				{
+					alert("비밀번호가 틀립니다!");
+					$('#pwd').val("");
+					$('#pwd').focus();
+				}
+			}
+		})
+	})
 })
 </script>
 </head>
@@ -85,7 +115,8 @@ $(function(){ // window.onload (Java=main())
 	   </tr>
 	   <tr id="delTr" style="display: none">
 	     <td colspan="4" class="text-right">
-	      비밀번호:<input type=password name=pwd size=15 class="input-sm" id="pwd">
+	      <%-- HTML (태그는 사용자 정의(X) , 속성은 사용자 정의 --%>
+	      비밀번호:<input type=password name=pwd size=15 class="input-sm" id="pwd" data-no="${vo.no }">
 	      <input type=button id="delBtn" value="삭제" class="btn btn-sm btn-primary">
 	     </td>
 	   </tr>
