@@ -4,6 +4,7 @@
 <jsp:useBean id="model" class="com.sist.model.SeoulModel"/>
 <%
      model.locationDetailData(request);
+		
 %>
 <!DOCTYPE html>
 <html>
@@ -24,6 +25,7 @@
 <body>
   <div class="container">
     <div class="row">
+      
       <table class="table">
        <tr>
         <td class="text-center"><h3>${vo.title }</h3></td>

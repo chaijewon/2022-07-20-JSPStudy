@@ -35,6 +35,7 @@ public class SeoulModel {
 	    request.setAttribute("startPage", startPage);
 	    request.setAttribute("endPage", endPage);
 	    request.setAttribute("list", list);
+	    // request.getAttribute("curpage") => ${curpage}
   }
   public void locationDetailData(HttpServletRequest request)
   {

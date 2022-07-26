@@ -84,6 +84,9 @@ let natureLink=()=>{
 let foodLink=()=>{
 	  location.href="../food/category.jsp";
 }
+let boardLink=()=>{
+	  location.href="../board/list.jsp";
+}
 </script>
 </head>
 <body>
@@ -93,6 +96,7 @@ let foodLink=()=>{
       <input type=button id="locBtn" value="명소" class="btn btn-lg btn-success" onclick="locationLink()">
       <input type=button id="natBtn" value="자연" class="btn btn-lg btn-info" onclick="natureLink()">
       <input type=button id="foodBtn" value="맛집" class="btn btn-lg btn-danger" onclick="foodLink()">
+      <input type=button id="boardBtn" value="자유게시판" class="btn btn-lg btn-warning" onclick="boardLink()">
      </div>
     </div>
   </div>
