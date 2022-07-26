@@ -127,16 +127,69 @@ public class ReplyBoardDAO {
 	   }
    }
    // 답변하기 
-   public void replyInsert(ReplyBoardVO vo)
+   public void replyInsert(int pno,ReplyBoardVO vo)
    {
 	   try
 	   {
 		   getConnection();
 		   conn.setAutoCommit(false);
 		   // 상위 글의 정보 (gi,gt,gs) => SELECT
-		   // gs의 순서변경 ==> UPDATE
+		   String sql="SELECT group_id,group_step,group_tab "
+				     +"FROM replyBoard "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, pno);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   int gi=rs.getInt(1);
+		   int gs=rs.getInt(2);
+		   int gt=rs.getInt(3);
+		   rs.close();
+		   // gs의 순서변경 ==> UPDATE ==> 답변 핵심 쿼리 
+		   sql="UPDATE replyBoard SET "
+			  +"group_step=group_step+1 "
+			  +"WHERE group_id=? AND group_step>?";
+		   
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, gi);
+		   ps.setInt(2, gs);
+		   ps.executeUpdate();
+		   
+		   /*
+		    *                   gi     gs    gt
+		    *    AAAAAA          1      0    0
+		    *      =>KKKKKK      1      2    1
+		    *      =>BBBBB       1      3    1
+		    *       =>CCCCCC     1      4    2
+		    *        =>DDDDDDD   1      5    3
+		    *      =>OOOOOOO     1      1    1
+		    *      
+		    *      
+		    *      
+		    *      
+		    */
 		   // 실제 저장 ==> INSERT
+		   sql="INSERT INTO replyBoard(no,name,subject,content,pwd,group_id,group_step,group_tab,root) "
+			  +"VALUES((SELECT NVL(MAX(no)+1,1) FROM replyBoard),?,?,?,?,?,?,?,?)";
+		   ps=conn.prepareStatement(sql);
+		   ps.setString(1, vo.getName());
+		   ps.setString(2, vo.getSubject());
+		   ps.setString(3, vo.getContent());
+		   ps.setString(4, vo.getPwd());
+		   ps.setInt(5, gi);
+		   ps.setInt(6, gs+1);
+		   ps.setInt(7, gt+1);
+		   ps.setInt(8, pno);
+		   ps.executeUpdate();
 		   // depth변경 => UPDATE 
+		   
+		   sql="UPDATE replyBoard SET "
+			  +"depth=depth+1 "
+			  +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, pno);
+		   ps.executeUpdate();
+		   
 		   // ============== 일괄처리 (트랜잭션)
 		   conn.commit();
 	   }catch(Exception ex)
@@ -195,6 +248,78 @@ public class ReplyBoardDAO {
 		   disConnection();
 	   }
 	   return vo;
+   }
+   public ReplyBoardVO boardUpdateData(int no)
+   {
+	   ReplyBoardVO vo=new ReplyBoardVO();
+	   try
+	   {
+		   getConnection();
+		   String sql="SELECT no,name,subject,content "
+			         +"FROM replyBoard "
+			         +"WHERE no=?";
+		   
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, no);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setNo(rs.getInt(1));
+		   vo.setName(rs.getString(2));
+		   vo.setSubject(rs.getString(3));
+		   vo.setContent(rs.getString(4));
+		   
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   disConnection();
+	   }
+	   return vo;
+   }
+   public boolean boardUpdate(ReplyBoardVO vo)
+   {
+	   boolean bCheck=false;
+	   try
+	   {
+		   getConnection();
+		   String sql="SELECT pwd FROM replyBoard "
+				     +"WHERE no=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, vo.getNo());
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   String db_pwd=rs.getString(1);
+		   rs.close();
+		   if(db_pwd.equals(vo.getPwd()))
+		   {
+			   bCheck=true;// 비밀번호 => 본인 확인 ==> 회원 
+			   // 수정 
+			   sql="UPDATE replyBoard SET "
+				  +"name=? , subject=? , content=? "
+				  +"WHERE no=?";
+			   ps=conn.prepareStatement(sql);
+			   ps.setString(1, vo.getName());
+			   ps.setString(2, vo.getSubject());
+			   ps.setString(3, vo.getContent());
+			   ps.setInt(4, vo.getNo());
+			   ps.executeUpdate();
+		   }
+		   else
+		   {
+			   bCheck=false;
+		   }
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   disConnection();
+	   }
+	   return bCheck;
    }
 }
 
