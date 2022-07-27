@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    문서형 데이터베이스 : 모든 언어에 호환 
+      설정 파일 : 클래스 등록 , server.xml , web.xml ..
+ -->
+<beans><!-- 최상위 태그 : 테이블 -->
+  <bean id="list" class="com.sist.model.ListModel"/><!-- ROW(RECORD) : 컬럼:id,class -->
+  <bean id="insert" class="com.sist.model.InsertModel"/>
+  <bean id="update" class="com.sist.model.UpdateModel"/>
+  <bean id="delete" class="com.sist.model.DeleteModel"/>
+  <bean id="find" class="com.sist.model.FindModel"/>
+</beans>
