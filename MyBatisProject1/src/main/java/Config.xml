@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 
+     Connection 관련 = getConnection,disConnection
+ -->
+ <configuration>
+    <!-- 
+          (properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, 
+           = 데이터베이스 정보를 저장한 .properties파일 읽기 
+           = typeAliases = VO등록 
+           objectWrapperFactory?, 
+           reflectorFactory?, plugins?, environments?, databaseIdProvider?, mappers?)
+           environments : connection => driver , username,password,url 
+           mappers : SQL파일 위치 
+          <properties></properties>  <properties/>
+          
+          ? = 0번 1번 사용 => 필요시에만 사용 (사용하지 않을 수 있다)
+          * = 0번이상 여러번 사용이 가능)
+          + = 1번이상 반드시 한번이 이상 사용
+          | = 선택 
+          default = 반드시 한번만 사용 
+     -->
+     <typeAliases>
+       <!--  (typeAlias*, package*) VO 등록 
+             SQL문장 제작 = 실행 , 결과값 받는 일 (MyBatis)
+       -->
+       <typeAlias type="com.sist.dao.MyBoardVO" alias="MyBoardVO"/>
+     </typeAliases>
+     <!-- 연결 (getConnection , disConnection()) -->
+     <environments default="development">
+        <!-- (environment)+ -->
+        <environment id="development">
+           <!-- (transactionManager,dataSource) -->
+           <transactionManager type="JDBC"/>
+           <dataSource type="POOLED">
+             <!-- 
+                  POOLED = DBCP
+                  UNPOOLED = JDBC
+              -->
+              <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+              <!--  Class.forName("oracle.jdbc.driver.OracleDriver") -->
+              <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+              <property name="username" value="hr"/>
+              <property name="password" value="happy"/>
+              <!-- 
+                    getConnection() 
+                     = conn=DriverManager.getConnection(url,username,password)
+               -->
+           </dataSource>
+        </environment>
+     </environments>
+     <mappers>
+       <!-- (mapper*, package*) -->
+       <mapper resource="com/sist/dao/board-mapper.xml"/><!-- SQL문장 저장 위치 -->
+       
+     </mappers>
+ </configuration>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

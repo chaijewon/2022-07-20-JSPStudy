@@ -33,6 +33,7 @@ public class ReplyBoardDAO {
    }
    
    // <%= %>  => &lt;%값 %&gt; ==> ${}
+   // 
    public List<ReplyBoardVO> boardListData(int page)
    {
 	   List<ReplyBoardVO> list=new ArrayList<ReplyBoardVO>();
