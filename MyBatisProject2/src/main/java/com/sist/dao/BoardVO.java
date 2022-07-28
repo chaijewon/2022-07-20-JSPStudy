@@ -1,8 +1,9 @@
 package com.sist.dao;
-import java.util.*;
-// select no,name,NVL(subject,' ') as subject
-public class MyBoardVO {
-    private int no,hit;
+
+import java.util.Date;
+
+public class BoardVO {
+	private int no,hit;
     private String name,subject,content;
     private Date regdate;
 	public int getNo() {
@@ -41,5 +42,5 @@ public class MyBoardVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-   
+    
 }

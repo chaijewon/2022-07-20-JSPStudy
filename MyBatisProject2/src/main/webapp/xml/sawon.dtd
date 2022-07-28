@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+     <sawon>
+       <list>
+         <name></name>
+         <dept></dept>
+         <tel></tel>
+       </list>
+       <list>
+         <name></name>
+         <dept></dept>
+         <phone></phone>
+       </list>
+     </sawon>
+     &nbsp; 
+     <!ENTITY nbsp " ">
+     => &nbsp;
+     <!ATTLIST list no ID>
+ -->
+ <!ELEMENT sawon (list+)>
+ <!ELEMENT list (name,dept,(tel|phone))>
+ <!ELEMENT name (#PCDATA)>
+ <!ELEMENT dept (#PCDATA)>
+ <!ELEMENT tel (#PCDATA)>
+ <!ELEMENT phone (#PCDATA)>
+ 
+ 
