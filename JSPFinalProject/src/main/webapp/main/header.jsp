@@ -11,7 +11,7 @@
   <header id="header" class="clear"> 
     <!-- ################################################################################################ -->
     <div id="logo" class="fl_left">
-      <h1><a href="index.html">맛집 & 레시피 & 서울여행</a></h1>
+      <h1><a href="../main/main.do">맛집 & 레시피 & 서울여행</a></h1>
     </div>
     <div class="fl_right">
       <ul class="inline">
@@ -29,7 +29,7 @@
   <nav id="mainav" class="clear"> 
     <!-- ################################################################################################ -->
     <ul class="clear">
-      <li class="active"><a href="index.html">Home</a></li>
+      <li class="active"><a href="../main/main.do">Home</a></li>
       <li><a class="drop" href="#">회원</a>
         <ul>
           <li><a href="pages/gallery.html">회원가입</a></li>

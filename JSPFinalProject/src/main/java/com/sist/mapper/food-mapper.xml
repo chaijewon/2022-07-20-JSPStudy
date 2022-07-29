@@ -27,7 +27,7 @@
   </select>
   <!-- 카테고리별 맛집 출력 -->
   <select id="foodListData" resultType="FoodVO" parameterType="int"><!-- ps.setInt(1,cno) -->
-    SELECT fno,poster,name,tel,type
+    SELECT fno,poster,name,tel,type,address,score
     FROM food_house
     WHERE cno=#{cno}
     
