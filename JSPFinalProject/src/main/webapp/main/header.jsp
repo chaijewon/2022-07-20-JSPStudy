@@ -30,28 +30,47 @@
     <!-- ################################################################################################ -->
     <ul class="clear">
       <li class="active"><a href="index.html">Home</a></li>
-      <li><a class="drop" href="#">Pages</a>
+      <li><a class="drop" href="#">회원</a>
         <ul>
-          <li><a href="pages/gallery.html">Gallery</a></li>
-          <li><a href="pages/full-width.html">Full Width</a></li>
-          <li><a href="pages/sidebar-left.html">Sidebar Left</a></li>
-          <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
-          <li><a href="pages/basic-grid.html">Basic Grid</a></li>
+          <li><a href="pages/gallery.html">회원가입</a></li>
+          <li><a href="pages/full-width.html">아이디찾기</a></li>
+          <li><a href="pages/sidebar-left.html">비밀번호찾기</a></li>
         </ul>
       </li>
-      <li><a class="drop" href="#">Dropdown</a>
+      <li><a class="drop" href="#">맛집</a>
         <ul>
-          <li><a href="#">Level 2</a></li>
-          <li><a class="drop" href="#">Level 2 + Drop</a>
-            <ul>
-              <li><a href="#">Level 3</a></li>
-              <li><a href="#">Level 3</a></li>
-            </ul>
-          </li>
+          <li><a href="pages/gallery.html">지역별 맛집</a></li>
+          <li><a href="pages/full-width.html">맛집 추천</a></li>
+          <li><a href="pages/sidebar-left.html">맛집 예약</a></li>
         </ul>
       </li>
-      <li><a href="#">Link Text</a></li>
-      <li><a href="#">Link Text</a></li>
+      <li><a class="drop" href="#">레시피</a>
+        <ul>
+          <li><a href="pages/gallery.html">레시피목록</a></li>
+          <li><a href="pages/full-width.html">쉐프</a></li>
+          <li><a href="pages/gallery.html">가격비교</a></li>
+          <li><a href="pages/sidebar-left.html">레시피만들기</a></li>
+        </ul>
+      </li>
+      <li><a class="drop" href="#">서울여행</a>
+        <ul>
+          <li><a href="pages/gallery.html">명소</a></li>
+          <li><a href="pages/gallery.html">자연&관광</a></li>
+          <li><a href="pages/full-width.html">쇼핑</a></li>
+          <li><a href="pages/sidebar-left.html">호텔</a></li>
+          <li><a href="pages/sidebar-left.html">게스트하우스</a></li>
+          <li><a href="pages/sidebar-left.html">코스 추천</a></li>
+        </ul>
+      </li>
+      <li><a href="#">레시피 스토어</a></li>
+      <li><a class="drop" href="#">커뮤니티</a>
+        <ul>
+          <li><a href="pages/gallery.html">자유게시판</a></li>
+          <li><a href="pages/full-width.html">묻고답하기</a></li>
+          <li><a href="pages/sidebar-left.html">공지사항</a></li>
+        </ul>
+      </li>
+      <li><a href="#">마이페이지</a></li>
     </ul>
     <!-- ################################################################################################ --> 
   </nav>

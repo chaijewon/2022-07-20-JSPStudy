@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Animated Login Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Slab'><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class='preload login--container'>
+  <div class='login--form'>
+    <div class='login--username-container'>
+      <label>Username</label>
+      <input autofocus placeholder='Username' type='text'>
+    </div>
+    <div class='login--password-container'>
+      <label>Password</label>
+      <input placeholder='Password' type='password'>
+      <button class='js-toggle-login login--login-submit'>Login</button>
+    </div>
+  </div>
+  <div class='login--toggle-container'>
+    <small>Hey you,</small>
+    <div class='js-toggle-login'>Login</div>
+    <small>already</small>
+  </div>
+</div>
+<footer>
+  <a class='twitter-follow-button' data-show-count='false' href='https://twitter.com/code_dependant'>
+    Follow @code_dependant
+  </a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</footer>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
