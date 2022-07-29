@@ -37,4 +37,17 @@
     FROM food_category
     WHERE cno=#{cno}
   </select>
+  
+  <!-- 상세보기  -->
+  <select id="foodDetailData" resultType="FoodVO" parameterType="int">
+    SELECT * FROM food_house
+    WHERE fno=#{fno}
+  </select>
 </mapper>
+
+
+
+
+
+
+

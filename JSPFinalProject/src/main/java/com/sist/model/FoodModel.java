@@ -5,6 +5,7 @@ import com.sist.controller.RequestMapping;
 
 import java.util.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,9 +32,41 @@ public class FoodModel {
    public String food_detail_before(HttpServletRequest request,HttpServletResponse response)
    {
 	   // 쿠키 전송 => 화면 출력 (X)
+	   String fno=request.getParameter("fno");
+	   Cookie cookie=new Cookie("food"+fno, fno);
+	   cookie.setPath("/");
+	   cookie.setMaxAge(60*60*24);
+	   response.addCookie(cookie);
 	   // insert_ok.do ==> list.do
 	   // => 상세보기로 이동 
-	   return "redirect:../food/food_detail.do";//request초기화 => 화면 이동 (sendRedirect())
+	   return "redirect:../food/food_detail.do?fno="+fno;//request초기화 => 화면 이동 (sendRedirect())
+   }
+   /*
+    *  Model 
+    *   1. 사용자 요청 데이터 받기 (==X)
+    *   2. 데이터베이스 연결 (핵심)
+    *   3. request에 값 담기
+    *   4. 어떤 JSP로 보낼지 설정
+    *   
+    *  JSP
+    *   request에 있는 데이터 출력   
+    */
+   @RequestMapping("food/food_detail.do")
+   public String food_detail(HttpServletRequest request,HttpServletResponse response)
+   {
+	   String fno=request.getParameter("fno");
+	   // 데이터베이스 연동 
+	   // 부산광역시 부산진구 서면로68번길 16 1F 지번 부산시 부산진구 부전동 256-8 1F
+	   FoodVO vo=FoodDAO.foodDetailData(Integer.parseInt(fno));
+	   // request에 담아서 넘겨준다 
+	   String address=vo.getAddress();
+	   String addr1=address.substring(0,address.lastIndexOf("지"));
+	   String addr2=address.substring(address.lastIndexOf("지")+2);
+	   request.setAttribute("addr1", addr1.trim());
+	   request.setAttribute("addr2", addr2.trim());// 지도출력 
+	   request.setAttribute("vo", vo);
+	   request.setAttribute("main_jsp", "../food/food_detail.jsp");
+	   return "../main/main.jsp";
    }
 }
 

@@ -60,7 +60,7 @@ public class FoodDAO {
 	   try
 	   {
 		   session=ssf.openSession();//connection 주소를 얻어 온다 
-		   list=session.selectList("foodListData", cno);
+		   list=session.selectList("foodListData", cno);// while(rs.next())
 	   }catch(Exception ex)
 	   {
 		   ex.printStackTrace();
@@ -86,6 +86,44 @@ public class FoodDAO {
 	   {
 		   session=ssf.openSession();
 		   vo=session.selectOne("foodCategoryInfoData",cno);
+		   // WHERE cno=#{cno} ==> ?
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close();
+	   }
+	   return vo;
+   }
+   /*
+    *   <select id="foodDetailData" resultType="FoodVO" parameterType="int">
+		    SELECT * FROM food_house
+		    WHERE fno=#{fno}
+		  </select>
+		  
+		  ==> select <select>
+		        selectList (while(rs.next())
+		        selectOne rs.next()
+		      insert <insert>
+		        insert
+		      update <update>
+		        update
+		      delete <delete>
+		        delete
+		        
+		        ? ==> parameterType
+		          결과값 ==> resultType
+    */
+   public static FoodVO foodDetailData(int fno)
+   {
+	   SqlSession session=null;
+	   FoodVO vo=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   vo=session.selectOne("foodDetailData",fno);//rs.next()
 		   // WHERE cno=#{cno} ==> ?
 	   }catch(Exception ex)
 	   {
