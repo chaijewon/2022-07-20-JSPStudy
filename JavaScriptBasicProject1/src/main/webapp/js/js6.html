@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	// 문자 
+	let sawon=[
+		{sabun:1,name:"홍길동1",dept:"개발부",job:"대리"},
+		{sabun:2,name:"홍길동2",dept:"개발부",job:"대리"},
+		{sabun:3,name:"홍길동3",dept:"개발부",job:"대리"},
+		{sabun:4,name:"홍길동4",dept:"개발부",job:"대리"},
+		{sabun:5,name:"홍길동5",dept:"개발부",job:"대리"}
+	]
+	let s='<ul>';
+	sawon.map(function(sa){
+		s+='<li>'+sa.sabun+' '+sa.name+'</li>'
+	})
+	s+='</ul>'
+	document.write(s)
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

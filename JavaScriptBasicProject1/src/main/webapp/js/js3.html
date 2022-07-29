@@ -1,0 +1,37 @@
+<!-- 
+   연산자 
+    단항연산자 (++ , --)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	let i=10;
+	let j=++i;
+	console.log("i="+i+",j="+j); // 11,11
+	let m=10;
+	let n=m++;
+	console.log("m="+m+",n="+n);// 11, 10
+	
+	let k=1;
+	let g=!k; // ! => true/false (0,0.0)
+	
+	console.log("g="+g)
+	// c언어  ==> 모든 연산자 숫자 
+	
+	let p=10;
+	let o=10;
+	let h=p===o; // === 같다 (ES6) Vue,React => (== 경고)
+	console.log("h="+h)
+	
+	// &&(범위 포함) , ||(범위 밖)
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

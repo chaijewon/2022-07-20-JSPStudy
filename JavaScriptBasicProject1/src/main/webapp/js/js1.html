@@ -1,0 +1,151 @@
+<!-- 
+    자바스크립트 (스크립트: 단순한 프로그램) : 브라우저에서 동적으로 처리 
+    사용법)
+          ***내부 자바스크립트 => 한 파일에서만 적용  
+          <head>
+            <script>
+              처리 
+            </script>
+          </head>
+          ***외부 자바스크립트 => 여러 파일에서 공통으로 적용 (파일 => .js) => 라이브러리 (Jquery , VueJS,ReactJS,NodeJS)
+          <head>
+            <script src="~.js"> => 자체 , 원격 ==> import 
+          </head>
+          
+          인라인 자바스크립트 ==> 한개의 태그에서만 제어 
+          <a href="javascript:~~">
+    언어 
+     1) 변수 => 한개의 데이터 저장 공간 
+               자동 지정 변수 (var,let,const)
+               => let (ES6) => 사용범위가 명확하다  var(ES5) => 지역변수의 범위가 명확하지 않는다 
+                  사용법)
+                        let 변수명=값 
+                        -----------
+                        예)
+                            let i=10;  ==> int i=10
+                            let i=10.5 ==> double i=0.5
+                            let i='Hello' ==> String i="Hello";
+                            let i="Hello" ==> String i="Hello";
+                            let i=true    ==> boolean i=true;
+                            let i=[]      ==> Array 
+                            ---------------------------------
+                            [10,"aaa","aaa",10.5...] => Object 
+                            ===> let i=10;
+                                 i="aaa";
+                            let i={}   ==> Object (객체)
+                                  --- JSON 
+                                  {키:값,키:값} ==> 키가 멤버변수 (자바<==>자바스크립트 호환) ==> Rest
+                            let i=function() ==> function의 주소이용 
+                            
+                            public int add()
+                            {
+                               
+                            }
+                            
+                            int i=add()
+               => const (상수) => final
+               
+               function func_name()
+               {
+                   if()
+                   {
+                      var a=10;
+                   }// a는 사용이 안된다 
+                   var => 사용이 가능 ==== 메모리 누수
+               }
+               function func_name()
+               {
+                   if()
+                   {
+                      let a=10;
+                   }// a는 사용이 안된다 
+                   let은 사용 할 수 없다 
+               }
+     2) 연산자 
+          ==> 형변환 
+              => (문자열 ==> 정수) Number("10") => 10 , parseInt("10") => 10
+              => 정수 => 문자열    String(10) => "10"
+              => 정수 => boolean ==> Boolean(1) = true ,  Boolean(0.1) = true
+                        0,0.0이 아닌 수 => true다 
+         ==> 단항연산자 
+              ++ , -- , ! 
+              let i=10;
+              let j=i++;
+              ------------- 대입 먼저 
+              let k=++i;
+              ------------- 증가 먼저 
+         ==> 이항연산자
+              산술연산자 ( + , - , * , / , % ) 
+                        + (문자열 결합) ==> "10"+"10"="1010"
+              비교연산자 (==(===) , != , < , > , <= , >=)
+              논리연산자 (&& , ||)
+              대입연산자 (= , += , -=)
+              =================== 자바와 동일 
+     3) 제어문
+         = 조건문 
+            if() 
+            if~else
+            if~else if~else if~else
+         = 반복문 
+            do~while
+            while
+            for
+            ***for-each
+            ---------  for of , for in(인덱스)
+                       ------ for-Ecah
+         = 선택문
+            switch~case
+         = 반복제어문  
+            break,continue
+     3-1) 화면 출력 
+          -------
+           alert() : 팝업창
+           document.write() ==> 브라우저에 출력 
+           태그.innerHTML ==> AJAX
+           console.log ==> System.out.println()
+     4) 함수 
+     5) 클래스 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+ *   $(function(){}) => JQuery
+     mounted:function(){} => VueJS
+     componentDidMount(){} => ReactJS
+ */
+ //
+window.onload=function(){ 
+	let a=10;
+	let b=10.5;
+	let c="JavaScript";
+	let d='JavaScript'
+	let e=["a","b",10.5,100,'D'];
+	let f={"name":"홍길동","sex":"남자"}
+	// => ;자유 
+	console.log("a:"+a+","+typeof a); // 데이터형 확인
+	console.log("b:"+b+","+typeof b);
+	console.log("c:"+c+","+typeof c);
+	console.log("d:"+d+","+typeof d);
+	console.log("e:"+e+","+typeof e);
+	console.log("f:"+f+","+typeof f);
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

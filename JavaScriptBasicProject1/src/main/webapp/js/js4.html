@@ -1,0 +1,94 @@
+<!-- 
+      제어문 
+        조건 
+         형식) if(조건문)
+              {  -----  비교연산자 , 논리연산자 , 부정연산자 
+                 조건이 true일때 수행 
+              }
+              ------------------- 유효성 검사 
+              if(조건문)
+              {
+                 조건 true일때 수행
+              }
+              else
+              {
+                 조건 false일때 수행 
+              }
+              -------------------
+              if(조건문)
+              {
+              }
+              else if(조건문)
+              {
+              }
+              else if(조건문)
+              {
+              }
+              else
+              {
+              }
+              -------------------
+        switch 
+          switch(문자 / 정수)
+          {
+            case 1:
+              break;
+            case 2:
+              break;
+          }
+       ----------------------------
+       반복문 
+        while
+          => 초기값 
+             while(조건문)
+             {
+                 수행문장 
+                 증가식 
+             } 
+        for 
+             for(초기값;조건식;증가식)
+             {
+             }
+              
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	let i=10;
+	if(i%2==0)
+		console.log("짝수");
+	else
+		console.log("홀수");
+	//while 
+	let j=1;
+	document.write("<h1>do~while</h1>");
+	do
+    {
+		document.write("j="+j+"<br>")
+		j++
+    }while(j<=10)
+   
+    j=1;
+	document.write("<h1>while</h1>");
+	while(j<=10)
+	{
+		document.write("j="+j+"<br>")
+		j++
+    }
+	document.write("<h1>for</h1>");
+	for(j=1;j<=10;j++)
+	{
+		document.write("j="+j+"<br>")
+    }
+	
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

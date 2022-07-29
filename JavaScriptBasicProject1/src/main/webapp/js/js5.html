@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	let names=["홍길동","박문수","이순신","심청이","김두한"];
+	document.write("<h1>일반 for</h1>")
+	document.write("<ul>")
+	for(let i=0;i<names.length;i++)
+	{
+	    document.write("<li>"+names[i]+"</li>")
+	}
+	document.write("</ul>")
+	
+	document.write("<h1>forEach (of) 실제 값을 읽어 온다</h1>")
+	document.write("<ul>")
+	for(let name of names) // if(String name:names)
+	{
+		document.write("<li>"+name+"</li>")
+    }
+	document.write("</ul>")
+	
+	document.write("<h1>forEach (in) 실제값이 아니라 index번호</h1>")
+	document.write("<ul>")
+	for(let index in names) // if(String name:names)
+	{
+		document.write("<li>"+names[index]+"</li>")
+    }
+	document.write("</ul>")
+	
+	document.write("<h1>forEach 함수</h1>")
+	document.write("<ul>")
+	names.forEach(function(name){
+		document.write("<li>"+name+"</li>")
+	})
+	document.write("</ul>")
+	
+	document.write("<h1>forEach 함수</h1>")
+	document.write("<ul>")
+	names.forEach((name)=>{
+		document.write("<li>"+name+"</li>")
+	})
+	document.write("</ul>")
+	// React , Vue
+	document.write("<h1>map 함수</h1>")
+	document.write("<ul>")
+	names.map(function(name){
+		document.write("<li>"+name+"</li>")
+	})
+	document.write("</ul>")
+	
+	document.write("<h1>forEach 함수</h1>")
+	document.write("<ul>")
+	names.map((name)=>{
+		document.write("<li>"+name+"</li>")
+	})
+	document.write("</ul>")
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
