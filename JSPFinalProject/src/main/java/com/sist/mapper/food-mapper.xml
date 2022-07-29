@@ -2,12 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.food-mapper">
   <!-- 맛집 카테고리 읽기 -->
+  <!-- 
+       String sql="";
+		   ps=conn.prepareStatement(sql);
+		   ResultSet rs=ps.executeQuery();
+		   while(rs.next())
+		   {
+			   
+			   list.add(vo);
+		   }
+		   rs.close();
+   -->
   <select id="foodCategoryData" resultType="FoodCategoryVO">
    <!-- 
          List<FoodCategoryVO> = selectList
          FoodCategoryVO       = selectOne
+         
+         1.sql  
+         2.? ==> parameterType
+         3.결과값 (VO ,String,int...) resultType
     -->
     SELECT cno,title,subject,poster 
     FROM food_category
+  </select>
+  <!-- 카테고리별 맛집 출력 -->
+  <select id="foodListData" resultType="FoodVO" parameterType="int"><!-- ps.setInt(1,cno) -->
+    SELECT fno,poster,name,tel,type
+    FROM food_house
+    WHERE cno=#{cno}
+    
+  </select>
+  <select id="foodCategoryInfoData" resultType="FoodCategoryVO" parameterType="int">
+    SELECT title,subject
+    FROM food_category
+    WHERE cno=#{cno}
   </select>
 </mapper>

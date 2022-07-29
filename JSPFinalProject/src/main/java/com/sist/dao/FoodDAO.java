@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.FoodCategoryVO;
+import com.sist.vo.FoodVO;
 
 import java.io.*;
 public class FoodDAO {
@@ -44,6 +45,57 @@ public class FoodDAO {
 	      session.close();
 	   }
 	   return list;
+   }
+   /*
+    *     <select id="foodListData" resultType="FoodVO" parameterType="int">
+		    SELECT fno,poster,name,tel,type
+		    FROM food_house
+		    WHERE cno=#{cno}
+		  </select>
+   */
+   public static List<FoodVO> foodListData(int cno)
+   {
+	   SqlSession session=null;
+	   List<FoodVO> list=null;
+	   try
+	   {
+		   session=ssf.openSession();//connection 주소를 얻어 온다 
+		   list=session.selectList("foodListData", cno);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close(); // 반환  ==> POOLED (connection : 8)
+	   }
+	   return list;
+   }
+   /*
+		  <select id="foodCategoryInfoData" resultType="FoodCategoryVO" parameterType="int">
+		    SELECT title,subject
+		    FROM food_category
+		    WHERE cno=#{cno}
+		  </select>
+    */
+   public static FoodCategoryVO foodCategoryInfoData(int cno)
+   {
+	   SqlSession session=null;
+	   FoodCategoryVO vo=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   vo=session.selectOne("foodCategoryInfoData",cno);
+		   // WHERE cno=#{cno} ==> ?
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close();
+	   }
+	   return vo;
    }
 }
 
