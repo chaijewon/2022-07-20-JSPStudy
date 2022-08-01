@@ -11,7 +11,7 @@
   <footer id="footer" class="clear"> 
     <!-- ################################################################################################ -->
     <div class="one_quarter first">
-      <h6 class="title">Company Details</h6>
+      <h6 class="title">공지사항</h6>
       <address class="btmspace-15">
       Company Name<br>
       Street Name &amp; Number<br>
@@ -24,7 +24,7 @@
       </ul>
     </div>
     <div class="one_quarter">
-      <h6 class="title">Quick Links</h6>
+      <h6 class="title">맛집 Top5</h6>
       <ul class="nospace linklist">
         <li><a href="#">Home Page</a></li>
         <li><a href="#">Blog</a></li>
@@ -34,7 +34,7 @@
       </ul>
     </div>
     <div class="one_quarter">
-      <h6 class="title">From The Blog</h6>
+      <h6 class="title">인기상품 Top5</h6>
       <article>
         <h2 class="nospace"><a href="#">Lorem ipsum dolor</a></h2>
         <time class="smallfont" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
@@ -42,7 +42,7 @@
       </article>
     </div>
     <div class="one_quarter">
-      <h6 class="title">Keep In Touch</h6>
+      <h6 class="title">인기여행 Top5</h6>
       <form class="btmspace-30" method="post" action="#">
         <fieldset>
           <legend>Newsletter:</legend>
@@ -68,8 +68,8 @@
 <div class="wrapper row5">
   <div id="copyright" class="clear"> 
     <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <p class="fl_left">Copyright &copy; 2022 - All Rights Reserved - <a href="#">SIST.CO.KR</a></p>
+    <p class="fl_right">강남 쌍용 교육센터<a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">&nbsp;3강의장</a></p>
     <!-- ################################################################################################ --> 
   </div>
 </div>

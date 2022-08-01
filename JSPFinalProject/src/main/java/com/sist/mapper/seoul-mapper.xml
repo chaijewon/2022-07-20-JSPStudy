@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.seoul-mapper">
+ <!-- 명소(seoul_location) , 자연(seoul_nature) , 쇼핑(seoul_shop) -->
+ <!-- 목록 
+     map.put("start",1)
+     map.put("end",10)
+     
+     public List<SeoulVO> seoulListData(Map map)
+     {
+          String sql=""; => id를 통해서 읽어 온다 
+          ps=conn.preparedStatement(sql); ==> session=ssf.openSession()
+          ps.setInt(1,map.get("start"))  => 
+          ps.setInt(2,map.get("end"))
+          ResultSet rs=ps.executeQuery()
+          => selectList
+          while(rs.next())
+          {
+             // resultType
+             SeoulLNSVO vo=new SeoulLNSVO();
+             vo.setNo(rs.getInt());
+          }
+     }
+ -->
+ <select id="seoullnsListData" resultType="SeoulLNSVO" parameterType="hashmap">
+   <!-- parameterType은 1개 지정이 가능 : 여러개 데이터를 첨부 (VO,Map) -->
+   SELECT no,title,poster,num
+   FROM (SELECT no,title,poster,rownum as num 
+   FROM (SELECT no,title,poster 
+   FROM ${table_name} ORDER BY no ASC))
+   WHERE num BETWEEN #{start} AND #{end}
+   <!-- 
+        ${} = table명 , 컬럼명  => ''를 사용하지 않는다 
+        #{} = 일반 데이터  => 문자열 , 날짜 ''가 사용된다 
+        
+        SELECT * FROM seoul_location
+        WHERE title='서울'
+    -->
+ </select>
+ <select id="seoullnsTotalPage" resultType="int" parameterType="hashmap">
+   SELECT CEIL(COUNT(*)/16.0) FROM ${table_name}
+ </select>
+</mapper>

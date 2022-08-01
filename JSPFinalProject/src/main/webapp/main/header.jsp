@@ -54,11 +54,19 @@
       </li>
       <li><a class="drop" href="#">서울여행</a>
         <ul>
-          <li><a href="pages/gallery.html">명소</a></li>
-          <li><a href="pages/gallery.html">자연&관광</a></li>
-          <li><a href="pages/full-width.html">쇼핑</a></li>
-          <li><a href="pages/sidebar-left.html">호텔</a></li>
-          <li><a href="pages/sidebar-left.html">게스트하우스</a></li>
+          <li><a href="../seoul/location.do">명소</a></li>
+          <%--
+             DispatcherServlet  : 요청 (URL주소) 
+              | request 
+             Model (~VO , ~DAO , ~Model)
+              FoodModel 
+              SeoulModel --------- View
+              
+           --%>
+          <li><a href="../seoul/nature.do">자연&관광</a></li>
+          <li><a href="../seoul/shop.do">쇼핑</a></li>
+          <li><a href="../seoul/hotel.do">호텔</a></li>
+          <li><a href="../seoul/guest.do">게스트하우스</a></li>
           <li><a href="pages/sidebar-left.html">코스 추천</a></li>
         </ul>
       </li>
