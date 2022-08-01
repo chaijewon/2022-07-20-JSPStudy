@@ -1,0 +1,178 @@
+<!-- 
+      Front-End : JavaScript (Jquery, Ajax, VueJS(Vue3,Vuex) , ReactJS(Redux,Saga,Mobx)
+      Back-End : Java, JSP , Oracle , Spring , Spring-Boot
+                                |       | MVC      | JPA
+                              MyBatis / JPA
+      ----------------------------------------------------------------------------------  + 
+      자바스크립트 (동적파일) : DOMScript 
+                          ---------- 태그를 제어하는 프로그램 
+                          DOM (HTML)
+                          => 수정 , 삭제 ,추가 , 읽기 => 처리 
+                          => 태그 읽기 
+                             -------
+                          => 자바와 관련이 없다 (브라우저 제어)
+     => 1. 데이터 저장 : 변수 (자동 지정 변수) => let , const
+     => 2. 데이터 처리 : 연산자 , 제어문
+                             for in , for of 
+                            *** map ,forEach  
+     -------------------------------------------------
+     => 3. 재사용 : 함수  
+          ------------
+            매개변수 , 리턴형 
+              O       O
+              function func_name(id,pwd) 
+              {
+                  return 값;
+              }
+              O       X
+              
+              function func_name(id, pwd)
+              {
+                  
+              }
+              X       O
+              
+              function func_name()
+              {
+                   return 값;
+              }
+              X       X
+              
+              function func_name
+              {
+                 
+              }
+              
+              ===> 함수를 호출시 
+                   ---------- 태그에서 호출 
+                     click ==> <input type=button onclick="함수명">
+                     hover = mouseover
+                     change  
+                     keyup 
+                   ---------- 이벤트 처리 
+              ===> 태그 읽기 
+                   getElementById() , getElementByName() ==> 
+                   querySelector("SELECTOR")
+                   ------------------------------------------ $(selector)
+              ===> 서버 호환 : JSON
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let movie=[{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20209343","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/07/thumb/thn_6ecaea887d6242b3a27c11ce960ed45b.jpg","movieNm":"한산: 용의 출현","movieNmEn":"Hansan: Rising Dragon","synop":"나라의 운명을 바꿀 압도적 승리의 전투가 시작된다!\r\n\r\n1592년 4월, 조선은 임진왜란 발발 후 단 15일만에 왜군에 한양을 빼앗기며 절체절명의 위기에 놓인다.\r\n조선을 단숨에 점령한 왜군은 명나라로 향하는 야망을 꿈꾸며 대규모 병역을 부산포로 집결시킨다.\r\n\r\n한편, 이순신 장군은 연이은 전쟁의 패배와 선조마저 의주로 파천하며 수세에 몰린 상황에서도\r\n조선을 구하기 위해 전술을 고민하며 출전을 준비한다.\r\n하지만 앞선 전투에서 손상을 입은 거북선의 출정이 어려워지고,\r\n거북선의 도면마저 왜군의 첩보에 의해 도난 당하게 되는데… \r\n\r\n왜군은 연승에 힘입어 그 우세로 한산도 앞바다로 향하고,\r\n이순신 장군은 조선의 운명을 가를 전투를 위해 필사의 전략을 준비한다.\r\n\r\n1592년 여름, 음력 7월 8일 한산도 앞바다, \r\n압도적인 승리가 필요한 조선의 운명을 건 지상 최고의 해전이 펼쳐진다.","prdtYear":"2021","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"129","showTs":"30","director":"김한민","prNm":"(주)빅스톤픽쳐스","dtNm":"롯데컬처웍스(주)롯데엔터테인먼트","repNationCd":"한국","movieType":"장편","moviePrdtStat":"개봉","genre":"액션,드라마","watchGradeNm":"12세이상관람가","openDt":"20220727","salesAmt":7043693621,"audiCnt":655712,"scrCnt":2132,"showCnt":10095,"rank":1,"rankInten":0,"rankOldAndNew":"OLD","rownum":1},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20205362","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/06/thumb/thn_06b63ec1d5074fa797be6d5c8d268995.jpg","movieNm":"미니언즈2","movieNmEn":"Minions: The Rise of Gru","synop":"오랜마니언! \r\n세계 최고의 슈퍼 악당을 꿈꾸는 미니보스 ‘그루’와 그를 따라다니는 미니언들.\r\n어느 날 그루는 최고의 악당 조직 ‘빌런6’의 마법 스톤을 훔치는 데 성공하지만 \r\n뉴페이스 미니언 ‘오토’의 실수로 스톤을 잃어버리고 빌런6에게 납치까지 당한다.\r\n미니보스를 구하기 위해 잃어버린 스톤을 되찾아야 하는 ‘오토’, 그리고 쿵푸를 마스터해야 하는 ‘케빈’, ‘스튜어트’, ‘밥’!\r\n올여름 극장가를 점령할 MCU(미니언즈 시네마틱 유니버스)가 돌아온다!","prdtYear":"2022","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"87","showTs":"26","director":"카일 발다","prNm":null,"dtNm":"유니버설픽쳐스인터내셔널 코리아(유)","repNationCd":"미국","movieType":"장편","moviePrdtStat":"개봉","genre":"애니메이션,어드벤처,코미디","watchGradeNm":"전체관람가","openDt":"20220720","salesAmt":1242446989,"audiCnt":123213,"scrCnt":1052,"showCnt":3006,"rank":2,"rankInten":0,"rankOldAndNew":"OLD","rownum":2},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20194376","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/06/thumb/thn_fa28d4efd4ed492f86cd892ed31913e1.jpg","movieNm":"탑건: 매버릭","movieNmEn":"Top Gun: Maverick","synop":"한순간의 실수도 용납되지 않는 하늘 위, 가장 압도적인 비행이 시작된다!\r\n\r\n최고의 파일럿이자 전설적인 인물 매버릭(톰 크루즈)은 자신이 졸업한 훈련학교 교관으로 발탁된다. \r\n그의 명성을 모르던 팀원들은 매버릭의 지시를 무시하지만  \r\n실전을 방불케 하는 상공 훈련에서 눈으로 봐도 믿기 힘든 전설적인 조종 실력에 모두가 압도된다. \r\n\r\n매버릭의 지휘 아래 견고한 팀워크를 쌓아가던 팀원들에게 국경을 뛰어넘는 위험한 임무가 주어지자 \r\n매버릭은 자신이 가르친 동료들과 함께 마지막이 될지 모를 하늘 위 비행에 나서는데…","prdtYear":"2021","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"130","showTs":"3","director":"조셉 코신스키","prNm":null,"dtNm":"롯데컬처웍스(주)롯데엔터테인먼트","repNationCd":"미국","movieType":"장편","moviePrdtStat":"개봉","genre":"액션","watchGradeNm":"12세이상관람가","openDt":"20220622","salesAmt":1224999845,"audiCnt":112362,"scrCnt":872,"showCnt":2054,"rank":3,"rankInten":0,"rankOldAndNew":"OLD","rownum":3},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20208446","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/07/thumb/thn_0e608457d3974db08ad67b0adfeaa1ed.jpg","movieNm":"외계+인 1부","movieNmEn":"Alienoid","synop":"“아주 오래전부터 외계인은 그들의 죄수를 \r\n인간의 몸에 가두어 왔다”\r\n\r\n2022년 현재, ‘가드’(김우빈)’와 ‘썬더’는 인간의 몸에 가두어진 외계인 죄수를 관리하며 지구에 살고 있다.\r\n어느 날, 서울 상공에 우주선이 나타나고 \r\n형사 ‘문도석’(소지섭)은 기이한 광경을 목격하게 되는데..\r\n\r\n한편, 630년 전 고려에선 얼치기 도사 ‘무륵’(류준열)과 천둥 쏘는 처자 ‘이안’(김태리)이 \r\n엄청난 현상금이 걸린 신검을 차지하기 위해 서로를 속고 속이는 가운데 \r\n신검의 비밀을 찾는 두 신선 ‘흑설’(염정아)과 ‘청운’(조우진), \r\n가면 속의 ‘자장’(김의성)도 신검 쟁탈전에 나선다. \r\n그리고 우주선이 깊은 계곡에서 빛을 내며 떠오르는데…\r\n\r\n2022년 인간 속에 수감된 외계인 죄수를 쫓는 이들\r\n1391년 고려 말 소문 속의 신검을 차지하려는 도사들\r\n\r\n시간의 문이 열리고\r\n모든 것이 바뀌기 시작했다!","prdtYear":"2022","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"142","showTs":"24","director":"최동훈","prNm":"(주)케이퍼필름","dtNm":"(주)씨제이이엔엠","repNationCd":"한국","movieType":"장편","moviePrdtStat":"개봉","genre":"액션,판타지,SF","watchGradeNm":"12세이상관람가","openDt":"20220720","salesAmt":750665885,"audiCnt":68903,"scrCnt":750,"showCnt":1809,"rank":4,"rankInten":0,"rankOldAndNew":"OLD","rownum":4},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20225190","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/06/thumb/thn_774598460f8a46caa7691e9b1398d718.jpg","movieNm":"뽀로로 극장판 드래곤캐슬 대모험","movieNmEn":"Pororo Movie_Dragon castle Adventure","synop":"깊은 산속 드래곤캐슬에\r\n꼬마 드래곤 왕 아서의 막강한 힘이 봉인된 보석 ‘드래곤 하트’를 빼앗아\r\n왕이 되려는 수상한 마법사 게드가 나타난다.\r\n\r\n한편, 우연히 ‘드래곤 하트’의 힘을 흡수한 크롱이\r\n자이언트 크롱으로 변하면서 뽀로로와 친구들 역시 위험에 처한다.\r\n\r\n아서와 뽀로로와 친구들은\r\n악당 마법사 게드로부터 힘을 되찾고 친구들을 구하기 위해\r\n무적의 메카드래곤을 만들어 드래곤캐슬로 향하는데…!\r\n \r\n뽀로로와 친구들의 판타지 액션 어드벤처!\r\n과연 드래곤캐슬과 소중한 친구들을 지켜낼 수 있을까?","prdtYear":"2022","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"69","showTs":"56","director":"강승훈,윤제완","prNm":"(주)오콘","dtNm":"(주)넥스트엔터테인먼트월드(NEW)","repNationCd":"한국","movieType":"장편","moviePrdtStat":"개봉","genre":"애니메이션","watchGradeNm":"전체관람가","openDt":"20220728","salesAmt":461681258,"audiCnt":47624,"scrCnt":742,"showCnt":1572,"rank":5,"rankInten":0,"rankOldAndNew":"OLD","rownum":5},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20209654","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/06/thumb/thn_5960144d7fa64411bcdb59d84bc5e4fc.jpg","movieNm":"헤어질 결심","movieNmEn":"Decision To Leave","synop":"산 정상에서 추락한 한 남자의 변사 사건.\r\n담당 형사 '해준'(박해일)은\r\n사망자의 아내 '서래'(탕웨이)와 마주하게 된다.\r\n\r\n\"산에 가서 안 오면 걱정했어요, 마침내 죽을까 봐.\"\r\n\r\n남편의 죽음 앞에서 특별한 동요를 보이지 않는 '서래'.\r\n경찰은 보통의 유가족과는 다른 '서래'를 용의선상에 올린다.\r\n'해준'은 사건 당일의 알리바이 탐문과 신문,\r\n잠복수사를 통해 '서래'를 알아가면서\r\n그녀에 대한 관심이 점점 커져가는 것을 느낀다.\r\n\r\n한편, 좀처럼 속을 짐작하기 어려운 '서래'는\r\n상대가 자신을 의심한다는 것을 알면서도\r\n조금의 망설임도 없이 '해준'을 대하는데….\r\n\r\n진심을 숨기는 용의자\r\n용의자에게 의심과 관심을 동시에 느끼는 형사\r\n그들의 <헤어질 결심>","prdtYear":"2022","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"138","showTs":"20","director":"박찬욱","prNm":"(주)모호필름","dtNm":"(주)씨제이이엔엠","repNationCd":"한국","movieType":"장편","moviePrdtStat":"개봉","genre":"미스터리,멜로/로맨스","watchGradeNm":"15세이상관람가","openDt":"20220629","salesAmt":300541783,"audiCnt":27317,"scrCnt":440,"showCnt":740,"rank":6,"rankInten":0,"rankOldAndNew":"OLD","rownum":6},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20225237","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/07/thumb/thn_6bc62c192e0447c882ec42cf303824c7.jpg","movieNm":"명탐정 코난: 할로윈의 신부","movieNmEn":"Detective Conan: The Bride of Halloween","synop":"트리플 페이스 아무로 토오루, 그의 목에 폭탄이 채워졌다?!\r\n \r\n극악무도한 폭파범 ‘플라먀’에 의해 교묘한 함정에 빠진 아무로 토오루!\r\n모든 것이 베일에 가려진 ‘플라먀’,\r\n유일한 단서는 아무로 토오루가 그의 경찰 동기들과 마지막으로 함께 했던 하루.\r\n이와 동시에 결혼식의 신부가 된 경시청의 사토 형사는 불길한 예감을 감출 수 없는데…\r\n \r\n도시 전체를 인질로 삼은 ‘플라먀’,\r\n그리고 이를 막으려 하는 아무로 토오루와 명탐정 코난의 숨 막히는 공조!\r\n다시 시작된 카운트다운, 할로윈의 밤이 광란으로 빛난다!","prdtYear":"2022","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"110","showTs":"19","director":"미츠나카 스스무","prNm":null,"dtNm":"(주)씨제이이엔엠","repNationCd":"일본","movieType":"장편","moviePrdtStat":"개봉","genre":"애니메이션","watchGradeNm":"12세이상관람가","openDt":"20220713","salesAmt":111063993,"audiCnt":10358,"scrCnt":203,"showCnt":286,"rank":7,"rankInten":0,"rankOldAndNew":"OLD","rownum":7},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20196410","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/07/thumb/thn_6f31ed7a00b14700b7a1cf27297d6d94.jpg","movieNm":"비상선언","movieNmEn":"Emergency Declaration","synop":"‘비상선언’: 재난 상황에 직면한 항공기가 더 이상 정상적인 운항이 불가능하여,\r\n무조건 적인 착륙을 요청하는 비상사태를 뜻하는 항공 용어\r\n\r\n베테랑 형사 팀장 인호(송강호)는 비행기 테러 예고 영상 제보를 받고 사건을 수사하던 중\r\n용의자가 실제로 KI501 항공편에 타고 있음을 파악한다. \r\n\r\n딸의 치료를 위해 비행 공포증임에도 불구하고 하와이로 떠나기로 한 재혁(이병헌)은\r\n주변을 맴돌며 위협적인 말을 하는 낯선 이가 신경 쓰인다.\r\n \r\n인천에서 하와이로 이륙한 KI501 항공편에서 원인불명의 사망자가 나오고,\r\n비행기 안은 물론 지상까지 혼란과 두려움의 현장으로 뒤바뀐다.\r\n\r\n이 소식을 들은 국토부 장관 숙희(전도연)는 대테러센터를 구성하고\r\n비행기를 착륙시킬 방법을 찾기 위해 긴급회의를 소집하는데…","prdtYear":"2022","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"140","showTs":"30","director":"한재림","prNm":"(주)매그넘나인,(주)씨제스엔터테인먼트,씨네주 유한회사","dtNm":"(주)쇼박스","repNationCd":"한국","movieType":"장편","moviePrdtStat":"개봉예정","genre":"드라마","watchGradeNm":"12세이상관람가","openDt":"20220803","salesAmt":28548316,"audiCnt":2196,"scrCnt":10,"showCnt":11,"rank":8,"rankInten":1,"rankOldAndNew":"OLD","rownum":8},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20224662","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/06/thumb/thn_8df29a68f31d4005b192d80449035c09.jpg","movieNm":"토르: 러브 앤 썬더","movieNmEn":"Thor: Love and Thunder","synop":"“신을 죽이는 자, 신이 상대한다!”\r\n\r\n슈퍼 히어로 시절이여, 안녕!\r\n이너피스를 위해 자아 찾기 여정을 떠난 천둥의 신 ‘토르’\r\n\r\n그러나, 우주의 모든 신들을 몰살하려는 신 도살자 ‘고르’의 등장으로\r\n‘토르’의 안식년 계획은 산산조각 나버린다.\r\n\r\n‘토르’는 새로운 위협에 맞서기 위해\r\n‘킹 발키리’, ‘코르그’, 그리고 전 여자친구 ‘제인’과 재회하게 되는데,\r\n그녀가 묠니르를 휘두르는 ‘마이티 토르’가 되어 나타나 모두를 놀라게 한다.\r\n\r\n이제, 팀 토르는 ‘고르’의 복수에 얽힌 미스터리를 밝히고\r\n더 큰 전쟁을 막기 위한 전 우주적 스케일의 모험을 시작하는데...\r\n\r\n7월 6일, 우주 최고의 ‘갓’ 매치가 시작된다!","prdtYear":"2022","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"118","showTs":"34","director":"타이카 와이티티","prNm":null,"dtNm":"월트디즈니컴퍼니코리아 유한책임회사","repNationCd":"미국","movieType":"장편","moviePrdtStat":"개봉","genre":"액션,어드벤처,판타지","watchGradeNm":"12세이상관람가","openDt":"20220706","salesAmt":23716880,"audiCnt":2102,"scrCnt":54,"showCnt":68,"rank":9,"rankInten":-1,"rankOldAndNew":"OLD","rownum":9},{"startYearDate":"2022.07.31","endYearDate":"2022.07.31","startDate":"2022년 07월 31일(일)","endDate":"2022년 07월 31일(일)","movieCd":"20225175","showDt":"20220731","thumbUrl":"/common/mast/movie/2022/06/thumb/thn_e9f555293e0e454da6c1fcde8badd575.jpg","movieNm":"엘비스","movieNmEn":"Elvis","synop":"세계 최초의 아이돌, 시대의 아이콘, 영원한 슈퍼스타\r\n‘엘비스’의 모든 것이 뜨겁게 펼쳐진다!\r\n\r\n미국 남부 멤피스에서 트럭을 몰며 음악의 꿈을 키우던 19살의 무명 가수 ‘엘비스’.\r\n지역 라디오의 작은 무대에 서게 된 ‘엘비스’는 어디서도 본 적 없는 몸짓과 퍼포먼스로 무대를 압도하고, \r\n그에게 매료된 관객들에게 뜨거운 환호성을 받는다. \r\n쇼 비즈니스 업계에서 일하던 ‘톰 파커’는 이를 목격하고\r\n‘엘비스’에게 스타로 만들어주겠다고 약속하며 함께할 것을 제안한다.\r\n\r\n자신이 자라난 동네에서 보고 들은 흑인음악을 접목시킨 \r\n독특한 음색과 리듬, 강렬한 퍼포먼스, 화려한 패션까지 \r\n그의 모든 것이 대중을 사로잡으며 ‘엘비스’는 단숨에 스타의 반열에 올라선다. \r\n그러나 시대를 앞서 나간 치명적이고 반항적인 존재감은 혼란스러운 시대 상황과 갈등을 빚게 되고\r\n지금껏 쌓아온 모든 것이 한순간에 무너질 수 있다고 압박하는 ‘톰 파커’까지 가세해 \r\n‘엘비스’는 그의 뜻과는 다른 선택을 하게 된다. \r\n이로 인해 평생을 함께한 매니저 ‘톰 파커’와의 관계도 조금씩 어긋나기 시작하는데…","prdtYear":"2022","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"159","showTs":"4","director":"바즈 루어만","prNm":null,"dtNm":"워너브러더스 코리아(주)","repNationCd":"미국","movieType":"장편","moviePrdtStat":"개봉","genre":"드라마","watchGradeNm":"15세이상관람가","openDt":"20220713","salesAmt":13340000,"audiCnt":1207,"scrCnt":29,"showCnt":34,"rank":10,"rankInten":0,"rankOldAndNew":"OLD","rownum":10}]
+// [{},{},{}.....]
+// [] => List
+//  {} => ~VO
+window.onload=function(){
+	movies();
+}
+let  movies=()=>
+{
+	// for(Movie V :list )
+	let index=0;
+	let data="";
+	movie.map((m)=>{
+		
+		data+="<tr onmouseover=print("+index+")>"
+		    +"<td class=text-center><img src=https://www.kobis.or.kr"+m.thumbUrl+" width=30 height=30></td>"
+		    +"<td>"+m.movieNm+"</td>"
+		    +"<td>"+m.director+"</td>"
+		    +"<td>"+m.genre+"</td>"
+		    +"<td>"+m.watchGradeNm+"</td></tr>"
+		index++;
+	})
+	
+	let tbody=document.querySelector("#tb");
+	tbody.innerHTML=data;
+}
+let print=(index)=>{
+	//alert("index:"+index)
+	let m=movie[index];
+	let img=document.querySelector("#mimg");
+	img.src="https://www.kobis.or.kr"+m.thumbUrl;
+	let title=document.querySelector("#title");
+	title.innerHTML=m.movieNm;
+	
+}
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+   margin-top: 50px;
+}
+.row{
+   margin: 0px auto;
+   width:100%;
+}
+</style>
+</head>
+<body>
+   <div class="container">
+     <div class="col-sm-4">
+        <table class="table">
+          <tr>
+           <td rowspan="7" width=30%>
+            <img src="" id="mimg" style="width: 100%">
+           </td>
+           <td colspan="2">
+             <h3 id="title"></h3>
+           </td>
+          </tr>
+          <tr>
+            <td width=20%>감독</td>
+            <td width=50%></td>
+          </tr>
+          <tr>
+            <td width=20%>장르</td>
+            <td width=50%></td>
+          </tr>
+          <tr>
+            <td width=20%>등급</td>
+            <td width=50%></td>
+          </tr>
+          <tr>
+            <td width=20%>개봉일</td>
+            <td width=50%></td>
+          </tr>
+          <tr>
+            <td width=20%>제작상태</td>
+            <td width=50%></td>
+          </tr>
+          <tr>
+            <td width=20%>영화구분</td>
+            <td width=50%></td>
+          </tr>
+        </table>
+     </div>
+     <div class="col-sm-8">
+        <table class="table">
+          <tr class="success">
+            <th class="text-center"></th>
+            <th class="text-center">영화명</th>
+            <th class="text-center">감독</th>
+            <th class="text-center">장르</th>
+            <th class="text-center">등급</th>
+          </tr>
+          <tbody id="tb">
+            
+          </tbody>
+        </table>
+     </div>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

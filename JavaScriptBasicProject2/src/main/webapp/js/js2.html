@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+   margin-top: 50px;
+}
+.row{
+   margin: 0px auto;
+   width:800px;
+}
+</style>
+<script type="text/javascript">
+let index=1;
+let prev=()=>{
+	  let img=document.querySelector("#mimg");
+	  if(index>1)
+	  {
+		  index--;
+		  img.src="m"+index+'.jpg';
+	  }
+}
+let next=()=>{
+	  let img=document.querySelector("#mimg");
+	  if(index<7)
+	  {
+		  index++;
+		  img.src="m"+index+'.jpg';
+	  }
+}
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+     <img src="m1.jpg" width=300 height="350" id="mimg">
+    </div>
+    <div class="row">
+     <input type=button class="btn btn-lg btn-danger" value="이전" onclick="prev()">
+     <input type=button class="btn btn-lg btn-danger" value="다음" onclick="next()">
+    </div>
+  </div>
+</body>
+</html>
