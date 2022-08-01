@@ -40,4 +40,18 @@
  <select id="seoullnsTotalPage" resultType="int" parameterType="hashmap">
    SELECT CEIL(COUNT(*)/16.0) FROM ${table_name}
  </select>
+ 
+ <!-- 상세보기 -->
+ <select id="seoullnsDetailData" resultType="SeoulLNSVO" parameterType="hashmap">
+   SELECT * FROM ${table_name}
+   WHERE no=#{no}
+ </select>
 </mapper>
+
+
+
+
+
+
+
+

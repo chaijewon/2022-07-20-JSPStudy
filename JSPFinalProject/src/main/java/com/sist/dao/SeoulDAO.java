@@ -68,6 +68,28 @@ public class SeoulDAO {
 	   }
 	   return total;
    }
+   
+   // 상세보기 
+   public static SeoulLNSVO seoulDetailData(Map map)
+   {
+	    SeoulLNSVO vo=new SeoulLNSVO();
+	    SqlSession session=null;
+	    try
+	    {
+	    	session=ssf.openSession();
+	    	vo=session.selectOne("seoullnsDetailData", map);//row
+	    }catch(Exception ex)
+	    {
+	    	System.out.println("seoulDetailData: error");
+	    	ex.printStackTrace();
+	    }
+	    finally
+	    {
+	    	if(session!=null)
+	    		session.close();
+	    }
+	    return vo;
+   }
 }
 
 
