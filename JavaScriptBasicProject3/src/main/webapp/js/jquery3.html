@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('img').css("opacity",0.3); // opacity: 투명 => 0.0~1.0
+	$('img').css("cursor","pointer");
+	// 이벤트 처리 
+	$('img').hover(function(){
+		$(this).css("opacity",1.0);
+		// this => 선택된 img (동작하는 태그)
+	},function(){
+		$('img').css("opacity",0.3);
+	})
+	
+	// 태그 ==> id,class(Jquery,CSS),name(Java)
+})
+</script>
+<style type="text/css">
+img {
+  width:150px;
+  height: 250px;
+}
+</style>
+</head>
+<body>
+  <img src="m1.jpg">
+  <img src="m2.jpg">
+  <img src="m3.jpg">
+  <img src="m4.jpg">
+  <img src="m5.jpg">
+  <img src="m6.jpg">
+  <img src="m7.jpg">
+</body>
+</html>

@@ -13,9 +13,9 @@
     <!-- ################################################################################################ -->
     <div class="flexslider basicslider">
       <ul class="slides">
-        <li><a href="#"><img class="radius-10" src="https://korean.visitseoul.net/comm/getImage?srvcId=CTGRY&parentSn=12&fileTy=IMG&fileNo=1" style="width:978px;height:400px"></a></li>
-        <li><a href="#"><img class="radius-10" src="https://korean.visitseoul.net/comm/getImage?srvcId=CTGRY&parentSn=13&fileTy=IMG&fileNo=5" style="width:978px;height:400px"></a></li>
-        <li><a href="#"><img class="radius-10" src="https://korean.visitseoul.net/comm/getImage?srvcId=CTGRY&parentSn=16&fileTy=IMG&fileNo=5" style="width:978px;height:400px"></a></li>
+        <li><a href="#"><img class="radius-10" src="https://korean.visitseoul.net/comm/getImage?srvcId=CTGRY&parentSn=12&fileTy=IMG&fileNo=1" style="width:1200px;height:400px"></a></li>
+        <li><a href="#"><img class="radius-10" src="https://korean.visitseoul.net/comm/getImage?srvcId=CTGRY&parentSn=13&fileTy=IMG&fileNo=5" style="width:1200px;height:400px"></a></li>
+        <li><a href="#"><img class="radius-10" src="https://korean.visitseoul.net/comm/getImage?srvcId=CTGRY&parentSn=16&fileTy=IMG&fileNo=5" style="width:1200px;height:400px"></a></li>
       </ul>
     </div>
     <!-- ################################################################################################ --> 

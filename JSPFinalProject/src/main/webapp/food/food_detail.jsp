@@ -22,7 +22,7 @@
        </tr>
       </table>
     </div>
-    <div class="two_quarter">
+    <div class="one_half first">
       <table class="table">
        <tr>
         <td colspan="2">
@@ -67,7 +67,7 @@
       </c:if>
       </table>
     </div>
-    <div class="two-quarter">
+    <div class="one_half">
     
     </div>
   </main>

@@ -1,0 +1,81 @@
+<!-- 
+     자바스크립트 
+       1.변수 
+          let , const => 자동지정 변수 => 입력값에 따라 데이터형이 달라진다 (ES6) => text/babel
+          <c:forEach var="vo" items="${list}"> MovieVO , RecipeVO
+          ==> JSON / Array
+              객체표현법 {"키":값,"키":값}
+                      -----   ----
+                      
+              let sawon={"sabun":1,"name":"홍길동"}; ===> ~VO
+                  sawon.sabun , sawon.name   
+              let sawons=[{},{},{},{}....]  ==> List
+              ---------------------------------------------- RestFul 
+       2.연산자 === 같다 
+       3.제어문 => for in , for of  , ***map , forEach
+                          ------- 실제 데이터  
+                 ------- index
+       4.함수 
+          기능 처리 
+          function func_name(매개변수)
+          {
+              return 값
+          }
+          
+          let funct_name=function(){}
+          let funct_name=()=>{}
+       5.DOMScript
+          태그를 제어 => 태그 가지고 오다 
+                      document.querySelector("") ==> $("") => jquery 
+                      ---------------------------------------------- 이벤트 처리
+       6.라이브러리 (JQuery,VueJS(Vuex),ReactJS(Redux),NodeJS)
+                 --------------------- --------------------
+                       Front            Server Side(Spring)
+       JQuery 
+       ------- 자바스킙트 라이브러리 
+       시작(main()) => 웹(window.onload)
+       
+       $(function(){ ===> window.onload
+           기능처리 
+       })
+       
+       ===> 라이브러리 로드 
+            <script type="" src="원격..."></script>
+       ===> selector (css)
+       ===> 이벤트 처리 
+       ===> Ajax
+         
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+// main ==> window.onload=function(){}
+$(function(){
+	// selector => 태그를 읽어 온다 (태그 제어) 
+	$('h1').css("color","red");
+	$('#a').css("color","blue")
+	$('#b').css("backgroundColor","yellow")
+	$('.c').css("color","green")
+})
+</script>
+</head>
+<body>
+  <h1>Hello JQuery!!</h1>
+  <h1 id="a">Hello JQuery!!</h1>
+  <h1 id="b">Hello JQuery!!</h1>
+  <h1 class="c">Hello JQuery!!</h1>
+  <h1 class="c">Hello JQuery!!</h1>
+</body>
+</html>
+
+
+
+
+
+
+
+

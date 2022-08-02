@@ -1,0 +1,71 @@
+<!-- 
+     1. val()  => value을 읽어 온다   getter , setter => val("값")
+     2. text()
+     3. attr()
+     4. html()
+     5. append()
+     6. trim()
+     7. substring()
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	//$('#ok').click(function(){
+    //$('#kor').val(90);
+    // val ==> <input> type=text , type=password type=file , type=date , select , textarea
+    /*
+         <h1>Hello Java</h1>
+         
+         $('h1').text()
+         $('h1').text("Hello~")
+    */
+	/*$('#ok').on("click",function(){
+		let kor=$('#kor').val();
+		let eng=$('#eng').val();
+		let math=$('#math').val();
+		let total=Number(kor)+Number(eng)+Number(math);
+		
+		$('#print').text(total);
+	})*/
+	$('button').click(function(){
+		let id=$('#id').val();
+		if(id=="")
+		{
+			$('span').text("아이디를 입력하세요")
+		}
+		let value=$('a').attr("href");
+		let value2=$('a').text();
+		alert(value+","+value2)
+	})
+})
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <!-- 국어:<input type=text id="kor" size=10 class="input-sm"><br>
+      영어:<input type=text id="eng" size=10 class="input-sm"><br>
+      수학:<input type=text id="math" size=10 class="input-sm"><br>
+      <span id="print"></span><input type="button" id="ok" value="계산"> -->
+      ID:<input type=text id=id size=15 class="input-sm">
+      <button class="btn btn-sm btn-primary">로그인</button><br>
+      <span style="color:red"></span><br>
+      <a href="Hello1">Hello2</a>
+      <!-- 예매 , 결제 , 장바구니 , 시간 측정  -->
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
