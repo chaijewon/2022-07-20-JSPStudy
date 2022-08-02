@@ -46,8 +46,11 @@
       </li>
       <li><a class="drop" href="#">레시피</a>
         <ul>
-          <li><a href="pages/gallery.html">레시피목록</a></li>
-          <li><a href="pages/full-width.html">쉐프</a></li>
+          <li><a href="../recipe/recipe_list.do">레시피목록</a></li>
+          <%--
+              DispatcherServlet ==> Model을 찾는다 (@RequestMapping) = 스프링
+           --%>
+          <li><a href="../recipe/chef_list.do">쉐프</a></li>
           <li><a href="pages/gallery.html">가격비교</a></li>
           <li><a href="pages/sidebar-left.html">레시피만들기</a></li>
         </ul>
