@@ -104,6 +104,21 @@ public class RecipeModel {
 	   request.setAttribute("main_jsp", "../recipe/chef_list.jsp");
 	   return "../main/main.jsp";
    }
+   @RequestMapping("recipe/chef_make.do")
+   public String chef_make(HttpServletRequest request,HttpServletResponse response)
+   {
+	   /*
+	    *   1. VO
+	    *   2. SQL
+	    *   3. DAO
+	    *   4. JSP = LINK
+	    *   5. Model ================> 이동여부 확인 
+	    *   6. 데이터 전송 
+	    *   7. JSP출력 
+	    */
+	   request.setAttribute("main_jsp", "../recipe/chef_make.jsp");
+	   return "../main/main.jsp";
+   }
 }
 
 
