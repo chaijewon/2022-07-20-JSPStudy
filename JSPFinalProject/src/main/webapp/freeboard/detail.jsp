@@ -5,6 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let i=0;
+$(function(){
+	$('#del').click(function(){
+		if(i==0)
+		{
+			$('#delTr').show("slow");
+			$('#del').text("취소")
+			i=1;
+		}
+		else
+		{
+			$('#delTr').hide();
+			$('#del').text("삭제")
+			i=0;
+		}
+	})
+})
+</script>
 </head>
 <body>
 <div class="wrapper row3">
@@ -51,8 +71,14 @@
        <tr>
          <td colspan="4" class="text-right">
            <a href="../freeboard/update.do?no=${vo.no }" class="btn btn-xs btn-danger">수정</a>
-           <a href="#" class="btn btn-xs btn-info">삭제</a>
+           <span class="btn btn-xs btn-info" id="del">삭제</span>
            <a href="../freeboard/list.do" class="btn btn-xs btn-warning">목록</a>
+         </td>
+       </tr>
+       <tr id="delTr" style="display:none">
+         <td colspan="4" class="text-right inline">
+          <span>비밀번호:</span><input type=password name=pwd size=10 class="input-sm">
+          <input type=button value="삭제" class="btn btn-sm btn-danger">
          </td>
        </tr>
      </table>
