@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.freeboard-mapper">
   <!--  목록 : 페이징  select -->
+  <!-- findAll() -->
   <select id="boardListData" resultType="FreeBoardVO" parameterType="hashmap">
     SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
     FROM (SELECT no,subject,name,regdate,hit,rcount,rownum as num 
@@ -16,21 +17,36 @@
   <!--  등록 : 시퀀스  selectKey insert-->
   <insert id="boardInsert" parameterType="FreeBoardVO">
     INSERT INTO project_freeboard(no,name,subject,content,pwd) 
-    VALUES((SELECT NVL(MAX(no)+1) FROM project_freeboard),
+    VALUES((SELECT NVL(MAX(no)+1,1) FROM project_freeboard),
      #{name},#{subject},#{content},#{pwd}
     )
   </insert>
   <!--  vo.getName() -->
-  <!--  수정 update, 삭제 (댓글) delete -->
+  <update id="hitIncrement" parameterType="int">
+    UPDATE project_freeboard SET
+    hit=hit+1
+    WHERE no=#{no}
+  </update>
+  <!-- findOne(int no) -->
+  <select id="boardDetailData" resultType="FreeBoardVO" parameterType="int">
+    SELECT no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+    FROM project_freeboard
+    WHERE no=#{no}
+  </select>
+  <!--  수정 update, 삭제 (댓글) delete 
+        findByPwd(String pwd)
+  -->
   <select id="boardGetPassword" resultType="string" parameterType="int">
     SELECT pwd FROM project_freeboard
     WHERE no=#{no}
   </select>
+  <!-- save(FreeboardVO vo) -->
   <update id="boardUpdate" parameterType="FreeBoardVO">
-    UPDATE project_freeboard
+    UPDATE project_freeboard SET
     name=#{name},subject=#{subject},content=#{content}
     WHERE no=#{no}
   </update>
+  <!-- delete(int no) -->
   <delete id="boardDelete" parameterType="int">
     DELETE FROM project_freeboard
     WHERE no=#{no}

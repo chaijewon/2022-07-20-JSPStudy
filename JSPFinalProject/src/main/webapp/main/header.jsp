@@ -5,27 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="member/shadow/css/shadowbox.css">
-<script type="text/javascript" src="member/shadow/js/shadowbox.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 
-<script type="text/javascript">
-Shadowbox.init({
-	players:['iframe']
-})
-$(function(){
-	$('.images').css("cursor","pointer")
-	$('#logImg').click(function(){
-		Shadowbox.open({
-			content:'../member/login.do',
-			player:'iframe',
-			title:'Login',
-			width:450,
-			height:400
-		})
-	})
-})
-</script>
 </head>
 <body>
 <div class="wrapper row1">
@@ -53,7 +33,7 @@ $(function(){
       <li class="active"><a href="../main/main.do">Home</a></li>
       <li><a class="drop" href="#">회원</a>
         <ul>
-          <li><a href="pages/gallery.html">회원가입</a></li>
+          <li><a href="../member/join.do">회원가입</a></li>
           <li><a href="pages/full-width.html">아이디찾기</a></li>
           <li><a href="pages/sidebar-left.html">비밀번호찾기</a></li>
         </ul>

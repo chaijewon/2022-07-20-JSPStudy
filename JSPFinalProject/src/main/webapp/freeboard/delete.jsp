@@ -49,7 +49,7 @@ $(function(){
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">커뮤니티</a></li>
-      <li><a href="#">자유게시판</a></li>
+      <li><a href="#">수정하기</a></li>
     </ul>
     <!-- ################################################################################################ --> 
   </div>
@@ -60,32 +60,34 @@ $(function(){
 <div class="wrapper row3">
   <main class="container clear"> 
     <!-- main body --> 
-    <h2 class="sectiontitle">글쓰기</h2>
+    <h2 class="sectiontitle">수정하기(Ajax)</h2>
     <div class="two_third first">
-     <form method=post action="../freeboard/insert_ok.do" id="frm">
+     <form method=post action="../freeboard/update_ok.do" id="frm">
       <table class="table">
         <tr>
           <th width=20% class="text-right">이름</th>
           <td width=80%>
-            <input type=text name=name size=15 class="input-sm" id="name">
+            <input type=text name=name size=15 class="input-sm" id="name" value="${vo.name }">
+            <input type=hidden name=no value="${vo.no }">
           </td>
         </tr>
         <tr>
           <th width=20% class="text-right">제목</th>
           <td width=80%>
-            <input type=text name=subject size=50 class="input-sm" id="subject">
+            <input type=text name=subject size=50 class="input-sm" id="subject" value="${vo.subject }">
           </td>
         </tr>
         <tr>
           <th width=20% class="text-right">내용</th>
           <td width=80%>
-            <textarea rows="10" cols="50" name=content id="content"></textarea>
+            <textarea rows="10" cols="50" name=content id="content">${vo.content }</textarea>
           </td>
         </tr>
         <tr>
           <th width=20% class="text-right">비밀번호</th>
-          <td width=80%>
+          <td width=80% class="inline">
             <input type="password" name=pwd size=10 class="input-sm" id="pwd">
+            <span id="print" style="color:red"></span>
           </td>
         </tr>
         <tr>

@@ -67,9 +67,108 @@ public class FreeBoardDAO {
 	   SqlSession session=null;
 	   try
 	   {
-		   session=ssf.openSession();//openSession(true);
+		   session=ssf.openSession(true);//openSession(true);
 		   session.insert("boardInsert",vo); // commit(X)
-		   session.commit();
+		   //session.commit();
+	   }catch(Exception ex)
+	   {
+		   System.out.println("boardTotalPage : error");
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close(); // POOL => 반환 
+	   }
+   }
+   // <select id="boardDetailData" resultType="FreeBoardVO" parameterType="int">
+   public static FreeBoardVO boardDetailData(int no)
+   {
+	   FreeBoardVO vo=new FreeBoardVO();
+	   SqlSession session=null;
+	   
+	   try
+	   {
+		   // openSession() => setAutoCommit(false)
+		   // openSession(true) => setAutoCommit(true)
+		   session=ssf.openSession();
+		   session.update("hitIncrement",no);//commit수행을 하지 않는다 
+		   session.commit();//commit을 수행 요청 
+		   vo=session.selectOne("boardDetailData",no);
+	   }catch(Exception ex)
+	   {
+		   System.out.println("boardDetailData : error");
+		   ex.printStackTrace();
+		   //session.rollback();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close(); // POOL => 반환 
+	   }
+	   return vo;
+   }
+   
+   public static FreeBoardVO boardUpdateData(int no)
+   {
+	   FreeBoardVO vo=new FreeBoardVO();
+	   SqlSession session=null;
+	   
+	   try
+	   {
+		   // openSession() => setAutoCommit(false)
+		   // openSession(true) => setAutoCommit(true)
+		   session=ssf.openSession();
+		   vo=session.selectOne("boardDetailData",no);
+	   }catch(Exception ex)
+	   {
+		   System.out.println("boardDetailData : error");
+		   ex.printStackTrace();
+		   //session.rollback();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close(); // POOL => 반환 
+	   }
+	   return vo;
+   }
+   public static String boardPwdCheck(int no,String pwd)
+   {
+	   String result="";
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   String db_pwd=session.selectOne("boardGetPassword",no);
+		   if(db_pwd.equals(pwd))
+		   {
+			   result="yes";
+		   }
+		   else
+		   {
+			   result="no";
+		   }
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return result;
+   }
+   
+   public static void boardUpdate(FreeBoardVO vo)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);//openSession(true);
+		   session.update("boardUpdate",vo); // commit(X)
+		   //session.commit();
 	   }catch(Exception ex)
 	   {
 		   System.out.println("boardTotalPage : error");

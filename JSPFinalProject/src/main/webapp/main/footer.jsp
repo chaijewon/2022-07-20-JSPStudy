@@ -11,7 +11,7 @@
   <footer id="footer" class="clear"> 
     <!-- ################################################################################################ -->
     <div class="one_quarter first">
-      <h6 class="title">공지사항</h6>
+      <h6 class="title">${msg }</h6>
       <address class="btmspace-15">
       Company Name<br>
       Street Name &amp; Number<br>
