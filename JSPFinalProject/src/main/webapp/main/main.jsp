@@ -16,6 +16,7 @@
   font-family: 'Do Hyeon', sans-serif;
 }
 </style>
+
 </head>
 <body id="top">
   <jsp:include page="header.jsp"></jsp:include>
