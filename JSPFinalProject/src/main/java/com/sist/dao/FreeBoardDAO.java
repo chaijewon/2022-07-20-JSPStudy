@@ -180,4 +180,53 @@ public class FreeBoardDAO {
 			   session.close(); // POOL => 반환 
 	   }
    }
+   
+   public static String boardDelete(int no,String pwd)
+   {
+	   String result="";
+	   // 오라클 연결 
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(); 
+		   //<select id="boardGetPassword" resultType="string" parameterType="int">
+		   /*
+		    *  SELECT pwd FROM project_freeboard
+               WHERE no=#{no}
+               
+               map.put("boardGetPassword","SELECT pwd FROM project_freeboard
+               WHERE no=#{no}")
+		    */
+		   String db_pwd=session.selectOne("boardGetPassword", no);
+		   if(db_pwd.equals(pwd))
+		   {
+			   result="yes";
+			   /*
+			    *  <delete id="boardDelete" parameterType="int">
+				    DELETE FROM project_freeboard
+				    WHERE no=#{no}
+				   </delete>
+			    */
+			   session.delete("boardDelete",no);
+			   session.commit();
+		   }
+		   else
+		   {
+			   result="no";
+		   }
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return result;
+   }
 }
+
+
+
+

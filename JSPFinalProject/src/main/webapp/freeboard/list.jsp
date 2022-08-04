@@ -26,7 +26,8 @@
   <main class="container clear"> 
     <!-- main body --> 
     <h2 class="sectiontitle">자유게시판</h2>
-    <div class="two_third first" style="height: 450px">
+    <div class="two_third first">
+     <div style="height: 450px">
       <table class="table">
         <tr>
           <td>
@@ -69,6 +70,7 @@
         </tr>
         </c:forEach>
       </table>
+      </div>
       <table class="table">
         <tr>
          <td class="text-left inline">

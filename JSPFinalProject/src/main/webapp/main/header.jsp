@@ -74,7 +74,6 @@
           <li><a href="pages/sidebar-left.html">코스 추천</a></li>
         </ul>
       </li>
-      <li><a href="#">레시피 스토어</a></li>
       <li><a class="drop" href="#">커뮤니티</a>
         <ul>
           <li><a href="../freeboard/list.do">자유게시판</a></li>
