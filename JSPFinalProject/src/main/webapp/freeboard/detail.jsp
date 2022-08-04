@@ -107,9 +107,9 @@ $(function(){
 					$('#delPwd').focus();
 				}
 			},
-			fail:function(err)
+			error:function(request, status, error)
 			{
-				alert(err);
+				alert(error);
 			}
 			
 		})

@@ -53,6 +53,27 @@ public class MemberDAO {
 		   return count;
 	   }
 	   
+	   public static int memberEmailCheck(String email)
+	   {
+		   int count=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   count=session.selectOne("memberEmailCheck", email);
+			   // selectList,selectOne ==> row
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();// 반환 (DBCP)
+		   }
+		   return count;
+	   }
+	   
 }
 
 

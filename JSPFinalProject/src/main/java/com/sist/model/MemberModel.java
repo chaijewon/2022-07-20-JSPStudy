@@ -17,8 +17,19 @@ public class MemberModel {
    @RequestMapping("member/idcheck_ok.do")
    public String member_idcheck_ok(HttpServletRequest request,HttpServletResponse response)
    {
+	   // data:{"id":id}  ?id=aaa
 	   String id=request.getParameter("id");
 	   int count=MemberDAO.memberIdCheck(id);
+	   request.setAttribute("count", count);
+	   return "../member/idcheck_ok.jsp";
+   }
+   
+   @RequestMapping("member/email_check.do")
+   public String member_email_check(HttpServletRequest request,HttpServletResponse response)
+   {
+	   // data:{"id":id}  ?id=aaa
+	   String email=request.getParameter("email");
+	   int count=MemberDAO.memberEmailCheck(email);
 	   request.setAttribute("count", count);
 	   return "../member/idcheck_ok.jsp";
    }

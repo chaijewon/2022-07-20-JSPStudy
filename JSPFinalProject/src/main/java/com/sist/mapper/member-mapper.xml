@@ -18,4 +18,15 @@
      SELECT COUNT(*) FROM project_member
      WHERE id=#{id}
    </select>
+   <select id="memberEmailCheck" resultType="int" parameterType="string">
+     SELECT COUNT(*) FROM project_member
+     WHERE email=#{email}
+   </select>
 </mapper>
+
+
+
+
+
+
+
