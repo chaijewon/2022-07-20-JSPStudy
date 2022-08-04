@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.member-mapper">
+  <!-- 
+     1. 회원가입 
+         = 아이디 중복체크
+         = email 중복체크 
+         = 전화번호 중복체크 
+         = 가입 
+     2. 로그인 처리 
+     3. 회원 수정 
+     4. 아이디 찾기 (email,tel) 
+     5. 비밀번호 찾기 (id) ============= 메일 전송 
+     6. 회원 탈퇴 
+   -->
+   <!-- 아이디 중복체크  -->
+   <select id="memberIdCheck" resultType="int" parameterType="string">
+     SELECT COUNT(*) FROM project_member
+     WHERE id=#{id}
+   </select>
+</mapper>
