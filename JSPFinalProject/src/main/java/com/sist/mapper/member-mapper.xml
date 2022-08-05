@@ -58,6 +58,19 @@
        #{content}
      )
     </insert>
+    <!-- 로그인  -->
+    <!-- id 존재여부 확인 (0=X,1=O) -->
+    <select id="memberIdCount" resultType="int" parameterType="string">
+     SELECT COUNT(*) 
+     FROM project_member
+     WHERE id=#{id}
+    </select>
+    <!-- 비밀번호 읽기 -->
+    <select id="memberInfoData" resultType="MemberVO" parameterType="string">
+      SELECT pwd,id,name,admin
+      FROM project_member
+      WHERE id=#{id}
+    </select>
 </mapper>
 
 

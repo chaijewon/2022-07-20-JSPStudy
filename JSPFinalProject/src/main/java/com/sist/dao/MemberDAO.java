@@ -146,6 +146,56 @@ public class MemberDAO {
 		   }
 	   }
 	   // JSP => .do
+	   /*
+	    *   <select id="memberIdCount" resultType="int" parameterType="string">
+		     SELECT COUNT(*) 
+		     FROM project_member
+		     WHERE id=#{id}
+		    </select>
+		    <!-- 비밀번호 읽기 -->
+		    <select id="memberInfoData" resultType="MemberVO" parameterType="string">
+		      SELECT pwd,id,name,admin
+		      FROM project_member
+		      WHERE id=#{id}
+		    </select>
+	    */
+	   public static MemberVO isLogin(String id,String pwd)
+	   {
+		   MemberVO vo=new MemberVO();
+		   // 연결 ==> getConnection()
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(); //DBCP => Connection을 미리 생성 (8) => 생성 Connection의 주소값 얻기
+			   int count=session.selectOne("memberIdCount",id);
+			   
+			   if(count==0)
+			   {
+				   vo.setMsg("NOID");
+			   }
+			   else
+			   {
+				   vo=session.selectOne("memberInfoData", id);
+				   if(pwd.equals(vo.getPwd())) //로그인
+				   {
+					   vo.setMsg("OK");
+				   }
+				   else //비밀번호가 틀린상태 
+				   {
+					   vo.setMsg("NOPWD");
+				   }
+			   }
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // POOL으로 반환 재사용 (미반환시 동작을 하지 않는다) => 스프링(처리)
+		   }
+		   return vo;
+	   }
 	   
 }
 

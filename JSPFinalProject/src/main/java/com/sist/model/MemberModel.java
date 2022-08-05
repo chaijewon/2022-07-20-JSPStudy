@@ -112,6 +112,17 @@ public class MemberModel {
 	   // 화면 이동 
 	   return "redirect:../main/main.do";
    }
+   
+   // 로그인 처리
+   @RequestMapping("member/login_ok.do")
+   public String member_login_ok(HttpServletRequest request,HttpServletResponse response)
+   {
+	   // 사용자 요청값 받기
+	   String id=request.getParameter("id");
+	   String pwd=request.getParameter("pwd");
+	   // DAO연동 ==> mapper(SQL) , dao(메소드 처리)
+	   return "../member/login_ok.jsp";//NOID,NOPWD,OK
+   }
 }
 
 
