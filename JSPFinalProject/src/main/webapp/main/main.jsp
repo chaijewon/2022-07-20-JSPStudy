@@ -36,6 +36,9 @@ $(function(){
 			height:260
 		})
 	})
+	$('#logoutImg').click(function(){
+		location.href="../member/logout.do";
+	})
 })
 </script>
 </head>

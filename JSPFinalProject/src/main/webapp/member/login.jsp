@@ -53,7 +53,8 @@
 				 else
 				 {
 					 //로그인 
-					 location.href="../main/main.do";
+					 parent.location.href="../main/main.do";
+					 // shadowbox => child
 				 }
 			 }
 		 })

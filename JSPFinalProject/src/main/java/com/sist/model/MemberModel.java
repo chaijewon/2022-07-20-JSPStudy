@@ -2,6 +2,7 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -121,7 +122,26 @@ public class MemberModel {
 	   String id=request.getParameter("id");
 	   String pwd=request.getParameter("pwd");
 	   // DAO연동 ==> mapper(SQL) , dao(메소드 처리)
+	   MemberVO vo=MemberDAO.isLogin(id, pwd);
+	   String result=vo.getMsg();
+	   if(result.equals("OK"))//로그인시에 세션에 저장 ==> 서버에 저장 (브라우저 종료 , 로그아웃시에 해제)
+	   {
+		   HttpSession session=request.getSession();
+		   session.setAttribute("id", vo.getId());
+		   session.setAttribute("name", vo.getName());
+		   session.setAttribute("admin", vo.getAdmin()); 
+		   // 서버에 저장 ==> 모든 JSP에서 사용이 가능 
+	   }
+	   request.setAttribute("result", result);
 	   return "../member/login_ok.jsp";//NOID,NOPWD,OK
+   }
+   
+   @RequestMapping("member/logout.do")
+   public String member_logout(HttpServletRequest request,HttpServletResponse response)
+   {
+	   HttpSession session=request.getSession();
+	   session.invalidate();//  저장된 모든 데이터를 지운다 
+	   return "redirect:../main/main.do";
    }
 }
 
