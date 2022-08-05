@@ -11,8 +11,15 @@ package com.sist.vo;
 import java.util.*;
 public class ReplyVO {
     private int no,bno,type;
-    private String id,name,msg,dbday;
+    private String id,name,msg,dbday,table_name;
     private Date regdate;
+    
+	public String getTable_name() {
+		return table_name;
+	}
+	public void setTable_name(String table_name) {
+		this.table_name = table_name;
+	}
 	public int getNo() {
 		return no;
 	}

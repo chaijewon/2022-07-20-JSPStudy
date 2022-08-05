@@ -44,6 +44,11 @@ public class ReplyModel {
 	   vo.setName(name);
 	   vo.setMsg(msg);
 	   vo.setType(Integer.parseInt(type));
+	   
+	   String[] temp={"","project_freeboard","seoul_location","seoul_nature","seoul_shop"};
+	   
+	   String table=temp[Integer.parseInt(type)];
+	   vo.setTable_name(table);
 	   //DAO => 오라클 전송 
 	   ReplyDAO.replyInsert(vo);
 	   return "redirect:../freeboard/detail.do?no="+bno;
@@ -51,8 +56,29 @@ public class ReplyModel {
    @RequestMapping("reply/reply_delete.do")
    public String reply_delete(HttpServletRequest request,HttpServletResponse response)
    {
-	   String bno=request.getParameter("bno");
+	   String bno=request.getParameter("bno");// 게시물번호 => detail로 이동
+	   String no=request.getParameter("no"); // 댓글 번호 => 삭제
 	   // 삭제 ==> DAO
+	   ReplyDAO.replyDelete(Integer.parseInt(no));
 	   return "redirect:../freeboard/detail.do?no="+bno;
+   }
+   @RequestMapping("reply/reply_update.do")
+   public String reply_update(HttpServletRequest request,HttpServletResponse response)
+   {
+	   try
+	   {
+		   request.setCharacterEncoding("UTF-8");
+	   }catch(Exception ex) {}
+	   String bno=request.getParameter("bno");// 게시물번호 => detail로 이동
+	   String no=request.getParameter("no"); // 댓글 번호 => 삭제
+	   String msg=request.getParameter("msg");
+	   
+	   ReplyVO vo=new ReplyVO();
+	   vo.setNo(Integer.parseInt(no));
+	   vo.setMsg(msg);
+	   ReplyDAO.replyUpdate(vo);
+	   //DAO연동 
+	   return "redirect:../freeboard/detail.do?no="+bno;
+	   
    }
 }

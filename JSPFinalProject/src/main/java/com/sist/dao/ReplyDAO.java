@@ -79,6 +79,7 @@ public class ReplyDAO {
 		   try
 		   {
 			   session=ssf.openSession(true);
+			   session.update("countIncrement",vo);
 			   session.insert("replyInsert",vo);
 		   }catch(Exception ex)
 		   {
@@ -93,6 +94,31 @@ public class ReplyDAO {
 		   //session.insert("replyInsert",vo);
 		   //session.close();
 		   
+	   }
+	   /*
+	    *   <delete id="replyDelete" parameterType="int">
+			   DELETE FROM project_reply
+			   WHERE no=#{no}
+			  </delete>
+	    */
+	   public static void replyDelete(int no)
+	   {
+		   SqlSession session=ssf.openSession(true);
+		   session.delete("replyDelete",no);
+		   session.close();
+	   }
+	   /*
+	    *  <update id="replyUpdate" parameterType="ReplyVO">
+			   UPDATE project_reply SET
+			   msg=#{msg}
+			   WHERE no=#{no}
+			  </update>
+	    */
+	   public static void replyUpdate(ReplyVO vo)
+	   {
+		   SqlSession session=ssf.openSession(true);
+		   session.update("replyUpdate",vo);
+		   session.close();
 	   }
 	   
 	   

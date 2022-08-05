@@ -9,6 +9,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 let i=0;
+let u=0;
 $(function(){
 	$('#del').click(function(){
 		if(i==0)
@@ -115,6 +116,21 @@ $(function(){
 			
 		})
 	})
+	
+	$('.up').click(function(){
+		$('.updates').hide();
+		let no=$(this).attr("data-no");
+		if(u==0)
+		{
+			$('#update'+no).show();
+			u=1;
+		}
+		else
+		{
+            $('#update'+no).hide();
+            u=0;
+		}
+	})
 })
 </script>
 </head>
@@ -183,7 +199,7 @@ $(function(){
               <header>
                 <figure class="avatar">
                  <c:if test="${sessionScope.id==rvo.id}"><%-- 본인이면 --%>
-                  <a href="#" class="btn btn-xs btn-danger" style="color:black">수정</a>
+                  <span class="btn btn-xs btn-danger up" style="color:black" data-no="${rvo.no }">수정</span>
                   <a href="../reply/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
                  </c:if>
                 </figure>
@@ -195,7 +211,24 @@ $(function(){
                 <p><pre style="white-space: pre-wrap;background-color:white;border:none">${rvo.msg }</pre></p>
               </div>
             </article>
+            
           </li>
+            <div style="display:none" id="update${rvo.no }" class="updates">
+	            <table class="table">
+		          <tr>
+		            <td>
+		             <form method=post action="../reply/reply_update.do">
+		               <input type=hidden name=bno value="${vo.no }">
+		               <input type=hidden name=type value="1">
+		               <input type=hidden name=no value="${rvo.no }">
+		               <textarea rows="5" cols="70" name="msg" style="float: left">${rvo.msg }</textarea>
+		               <input type=submit class="btn btn-sm btn-primary" style="height: 105px"
+		                value="댓글수정">
+		              </form>
+		            </td>
+		          </tr>
+		        </table>
+	        </div>
           </c:forEach>
         </ul> 
        </div>
