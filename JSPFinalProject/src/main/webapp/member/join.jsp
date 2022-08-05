@@ -55,7 +55,7 @@ $(function(){
 				if(count==0)
 				{
 					$('#ePrint').text("사용가능한 이메일입니다");
-					$('#email').attr('disabled',true);
+					$('#email').attr('readonly',true);
 				}
 				else
 				{
@@ -85,17 +85,22 @@ $(function(){
 				let count=parseInt(result.trim());
 				if(count==0)
 				{
-					$('#ePrint').text("사용가능한 전화번호입니다");
-					$('#tel2').attr('disabled',true);
+					$('#tPrint').text("사용가능한 전화번호입니다");
+					$('#tel2').attr('readonly',true);
 				}
 				else
 				{
-					$('#ePrint').text("사용중인 전호번호입니다");
+					$('#tPrint').text("사용중인 전호번호입니다");
 					$('#tel2').val("");
 					$('#tel2').focus();
 			    }
 			}
 		})
+	})
+	
+	$('#joinBtn').click(function(){
+		// 체크(유효성 검사)
+		$('#join_frm').submit(); //<input type=submit>
 	})
 })
 </script>
@@ -153,7 +158,7 @@ $(function(){
       <tr>
        <th class="text-right" width=15%>이메일</th>
        <td width=85% class="inline">
-         <input type=text name=email id=email size=70 class="input-sm">
+         <input type=text name="email" id=email size=70 class="input-sm">
          <input type=button id="eBtn" class="btn btn-sm btn-success" value="이메일확인">
          &nbsp;<span style="color:blue" id="ePrint"></span>
        </td>

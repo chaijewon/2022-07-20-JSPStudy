@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+/*      공용      */
+:focus {
+  outline: 1px solid black
+}
+
+.info,
+#list,
+.pwd-check,
+.update {
+  min-height: 700px;
+}
+/* --------------- */
+
+
+
+/*      메뉴      */
+.border {
+  border-bottom: 2px solid rgb(79, 79, 79);
+}
+
+.menu ul {
+  list-style: none;
+  -webkit-padding-start: 0px; /* 왼쪽 여백 */
+}
+
+.menu li:first-child {
+  border-top: 2px solid rgb(79, 79, 79);
+}
+
+.menu li {
+  margin-top: -1px;
+  padding: 20px 10px;
+  border: 1px solid #fff;
+  background-color: #E5E5E5;
+  text-align: center;
+  font-weight: bold;
+}
+
+#selected {
+  background-color: #fff;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.menu li:hover {
+  padding: 20px 10px;
+  background-color: #F6F6F6;
+  text-align: center;
+}
+
+.menu a {
+  display: block;
+}
+/* --------------- */
+
+
+
+/*     내 정보     */
+.info {
+  padding: 30px 40px;
+}
+/* --------------- */
+
+
+
+/*  개인정보 수정 비밀번호 체크  */
+#submit-btn {
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+/* --------------- */
+
+
+
+/*   개인정보 수정   */
+input[type=text],
+input[type=password],
+input[type=button],
+input[type=date],
+select,
+#cancel-btn {
+  vertical-align: middle;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 2px;
+  border: 1px solid rgb(230, 230, 230);
+  text-decoration: none;
+}
+
+:focus {
+  outline: 1px solid black
+}
+
+#email,
+#post {
+  width: 70%;
+  vertical-align: middle;
+}
+
+#email-check-btn,
+#id-check-btn,
+#post-btn {
+  width: 29%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #7F9BB9;
+  color: white;
+}
+
+#id,
+#post,
+#address,
+#email,
+#address1 {
+  background-color: #F6F6F6;
+  outline: none;
+}
+/* --------------- */
+
+
+
+/*   즐겨찾기 관리   */
+.btn-pink {
+  padding: 5px;
+}
+/* ------------- */
+
+
+
+/*   링크 언더바 제거   */
+a,
+a:link,
+a:active,
+a:hover {
+  text-decoration: none;
+}
+/* ------------- */ 
+
+
+/*     반응형     */
+@media screen and (min-width: 992px) {
+  .update {
+    max-width: 60%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  
+  /*  개인정보 수정 비밀번호 체크  */
+  .pwd-check {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #ad-title {
+    display:none;
+  }
+}
+
+
+/* ------------ */

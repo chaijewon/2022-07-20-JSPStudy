@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+.row-border {
+  border: 1px solid rgb(231, 231, 231);
+}
+
+.radius-10 {
+  border-radius: 10px;
+}
+
+.room {
+  padding: 20px;
+}
+
+/*  맨 위 테이블  */
+.top-table-title {
+  padding: 10px 0px;
+}
+
+.width-80 {
+  width: 80px;
+}
+
+.top-table {
+  width: 100%;
+}
+
+th {
+  vertical-align: top;
+  padding: 10px 0px;
+}
+
+th, td {
+  padding: 12px 0px;
+  word-break: keep-all;
+}
+
+.logo-container {
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+}
+
+.clogo {
+  width: 100%;
+  height: auto;
+  max-width: 160px;
+  max-height: 70px;
+  vertical-align: middle;
+}
+/* ----------- */
+
+
+/*     중앙    */
+.bggrey {
+  background-color: rgb(231, 231, 231);
+}
+
+
+.title-deco {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 30px 40px;
+}
+/* ----------- */
+
+
+/*     도서    */
+.qual-name {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.book-img {
+  width: 100%;
+  height: auto;
+  max-height: 190px;
+}
+/* ----------- */
+
+
+/* 링크 언더바 제거 */
+a, a:link, a:active, a:hover {
+  text-decoration: none;
+}
+/* ----------- */
+
+/* 다중 줄 줄임 2줄만 */
+.short-multi-line {
+  -webkit-line-clamp: 2;
+}
+/* ----------- */
+
+
+@media screen and (min-width: 992px) {
+  .container-pad {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+}

@@ -1,0 +1,157 @@
+@charset "UTF-8";
+/*   틀   */
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  border-radius: 10px;
+  width: 100%;
+  max-width: 450px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+  padding: 40px 30px;
+}
+/* -------- */
+
+
+
+/*    폼    */
+input[type=text],
+input[type=password],
+input[type=button],
+input[type=date],
+select,
+#cancel-btn {
+  vertical-align: middle;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 2px;
+  border: 1px solid rgb(230, 230, 230);
+  text-decoration: none;
+}
+
+:focus {
+  outline: 1px solid black
+}
+
+#id,
+#email,
+#post {
+  width: 70%;
+  vertical-align: middle;
+}
+
+#email-check-btn,
+#id-check-btn,
+#post-btn {
+  width: 28%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #7F9BB9;
+  color: white;
+}
+
+#id,
+#post,
+#address,
+#email,
+#address1 {
+  background-color: #F6F6F6;
+  outline: none;
+}
+/* -------- */
+
+
+
+/* 링크 효과 제거 */
+a,
+a:link,
+a:active,
+a:hover {
+  text-decoration: none;
+}
+/* -------- */
+
+
+
+/* 애니메이션 */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}

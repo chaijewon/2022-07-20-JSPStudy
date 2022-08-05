@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+table {
+  table-layout: fixed;
+}
+
+.title {
+  padding-top: 5px;
+}
+
+th {
+  background-color: rgb(231, 231, 231);
+}
+
+td {
+  height: 140px;
+}
+
+span {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* 링크 효과 제거 */
+a, a:link, a:active, a:hover {
+  text-decoration: none;
+}

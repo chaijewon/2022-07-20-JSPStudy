@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+textarea, .reply-insert-btn, .reply-update {
+  vertical-align: middle;
+}
+
+textarea {
+  width: 85%;
+  height: 75px;
+  resize: none;
+  border: 1px solid #d6d6d6;
+  display: inline;
+  padding: 5px;
+  outline: none;
+}
+
+.reply-insert-btn {
+  width: 15%;
+  height: 75px;
+  color: white;
+  background-color: #017576;
+  border: 1px solid #017576;
+  padding: 5px;
+  display: inline;
+  padding: 10px;
+  margin-left: -5px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.reply-update {
+  width: 15%;
+  height: 75px;
+  color: grey;
+  background-color: #d6d6d6;
+  border: 1px solid #d6d6d6;
+  padding: 5px;
+  display: inline;
+  padding: 10px;
+  margin-left: -5px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.content {
+  min-height: 350px;
+  vertical-align: top;
+}
+
+.reply-delete-btn,
+.reply-update-btn {
+  font-size: 12px;
+  padding: 2px 7px;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+  display: inline-block;
+  background-color: white;
+}
+
+.word {
+  word-wrap: break-word;
+}
+
+
+/* 링크 언더바 제거 */
+a, a:link, a:active, a:hover {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 992px) {
+  .container-pad {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  .row-border {
+    border: 1px solid #d6d6d6;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  textarea {
+    width: 80%;
+  }
+  
+  .reply-insert-btn {
+    width: 20%;
+  }
+}

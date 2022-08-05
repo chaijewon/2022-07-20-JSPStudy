@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+.min-height {
+  min-height: 750px;
+}
+
+.top-border {
+  border-top: 1px solid black;
+}
+
+.menu {
+  text-align: right;
+  padding: 0px;
+}
+
+.menu li {
+  display: inline-block;
+  padding: 7px 7px;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+}
+
+.roomy-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+sup {
+  color: #F78181;
+}
+
+.category {
+  color: #017576;
+}
+
+.rcount {
+  color: #017576;
+}
+
+#list {
+  min-height: 500px;
+}
+
+
+
+/*     검색창    */
+input[type=text],
+select,
+input[type=button] {
+  vertical-align: middle;
+  padding: 6px 5px;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+  outline: none;
+}
+/* ----------- */
+
+/*     반응형    */
+@media screen and (min-width: 992px) {
+  .container-pad {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  #board-top {
+    display: none;
+  }
+  
+  .border-bttom {
+    border-bottom: 1px solid #d6d6d6;
+  }
+  
+  #board-title {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .menu, .check, #board-title, #board-uid, #board-date, #board-visits {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #small {
+    display: none;
+  }
+}
+/* ----------- */
+
+
+
+/*     페이지    */
+.page {
+  display: block;
+  width: 100%;
+  text-align: center;
+  clear: both;
+}
+
+.page li {
+  display: inline-block;
+  margin: 0 2px 0 0;
+  padding: 5px 10px;
+}
+
+.page .current {
+  color: black;
+  font-weight: bold;
+}
+/* ----------- */
+
+
+
+/* 글쓰기 버튼 */
+.post {
+  text-align: right;
+  padding-right: 15px;
+}
+/* ----------- */
+
+
+
+/* 링크 효과 제거 */
+a, a:link, a:active, a:hover {
+  text-decoration: none;
+}
+/* ----------- */

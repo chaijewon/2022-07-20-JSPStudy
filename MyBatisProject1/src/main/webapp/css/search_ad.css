@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/*   검색창   */
+.search-container {
+  padding: 40px;
+  border: 1px solid #E7E7E7;
+  border-radius: 10px;
+}
+
+#search-btn {
+  padding: 10px 30px;
+}
+
+#reset-btn {
+  padding: 10px 10px;
+}
+
+input[name=keyword] {
+  width: 100%;
+}
+
+input, select {
+  padding:2.5px 5px;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+}
+
+:focus {
+  outline: 1px solid black;
+}
+/* ----------- */
+
+
+
+/*    목록    */
+.title {
+  padding: 10px 20px;
+  background-color: rgb(231, 231, 231);
+  font-weight:  bold;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.list-content {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#list {
+  padding: 20px;
+}
+
+.ad-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+/* ----------- */
+
+
+
+/*    페이지    */
+.page {
+  display: block;
+  width: 100%;
+  text-align: center;
+  clear: both;
+}
+
+.page li {
+  display: inline-block;
+  margin: 0 2px 0 0;
+  padding: 5px 10px;
+}
+
+.page .current {
+  color: black;
+  font-weight: bold;
+}
+
+
+/* ----------- */
+
+
+
+/* 링크 언더바 제거 */
+a, a:link, a:active, a:hover {
+  text-decoration: none;
+}
+/* ----------- */
+
+
+
+@media screen and (min-width: 992px) {
+  .container-pad {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ad_end {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    display: none;
+  }
+}

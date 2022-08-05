@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+/*   회사 정보   */
+.cname {
+  font-size: 18px;
+  color: white;
+  background-color:rgb(79, 79, 79);
+  border-radius: 10px 10px 0px 0px;
+  padding: 10px 30px;
+  display: inline-block;
+}
+
+td {
+  padding: 10px 0px;
+  word-break: keep-all;
+}
+
+.top-table-left {
+  width: 90px;
+}
+
+.logo-container {
+  height: 120px;
+  line-height:120px;
+  text-align: center;
+}
+
+.clogo {
+  width: 100%;
+  height: auto;
+  max-width: 130px;
+  vertical-align: middle;
+}
+
+.row-border {
+  border: 1px solid #d6d6d6;
+}
+/* ----------- */
+
+
+
+/*   진행중인 채용공고   */
+.bggrey {
+  background-color: rgb(231, 231, 231);
+}
+
+.title-deco {
+  font-size: 16px;
+  font-weight: bold;
+}
+/* ----------- */
+
+
+
+/*   리뷰 출력   */
+pre {
+  line-height: 30px;
+}
+
+.review-job {
+  font-size: 20px;
+}
+
+.room {
+  padding:20px;
+}
+/* ----------- */
+
+
+
+/*   리뷰 입력   */
+input[type=text] {
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+textarea, #review-insert-btn, .review-update {
+  vertical-align: middle;
+}
+
+textarea {
+  width: 85%;
+  height: 80px;
+  resize: none;
+  border: 1px solid #d6d6d6;
+  display: inline;
+  padding: 5px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+#review-insert-btn {
+  width: 15%;
+  height: 80px;
+  color: white;
+  background-color: #017576;
+  border: 1px solid #017576;
+  padding: 5px;
+  display: inline;
+  padding: 10px;
+  margin-left: -5px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.review-update {
+  width: 15%;
+  height: 80px;
+  color: grey;
+  background-color: #d6d6d6;
+  border: 1px solid #d6d6d6;
+  padding: 5px;
+  display: inline;
+  padding: 10px;
+  margin-left: -5px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+:focus {
+  outline: 1px solid black;
+}
+
+.login-to-review {
+  background-color: #F2F2F2;
+  font-size: 16px;
+  text-align: center;
+  font-style: italic;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+/* ----------- */
+
+
+
+/*     공용     */
+.topborder {
+  border-top: 2px solid rgb(79, 79, 79);
+}
+/* ----------- */
+
+
+
+/* 링크 언더바 제거 */
+a, a:link, a:active, a:hover {
+  text-decoration: none;
+}
+/* ----------- */
+
+
+
+/*    페이지    */
+.page {
+  display: block;
+  width: 100%;
+  text-align: center;
+  clear: both;
+}
+
+.page li {
+  display: inline-block;
+  margin: 0 2px 0 0;
+  padding: 5px 10px;
+}
+
+.page .current {
+  color: black;
+  font-weight: bold;
+}
+/* ----------- */
+
+
+
+/*   반응형   */
+@media screen and (max-width: 992px) {
+  #adend {
+    display:none;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container-pad {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  textarea {
+    width: 90%;
+    height: 80px;
+  }
+
+  #review-insert-btn, .review-update {
+    width: 10%;
+  }
+}
+/* ----------- */
