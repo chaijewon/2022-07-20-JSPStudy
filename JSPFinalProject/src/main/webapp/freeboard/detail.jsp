@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -173,7 +174,47 @@ $(function(){
          </td>
        </tr>
      </table>
-    </div>
+     <div id="comments">    
+        <h2>댓글</h2>
+        <ul>
+         <c:forEach var="rvo" items="${list }">
+          <li>
+            <article>
+              <header>
+                <figure class="avatar">
+                 <c:if test="${sessionScope.id==rvo.id}"><%-- 본인이면 --%>
+                  <a href="#" class="btn btn-xs btn-danger" style="color:black">수정</a>
+                  <a href="../reply/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
+                 </c:if>
+                </figure>
+                <address>
+                By <a href="#">${rvo.name }&nbsp;(${rvo.dbday })</a>
+                </address>
+              </header>
+              <div class="comcont">
+                <p><pre style="white-space: pre-wrap;background-color:white;border:none">${rvo.msg }</pre></p>
+              </div>
+            </article>
+          </li>
+          </c:forEach>
+        </ul> 
+       </div>
+       <c:if test="${sessionScope.id!=null }"><%--로그인시에만 보여준다 --%>
+        <table class="table">
+          <tr>
+            <td>
+             <form method=post action="../reply/reply_insert.do">
+               <input type=hidden name=bno value="${vo.no }">
+               <input type=hidden name=type value="1">
+               <textarea rows="5" cols="100" name="msg" style="float: left"></textarea>
+               <input type=submit class="btn btn-sm btn-primary" style="height: 105px"
+                value="댓글쓰기">
+              </form>
+            </td>
+          </tr>
+        </table>
+       </c:if>
+      </div>
     <div class="one_third">2/3</div>
    </main>
 </div>

@@ -69,6 +69,13 @@ public class FreBoardModel {
 	   String no=request.getParameter("no");
 	   FreeBoardVO vo=FreeBoardDAO.boardDetailData(Integer.parseInt(no));
 	   request.setAttribute("vo", vo);
+	   
+	   // 댓글 읽기 
+	   ReplyVO rvo=new ReplyVO();
+	   rvo.setBno(vo.getNo());
+	   rvo.setType(1);
+	   List<ReplyVO> list=ReplyDAO.replyListData(rvo);
+	   request.setAttribute("list", list);
 	   request.setAttribute("main_jsp", "../freeboard/detail.jsp");
 	   return "../main/main.jsp";
    }

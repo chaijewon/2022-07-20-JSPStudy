@@ -78,7 +78,7 @@ public class ReplyDAO {
 		   SqlSession session=null;
 		   try
 		   {
-			   session=ssf.openSession();
+			   session=ssf.openSession(true);
 			   session.insert("replyInsert",vo);
 		   }catch(Exception ex)
 		   {
