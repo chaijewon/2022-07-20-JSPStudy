@@ -135,7 +135,11 @@ public class MemberModel {
 	   request.setAttribute("result", result);
 	   return "../member/login_ok.jsp";//NOID,NOPWD,OK
    }
-   
+   /*
+    *   1. 화면 ==> 실제 화면 출력 ===> forward : request를 전송 
+    *              기존 화면 출력 ====> request가 필요가 없는 경우 : redirect
+    *                => insert , update , delete 
+    */
    @RequestMapping("member/logout.do")
    public String member_logout(HttpServletRequest request,HttpServletResponse response)
    {
