@@ -9,6 +9,10 @@
     FROM project_replyBoard ORDER BY group_id DESC,group_step ASC))
     WHERE num BETWEEN #{start} AND #{end}
   </select>
+  <!-- 총페이지 -->
+  <select id="boardReplyTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/10.0) FROM project_replyBoard
+  </select>
   <!-- 
                        group_id(게시물=답변)    group_step(답변,일반게시물)  group_tab  isreply(답변완료)
          AAAAA            2            0           0         1
@@ -20,5 +24,23 @@
   <!-- 상세 보기 -->
   <!-- 수정 , 삭제 -->
   <!-- 추가(사용자) -->
+  <insert id="boardReplyInsert" parameterType="BoardReplyVO">
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(no)+1,1) as no FROM project_replyBoard
+    </selectKey>
+    INSERT INTO project_replyBoard(no,name,subject,content,pwd,group_id)
+    VALUES(#{no},#{name},#{subject},#{content},#{pwd},
+     (SELECT NVL(MAX(group_id)+1,1) FROM project_replyBoard)
+    )
+  </insert>
   <!-- 답변 달기(어드민)-->
 </mapper>
+
+
+
+
+
+
+
+
+

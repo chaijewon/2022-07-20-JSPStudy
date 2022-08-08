@@ -36,7 +36,9 @@ public class BoardReplyModel {
 	   map.put("start", start);
 	   map.put("end", end);
 	   List<BoardReplyVO> list=BoardReplyDAO.boardReplyListData(map);
+	   int totalpage=BoardReplyDAO.boardReplyTotalPage();
 	   
+	   request.setAttribute("totalpage", totalpage);
 	   request.setAttribute("list", list);
 	   request.setAttribute("curpage", curpage);
 	   request.setAttribute("main_jsp", "../board_reply/list.jsp");
@@ -47,6 +49,30 @@ public class BoardReplyModel {
    {
 	   request.setAttribute("main_jsp", "../board_reply/insert.jsp");
 	   return "../main/main.jsp";
+   }
+   @RequestMapping("board_reply/insert_ok.do")
+   public String board_reply_insert_ok(HttpServletRequest request,HttpServletResponse response)
+   {
+	   // 데이터베이스 처리 
+	   try
+	   {
+            request.setCharacterEncoding("UTF-8"); // 한글 처리 		   
+	   }catch(Exception ex) {}
+	   String name=request.getParameter("name");
+	   String subject=request.getParameter("subject");
+	   String content=request.getParameter("content");
+	   String pwd=request.getParameter("pwd");
+	   
+	   BoardReplyVO vo=new BoardReplyVO();
+	   vo.setName(name);
+	   vo.setSubject(subject);
+	   vo.setContent(content);
+	   vo.setPwd(pwd);
+	   
+	   // vo ==> DAO로 전송 
+	   BoardReplyDAO.boardReplyInsert(vo);
+	   return "redirect:../board_reply/list.do"; // insert_ok , update_ok , delete_ok
+	   // 데이터 전송은 없고 처리후 이전에 실행된 화면으로 이동 (list,detail)
    }
    
 }

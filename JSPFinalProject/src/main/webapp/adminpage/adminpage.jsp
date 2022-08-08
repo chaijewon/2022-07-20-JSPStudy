@@ -30,9 +30,9 @@
       <h6>설정 메뉴</h6>
       <nav class="sdb_holder">
         <ul>
-          <li><a href="#">회원 관리</a></li>
-          <li><a href="#">게시판 관리</a></li>
-          <li><a href="#">게시판 답변 관리</a></li>
+          <li><a href="../adminpage/member.do">회원 관리</a></li>
+          <li><a href="../adminpage/board.do">게시판 관리</a></li>
+          <li><a href="../adminpage/reply.do">게시판 답변 관리</a></li>
           <li><a href="#">예약 관리</a></li>
           <li><a href="#">구매 관리</a></li>
           <li><a href="#">공지 관리</a></li>
@@ -44,7 +44,7 @@
     <!-- ################################################################################################ --> 
     <!-- ################################################################################################ -->
     <div class="content three_quarter"> 
-      
+      <jsp:include page="${admin_jsp }"></jsp:include>
     </div>
     <!-- / main body -->
     <div class="clear"></div>

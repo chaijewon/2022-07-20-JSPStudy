@@ -56,6 +56,78 @@ public class BoardReplyDAO {
 		   }
 		   return list;
 	   }
+	   /*
+	    *   <insert id="boardReplyInsert" parameterType="BoardReplyVO">
+			    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+			      SELECT NVL(MAX(no)+1,1) as no FROM project_replyBoard
+			    </selectKey>
+			    INSERT INTO project_replyBoard(no,name,subject,content,pwd,group_id)
+			    VALUES(#{no},#{name},#{subject},#{content},#{pwd},
+			     SELECT NVL(MAX(group_id)+1,1) as no FROM project_replyBoard
+			    )
+			  </insert>
+	    */
+	   public static void boardReplyInsert(BoardReplyVO vo)
+	   {
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);// getConnection() : 미리 생성된 Connection주소 읽기 
+			   // autocommit ==> 트랜잭션 
+			   session.insert("boardReplyInsert",vo);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+	   }
+	   
+	   /*
+	    *   <select id="boardReplyTotalPage" resultType="int">
+			    SELECT CEIL(COUNT(*)/10.0) FROM project_replyBoard
+			  </select>
+	    */
+	   public static int boardReplyTotalPage()
+	   {
+		   SqlSession session=null;
+		   int total=0;
+		   try
+		   {
+			   session=ssf.openSession(true);// getConnection() : 미리 생성된 Connection주소 읽기 
+			   total=session.selectOne("boardReplyTotalPage");
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+		   return total;
+	   }
+	   /*
+	       SqlSession session=null;
+		   #####
+		   try
+		   {
+			   session=ssf.openSession(true);// getConnection() : 미리 생성된 Connection주소 읽기 
+			   #####
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+		   #####
+	    */
 }
 
 
