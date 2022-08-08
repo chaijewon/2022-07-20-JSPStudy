@@ -98,7 +98,7 @@
       <li><a class="drop" href="#">커뮤니티</a>
         <ul>
           <li><a href="../freeboard/list.do">자유게시판</a></li>
-          <li><a href="pages/full-width.html">묻고답하기</a></li>
+          <li><a href="../board_reply/list.do">묻고답하기</a></li>
           <li><a href="pages/sidebar-left.html">공지사항</a></li>
         </ul>
       </li>

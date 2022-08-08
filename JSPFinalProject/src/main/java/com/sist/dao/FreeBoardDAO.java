@@ -23,6 +23,7 @@ public class FreeBoardDAO {
 		   ex.printStackTrace();
 	   }
    }
+   
    public static List<FreeBoardVO> boardListData(Map map)
    {
 	   List<FreeBoardVO> list=null;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.board_reply-mapper">
+  <!-- 목록 가지고 오기 -->
+  <select id="boardReplyListData" resultType="BoardReplyVO" parameterType="hashmap">
+    SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,isreply,group_id,group_tab,num
+    FROM (SELECT no,subject,name,regdate,hit,isreply,group_id,group_tab,rownum as num
+    FROM (SELECT no,subject,name,regdate,hit,isreply,group_id,group_tab
+    FROM project_replyBoard ORDER BY group_id DESC,group_step ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <!-- 
+                       group_id(게시물=답변)    group_step(답변,일반게시물)  group_tab  isreply(답변완료)
+         AAAAA            2            0           0         1
+           =>BBBBBB       2            1           1         0
+         CCCCC            1            0           0         1
+           =>DDDDDD       1            1           1         0
+  
+   -->
+  <!-- 상세 보기 -->
+  <!-- 수정 , 삭제 -->
+  <!-- 추가(사용자) -->
+  <!-- 답변 달기(어드민)-->
+</mapper>

@@ -145,6 +145,12 @@ public class DispatcherServlet extends HttpServlet {
 					// 메소드 위에 있는 어노테이션을  확인
 					if(uri.equals(rm.value())) // 처리 메소드를 찾아서 => 수행 
 					{
+						// dao.boardListData()
+						/*
+						 *    public void getData(int a,int b)
+						 *    
+						 *    getData(10) 
+						 */
 						String jsp=(String)m.invoke(obj, request,response); // 메소드 호출 
 						// 메소드명은 마음대로 사용이 가능 
 						/*

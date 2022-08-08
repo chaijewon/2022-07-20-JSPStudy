@@ -9,6 +9,19 @@ public class FoodDAO {
    
    public void getConnection()
    {
+	   /*
+	    *   <environments default="development">
+		      <environment id="development">
+		        <transactionManager type="JDBC"/><!-- AutoCommit -->
+		        <dataSource type="POOLED">
+		          <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+		          <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+		          <property name="username" value="hr"/>
+		          <property name="password" value="happy"/>
+		        </dataSource>
+		      </environment>
+		   </environments>
+	    */
 	   try
 	   {
 		   // 가상 => 탐색기 (JNDI) 
@@ -47,17 +60,17 @@ public class FoodDAO {
 			   start=19;
 			   end=30;
 		   }
-		   getConnection(); // 미리 생성된 Connection객체 얻기
+		   getConnection(); // 미리 생성된 Connection객체 얻기  session=ssf.openSession()
 		   String sql="SELECT cno,title,subject,poster "
 				     +"FROM food_category "
-				     +"WHERE cno BETWEEN ? AND ?";
+				     +"WHERE cno BETWEEN ? AND ?"; // sql
 		   ps=conn.prepareStatement(sql);
-		   ps.setInt(1, start);
-		   ps.setInt(2, end);
+		   ps.setInt(1, start); // ?에 첨부  parameterType
+		   ps.setInt(2, end);   //
 		   ResultSet rs=ps.executeQuery();
 		   while(rs.next())
 		   {
-			   CategoryVO vo=new CategoryVO();
+			   CategoryVO vo=new CategoryVO(); // VO => resultType
 			   vo.setCno(rs.getInt(1));
 			   vo.setTitle(rs.getString(2));
 			   vo.setSubject(rs.getString(3));
