@@ -104,10 +104,10 @@
       </li>
       <c:if test="${sessionScope.id!=null }">
        <c:if test="${sessionScope.admin=='n' }">
-        <li><a href="#">마이페이지</a></li>
+        <li><a href="../mypage/mypage.do">마이페이지</a></li>
        </c:if>
        <c:if test="${sessionScope.admin=='y' }">
-        <li><a href="#">어드민페이지</a></li>
+        <li><a href="../adminpage/adminpage.do">어드민페이지</a></li>
        </c:if>
       </c:if>
     </ul>
