@@ -34,6 +34,22 @@
     )
   </insert>
   <!-- 답변 달기(어드민)-->
+  <select id="boardReplyAdminData" resultType="BoardReplyVO">
+    SELECT * FROM project_replyBoard
+    WHERE isreply!=1 AND group_step!=1
+    ORDER BY no DESC
+  </select>
+  <!-- 내용보기  , 일반 유저 , 관리자 -->
+  <update id="boardReplyHitIncrement" parameterType="int">
+    UPDATE project_replyBoard SET
+    hit=hit+1
+    WHERE no=#{no}
+  </update>
+  <select id="boardReplyDetailData" resultType="BoardReplyVO" parameterType="int">
+    SELECT no,name,subject,content,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,group_id
+    FROM project_replyBoard
+    WHERE no=#{no}
+  </select>
 </mapper>
 
 

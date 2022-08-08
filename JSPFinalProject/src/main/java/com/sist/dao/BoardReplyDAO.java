@@ -112,11 +112,11 @@ public class BoardReplyDAO {
 	   }
 	   /*
 	       SqlSession session=null;
-		   #####
+		  
 		   try
 		   {
 			   session=ssf.openSession(true);// getConnection() : 미리 생성된 Connection주소 읽기 
-			   #####
+			   
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();
@@ -126,8 +126,61 @@ public class BoardReplyDAO {
 			   if(session!=null)
 				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
 		   }
-		   #####
+		   
 	    */
+	   /*
+	    *   <select id="boardReplyAdminData" resultType="BoardReplyVO">
+			    SELECT * FROM project_replyBoard
+			    WHERE isreply!=1 AND group_step!=1
+			  </select>
+	    */
+	   public static List<BoardReplyVO> boardReplyAdminData()
+	   {
+		   List<BoardReplyVO> list=null;
+		   SqlSession session=null;
+			  
+		   try
+		   {
+			   session=ssf.openSession(true);// getConnection() : 미리 생성된 Connection주소 읽기 
+			   list=session.selectList("boardReplyAdminData");
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+		   return list;
+	   }
+	   /*
+	    *   <select id="boardReplyDetailData" resultType="BoardReplyVO" parameterType="int">
+			    SELECT no,name,subject,content,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,group_id
+			    FROM project_replyBoard
+			    WHERE no=#{no}
+			  </select>
+	    */
+	   public static BoardReplyVO boardReplyDetailData(int no)
+	   {
+		   BoardReplyVO vo=null;
+		   SqlSession session=null;
+			  
+		   try
+		   {
+			   session=ssf.openSession();// getConnection() : 미리 생성된 Connection주소 읽기 
+			   vo=session.selectOne("boardReplyDetailData", no);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+		   return vo;
+	   }
 }
 
 

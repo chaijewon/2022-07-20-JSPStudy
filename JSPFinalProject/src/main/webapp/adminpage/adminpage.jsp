@@ -30,6 +30,7 @@
       <h6>설정 메뉴</h6>
       <nav class="sdb_holder">
         <ul>
+          <li><a href="../adminpage/adminpage.do">홈</a></li>
           <li><a href="../adminpage/member.do">회원 관리</a></li>
           <li><a href="../adminpage/board.do">게시판 관리</a></li>
           <li><a href="../adminpage/reply.do">게시판 답변 관리</a></li>
