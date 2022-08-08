@@ -181,6 +181,50 @@ public class BoardReplyDAO {
 		   }
 		   return vo;
 	   }
+	   /*
+	    *   <!--  어드민에서 답변 달기 -->
+		  <select id="boardReplyInfoData" resultType="int" parameterType="int">
+		    SELECT group_id FROM project_replyBoard 
+		    WHERE no=#{no}
+		  </select>
+		  <insert id="boardReplyInsertOk" parameterType="BoardReplyVO">
+		    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+		      SELECT NVL(MAX(no)+1,1) as no FROM project_replyBoard
+		    </selectKey>
+		    INSERT INTO project_replyBoard(no,name,subject,content,pwd,group_id,group_step,group_tab)
+		    VALUES(#{no},#{name},#{subject},#{content},#{pwd},
+		     #{group_id},1,1
+		    )
+		  </insert>
+		  <update id="boardReplyIsReply" parameterType="int">
+		    UPDATE project_replyBoard SET
+		    isreply=1
+		    WHERE no=#{no}
+		  </update>
+	    */
+	   public static void boardReplyInsertOk(int pno,BoardReplyVO vo)
+	   {
+		   SqlSession session=null;
+			  
+		   try
+		   {
+			   session=ssf.openSession();// getConnection() : 미리 생성된 Connection주소 읽기 
+			   int gi=session.selectOne("boardReplyInfoData", pno);
+			   vo.setGroup_id(gi);
+			   session.insert("boardReplyInsertOk",vo);
+			   session.update("boardReplyIsReply",pno);
+			   session.commit();
+		   }catch(Exception ex)
+		   {
+			   session.rollback();
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+	   }
 }
 
 

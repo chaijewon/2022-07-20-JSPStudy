@@ -62,15 +62,14 @@ public class BoardReplyModel {
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
 	   String pwd=request.getParameter("pwd");
-	   
+	   String pno=request.getParameter("pno");
 	   BoardReplyVO vo=new BoardReplyVO();
 	   vo.setName(name);
 	   vo.setSubject(subject);
 	   vo.setContent(content);
 	   vo.setPwd(pwd);
 	   
-	   // vo ==> DAO로 전송 
-	   BoardReplyDAO.boardReplyInsert(vo);
+	   BoardReplyDAO.boardReplyInsertOk(Integer.parseInt(pno),vo);
 	   return "redirect:../board_reply/list.do"; // insert_ok , update_ok , delete_ok
 	   // 데이터 전송은 없고 처리후 이전에 실행된 화면으로 이동 (list,detail)
    }

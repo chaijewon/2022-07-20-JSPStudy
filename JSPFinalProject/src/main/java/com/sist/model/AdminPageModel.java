@@ -37,9 +37,49 @@ public class AdminPageModel {
 		   request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
 		   return "../main/main.jsp";
 	   }
+	   // 답변 화면 
 	   @RequestMapping("adminpage/reply_insert.do")
 	   public String adminpage_reply_insert(HttpServletRequest request,HttpServletResponse response)
 	   {
-		   return "redirect:../adminpage/reply.do";
+		   String no=request.getParameter("no");
+		   request.setAttribute("no", no);
+		   request.setAttribute("admin_jsp", "../adminpage/reply_insert.jsp");
+		   request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
+		   return "../main/main.jsp";
+	   }
+	   // 답변 오라클에 추가 
+	   @RequestMapping("adminpage/reply_insert_ok.do")
+	   public String adminpage_reply_insert_ok(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   System.out.println("답변...");
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex){}
+		   
+		   String name=request.getParameter("name");
+		   String subject=request.getParameter("subject");
+		   String content=request.getParameter("content");
+		   String pwd=request.getParameter("pwd");
+		   String pno=request.getParameter("pno");
+		   
+		   BoardReplyVO vo=new BoardReplyVO();
+		   vo.setName(name);
+		   vo.setContent(content);
+		   vo.setPwd(pwd);
+		   vo.setSubject(subject);
+		   
+		   // DAO연결
+		   BoardReplyDAO.boardReplyInsertOk(Integer.parseInt(pno), vo);
+		   return "redirect:../adminpage/reply.do";// 목록 
 	   }
 }
+
+
+
+
+
+
+
+
+

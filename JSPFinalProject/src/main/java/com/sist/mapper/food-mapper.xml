@@ -43,6 +43,19 @@
     SELECT * FROM food_house
     WHERE fno=#{fno}
   </select>
+  
+  <!--  지역별 맛집 찾기 -->
+  <select id="foodLocationFindData" resultType="FoodVO" parameterType="hashmap">
+    SELECT fno,name,score,poster,type,address,num
+    FROM (SELECT fno,name,score,poster,type,address,rownum as num 
+    FROM (SELECT fno,name,score,poster,type,address 
+    FROM food_location WHERE address LIKE '%'||#{address}||'%' ORDER BY fno ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="foodLocationFindTotalPage" resultType="int" parameterType="string">
+    SELECT CEIL(COUNT(*)/12.0) FROM food_location
+    WHERE address LIKE '%'||#{address}||'%'
+  </select>
 </mapper>
 
 

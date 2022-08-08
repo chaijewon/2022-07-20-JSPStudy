@@ -8,12 +8,13 @@
 </head>
 <body>
      <h2 class="sectiontitle">답변하기</h2>
-     <form method=post action="../freeboard/insert_ok.do" id="frm">
+     <form method=post action="../adminpage/reply_insert_ok.do" id="frm">
       <table class="table">
         <tr>
           <th width=20% class="text-right">이름</th>
           <td width=80%>
-            <input type=text name=name size=15 class="input-sm" id="name">
+            <input type=text name=name size=15 class="input-sm" id="name" value="관리자" readonly>
+            <input type=hidden name=pno value="${no }">
           </td>
         </tr>
         <tr>
@@ -36,7 +37,7 @@
         </tr>
         <tr>
           <td colspan="2" class="text-center">
-            <input type=button value="글쓰기" class="btn btn-sm btn-success" id="writeBtn">
+            <input type=submit value="답변" class="btn btn-sm btn-success" id="writeBtn">
             <input type=button value="취소" class="btn btn-sm btn-info"
               onclick="javascript:history.back()">
           </td>

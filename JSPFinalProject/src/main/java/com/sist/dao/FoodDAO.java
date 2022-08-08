@@ -135,6 +135,59 @@ public class FoodDAO {
 	   }
 	   return vo;
    }
+   
+   /*
+    *     <select id="foodLocationFindData" resultType="FoodVO" parameterType="hashmap">
+		    SELECT fno,name,score,poeter,type,address,num
+		    FROM (SELECT fno,name,score,poeter,type,address,rownum as num 
+		    FROM (SELECT fno,name,score,poeter,type,address 
+		    FROM food_location WHERE address LIKE '%'||#{address}||'%' ORDER BY fno ASC))
+		    WHERE num BETWEEN #{start} AND #{end}
+		  </select>
+		  <select id="foodLocationFindTotalPage" resultType="int" parameterType="string">
+		    SELECT CEIL(COUNT(*)/12.0) FROM food_location
+		    WHERE address LIKE '%'||#{address}||'%'
+		  </select>
+    */
+   public static List<FoodVO> foodLocationFindData(Map map)
+   {
+	   List<FoodVO> list=null;
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   list=session.selectList("foodLocationFindData", map);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return list;
+   }
+   
+   public static int foodLocationFindTotalPage(String address)
+   {
+	   int total=0;
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   total=session.selectOne("foodLocationFindTotalPage", address);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return total;
+   }
 }
 
 
