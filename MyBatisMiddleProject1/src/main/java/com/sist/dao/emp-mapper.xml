@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.emp-mapper">
+  <!-- 
+         SELECT empno,ename,job,mgr,hiredate,sal,comm,deptno,dname,loc
+         FROM emp,dept
+         WHERE emp.deptno=dept.deptno
+         
+         ResultSet rs=ps.executeQuery();
+         while(rs,next())
+         {
+              EmpVO vo=new EmpVO();
+              vo.setEmpno(rs.getInt("empno"));
+              vo.getDvo().setDname(rs.getString("dname"))
+         }
+          
+   -->
+  <resultMap type="com.sist.dao.EmpVO" id="empMap">
+    <result property="dvo.dname" column="dname"/>
+    <!-- vo.getDvo().setDname(rs.getString("dname")) -->
+    <result property="dvo.loc" column="loc"/>
+    <!-- vo.getDvo().setLoc(rs.getString("loc")) -->
+  </resultMap>
+  <!-- sql : 반복적인 SQL문장이 있는 경우 (JOIN,SUBQUERY) -->
+  <sql id="join-sql">
+    SELECT empno,ename,job,hiredate,sal,emp.deptno,dname,loc
+    FROM emp,dept
+    WHERE emp.deptno=dept.deptno
+  </sql>
+  <select id="empDeptJoinData" resultMap="empMap">
+    <include refid="join-sql"/>
+  </select>
+  <select id="empDeptDetailData" resultMap="empMap" parameterType="int">
+    <include refid="join-sql"/>
+    AND empno=#{empno}
+  </select>
+  <select id="empGetEnameData" resultType="string">
+    SELECT ename FROM emp
+  </select>
+  <!-- 
+     동적 쿼리 
+     AND ename IN('')
+     String[] nameArr={"a","b","c","d","e"};
+     IN('a','b','c'...)
+     no 
+     id
+     goodsno
+     account
+     price 
+     배송일
+     
+     찜 
+      no
+      id
+      goodsno 
+      
+      DML => <select id="" resultType="" resultMap="" parameterType="">
+                                                      ============== ?에 값을 채우는 경우
+                           ============VO ========= 사용자 정의(컬럼명과 변수명이 다른 경우) , as
+                           selectList , selectOne
+             <insert id="" parameterType=""> => insert
+             <update id="" parameterType=""> => update
+             <delete id="" parameterType=""> => delete
+     select => JOIN
+     동적 쿼리 
+   -->
+  <select id="empFindData" resultMap="empMap" parameterType="hashmap">
+    <include refid="join-sql"/>
+    AND ename 
+    <trim prefix="IN"><!-- IN(....) -->
+      <foreach collection="nameArr" item="name" open="(" close=")" separator=",">#{name}</foreach>
+    </trim>
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
