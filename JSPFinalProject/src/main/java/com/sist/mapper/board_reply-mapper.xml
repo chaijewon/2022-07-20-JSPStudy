@@ -42,6 +42,11 @@
   <!-- 내용보기  , 일반 유저 , 관리자 -->
   <update id="boardReplyHitIncrement" parameterType="int">
     UPDATE project_replyBoard SET
+    hit=hit-1
+    WHERE no=#{no}
+  </update>
+  <update id="boardReplyHitDecrement" parameterType="int">
+    UPDATE project_replyBoard SET
     hit=hit+1
     WHERE no=#{no}
   </update>

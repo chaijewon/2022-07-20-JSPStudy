@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.recipe-mapper">
+  <!--  PreparedStatement : SQL (?) , ResultSet  -->
+  <select id="recipeListData" resultType="com.sist.vo.RecipeVO" parameterType="hashmap">
+    SELECT no,title,poster,chef,num
+    FROM (SELECT no,title,poster,chef,rownum as num
+    FROM (SELECT no,title,poster,chef 
+    FROM recipe ORDER BY no ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <!--  MVC / DAO(MyBatis) -->
+  <!-- 
+        <select id="boardListData" resultType="BoardVO" parameterType="hashmap">
+          SELECT * FROM board
+          WHERE no BETWEEN ? AND ?
+        </select>
+        public List<BoardVO> selectList(int page)
+        {
+           try
+           {
+              getConnection()
+              String sql="";
+                     SELECT * FROM board
+                     WHERE no BETWEEN ? AND ?
+              ps=conn.preparedStatement(sql);
+              ps.setInt(1,map.get("start"));
+              ps.setInt(2,map.get("end"));
+              ResultSet rs=ps.executeQuery();
+              //while(rs.next())> selectOne
+              {
+                 BoardVO vo=new BoardVO();
+                  list.add(list)
+              }
+           }catch(Exception ex)
+           {
+               ex.printStackTrace();
+           }
+           finally
+           {
+               disConnection();
+           }
+        }
+   -->
+</mapper>
