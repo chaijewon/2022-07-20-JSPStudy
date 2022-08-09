@@ -85,7 +85,7 @@ public class EmpDAO {
 		   ps=conn.prepareStatement(sql);
 		   ps.setInt(1, empno); //ParameterType="int"
 		   ResultSet rs=ps.executeQuery();
-		  
+		   rs.next();
 		   vo.setEmpno(rs.getInt(1)); // vo.setEmpno(rs.getInt("empno")) #{empno}
 		   vo.setEname(rs.getString(2));
 		   vo.setJob(rs.getString(3));
