@@ -115,6 +115,63 @@ public class MovieDAO {
 	   }
 	   return total;
    }
+   /*
+    *   NO      NOT NULL NUMBER        
+	CNO               NUMBER        
+	TITLE             VARCHAR2(500) 
+	GRADE             VARCHAR2(50)  
+	RESERVE           VARCHAR2(20)  
+	GENRE             VARCHAR2(200) 
+	TIME              VARCHAR2(30)  
+	REGDATE           VARCHAR2(200) 
+	DIRECTOR          VARCHAR2(100) 
+	ACTOR             VARCHAR2(200) 
+	SHOWUSER          VARCHAR2(20)  
+	POSTER            VARCHAR2(260) 
+	STORY             CLOB          
+	KEY               VARCHAR2(50)  
+	HIT               NUMBER        
+	SCORE             NUMBER(3,2)   
+    */
+   public MovieVO movieDetailData(int mno)
+   {
+	   MovieVO vo=new MovieVO();
+	   try
+	   {
+		   getConnection();
+		   String sql="SELECT mno,cno,title,grade,reserve,genre,time,regdate,director,actor,"
+				     +"showuser,poster,key,score "
+				     +"FROM project_movie "
+				     +"WHERE mno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1,mno);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setMno(rs.getInt(1));
+		   vo.setCno(rs.getInt(2));
+		   vo.setTitle(rs.getString(3));
+		   vo.setGrade(rs.getString(4));
+		   vo.setReserve(rs.getString(5));
+		   vo.setGenre(rs.getString(6));
+		   vo.setTime(rs.getString(7));
+		   vo.setRegdate(rs.getString(8));
+		   vo.setDirector(rs.getString(9));
+		   vo.setActor(rs.getString(10));
+		   vo.setShowuser(rs.getString(11));
+		   vo.setPoster(rs.getString(12));
+		   vo.setKey(rs.getString(13));
+		   vo.setScore(rs.getDouble(14));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   disConnection();
+	   }
+	   return vo;
+   }
 }
 
 
