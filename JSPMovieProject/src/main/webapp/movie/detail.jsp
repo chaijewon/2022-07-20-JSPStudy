@@ -37,44 +37,44 @@
      <div class="row">
       <table class="table">
        <tr>
-         <td width=30% class="text-center" valign="top" rowspan="9">
-           <img src="<%=vo.getPoster() %>" style="width: 200px;height: 400px">
+         <td width=50% class="text-center" valign="top" rowspan="9">
+           <img src="<%=vo.getPoster() %>" style="width: 300px;height: 400px">
          </td>
          <td colspan="2">
            <h3><%=vo.getTitle() %><span style="color:orange"><%=vo.getScore() %></span></h3>
          </td>
        </tr>
        <tr>
-         <td width=15%>감독</td>
-         <td width=55%><%=vo.getDirector() %></td>
+         <td width=10%>감독</td>
+         <td width=40%><%=vo.getDirector() %></td>
        </tr>
        <tr>
-         <td width=15%>출연</td>
-         <td width=55%><%=vo.getActor() %></td>
+         <td width=10%>출연</td>
+         <td width=40%><%=vo.getActor() %></td>
        </tr>
        <tr>
-         <td width=15%>장르</td>
-         <td width=55%><%=vo.getGenre() %></td>
+         <td width=10%>장르</td>
+         <td width=40%><%=vo.getGenre() %></td>
        </tr>
        <tr>
-         <td width=15%>등급</td>
-         <td width=55%><%=vo.getGrade() %></td>
+         <td width=10%>등급</td>
+         <td width=40%><%=vo.getGrade() %></td>
        </tr>
        <tr>
-         <td width=15%>개봉일</td>
-         <td width=55%><%=vo.getRegdate() %></td>
+         <td width=10%>개봉일</td>
+         <td width=40%><%=vo.getRegdate() %></td>
        </tr>
        <tr>
-         <td width=15%>관람객</td>
-         <td width=55%><%=vo.getShowuser() %></td>
+         <td width=10%>관람객</td>
+         <td width=40%><%=vo.getShowuser() %></td>
        </tr>
        <tr>
-         <td width=15%>상영시간</td>
-         <td width=55%><%=vo.getTime() %></td>
+         <td width=10%>상영시간</td>
+         <td width=40%><%=vo.getTime() %></td>
        </tr>
        <tr>
-         <td width=15%>예매율</td>
-         <td width=55%><%=vo.getReserve() %></td>
+         <td width=10%>예매율</td>
+         <td width=40%><%=vo.getReserve() %></td>
        </tr>
        <tr>
          <td colspan="3" class="text-right">

@@ -16,6 +16,22 @@
     // ${request.getAttribute()} => request.setAttribute()
     int totalpage=dao.movieTotalPage(Integer.parseInt(cno));
     
+    // 쿠키 
+    Cookie[] cookies=request.getCookies(); //쿠키 읽기
+    List<MovieVO> cList=new ArrayList<MovieVO>();
+    if(cookies!=null)
+    {
+    	for(int i=cookies.length-1;i>=0;i--) // 최신부터 출력 
+    	{
+    		if(cookies[i].getName().startsWith("movie")) //movie1
+    		{
+    			String mno=cookies[i].getValue();// 1
+    			MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
+    			cList.add(vo);
+    		}
+    	}
+    }
+    
 %>
 <%--
       
@@ -121,7 +137,14 @@
     <div class="row">
     <h3>최근 방문 영화</h3>
     <hr>
-    
+     <%
+        for(MovieVO vo:cList)
+        {
+     %>
+          <img src="<%=vo.getPoster() %>" style="width: 100px;height: 100px">
+     <%
+        }
+     %>
     </div>
   </div>
 </body>
