@@ -15,6 +15,6 @@
       </environment>
    </environments>
    <mappers>
-     <mapper resource="com/sist/dao/emp-mapper.xml"/>
+     <mapper resource="com/sist/dao/movie-mapper.xml"/>
    </mappers>
  </configuration>

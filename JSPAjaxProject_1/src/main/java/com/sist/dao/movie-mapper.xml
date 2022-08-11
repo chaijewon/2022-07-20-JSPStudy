@@ -21,4 +21,32 @@
    <select id="movieTotalPage" resultType="int" parameterType="int">
     SELECT CEIL(COUNT(*)/12.0) FROM project_movie WHERE cno=#{cno}
    </select>
+   <!-- 
+         < = &lt;
+         > = &gt;
+         
+         '%'||#{title}||'%' 오라클 
+         CONCAT('%',#{title},'%') MySQL,MariaDB
+         
+         NVL() => IFNULL()
+         TO_CHAR => DATE_FORMAT
+         int,double , clob (text) ,varchar2 varchar
+    -->
+   <select id="movieFindData" resultType="com.sist.dao.MovieVO" parameterType="string">
+     SELECT mno,title,poster,rownum
+     FROM project_movie
+     WHERE rownum&lt;=12
+     AND title LIKE '%'||#{title}||'%'
+   </select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

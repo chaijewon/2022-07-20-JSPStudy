@@ -60,4 +60,20 @@ public class MovieDAO {
 	  session.close();
 	  return total;
   }
+  /*
+   *  <select id="movieFindData" resultType="com.sist.dao.MovieVO" parameterType="string">
+	     SELECT mno,title,poster,rownum
+	     FROM project_movie
+	     WHERE rownum&lt;=12
+	     AND title LIKE '%'||#{title}||'%'
+	   </select>
+   */
+  public static List<MovieVO> movieFindData(String title)
+  {
+	  SqlSession session=ssf.openSession();//getConnection() 
+	  List<MovieVO> list=session.selectList("movieFindData",title);
+	  session.close();
+	  return list;
+	  
+  }
 }

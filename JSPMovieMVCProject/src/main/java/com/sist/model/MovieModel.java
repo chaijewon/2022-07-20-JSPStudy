@@ -68,5 +68,6 @@ public class MovieModel {
 	    MovieDAO dao=new MovieDAO();
 	    MovieVO vo=dao.movieDetailData(Integer.parseInt(mno));
 	    request.setAttribute("vo", vo);
+	    request.setAttribute("day", "01/11");
   }
 }

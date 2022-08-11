@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.sist.dao.*"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,6 +71,10 @@
        <tr>
          <td width=10%>예매율</td>
          <td width=40%>${vo.getReserve() }</td>
+       </tr>
+       <tr>
+         <td width=10%>데이터</td>
+         <td width=40%>${fn:substring(day,0,1) }</td>
        </tr>
        <tr>
          <td colspan="3" class="text-right">
