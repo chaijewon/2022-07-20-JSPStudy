@@ -31,9 +31,11 @@ $(function(){
 			data:{"fd":fd},
 			success:function(result)
 			{
+				alert(result)
 				$('.print').html(result);
 			}
 		})
+		return;
 	})
 })
 </script>

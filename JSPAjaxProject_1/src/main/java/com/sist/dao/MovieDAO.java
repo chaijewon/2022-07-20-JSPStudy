@@ -76,4 +76,19 @@ public class MovieDAO {
 	  return list;
 	  
   }
+  /*
+   *   <select id="movieSearchData" resultType="com.sist.dao.MovieVO">
+		     SELECT mno,title,poster,genre,director
+		     FROM project_movie
+		     ORDER BY mno ASC
+		   </select>
+   */
+  public static List<MovieVO> movieSearchData()
+  {
+	  SqlSession session=ssf.openSession();//getConnection() 
+	  List<MovieVO> list=session.selectList("movieSearchData");
+	  session.close();
+	  return list;
+	  
+  }
 }

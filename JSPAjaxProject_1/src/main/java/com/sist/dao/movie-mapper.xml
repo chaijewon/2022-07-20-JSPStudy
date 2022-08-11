@@ -15,7 +15,7 @@
     SELECT mno,cno,title,grade,reserve,genre,time,regdate,director,actor,
 		   showuser,poster,key,score 
     FROM project_movie 
-	WHERE mno=#{mno};
+	WHERE mno=#{mno}
    </select>
    
    <select id="movieTotalPage" resultType="int" parameterType="int">
@@ -37,6 +37,12 @@
      FROM project_movie
      WHERE rownum&lt;=12
      AND title LIKE '%'||#{title}||'%'
+   </select>
+   
+   <select id="movieSearchData" resultType="com.sist.dao.MovieVO">
+     SELECT mno,title,poster,genre,director
+     FROM project_movie
+     ORDER BY mno ASC
    </select>
 </mapper>
 
