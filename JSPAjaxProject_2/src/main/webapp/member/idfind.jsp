@@ -46,6 +46,45 @@ $(function(){
 				$('#id_result1').text(result);
 			}
 		})
+	}) // email로 찾기 버튼 클릭 
+	/*
+	     태그에 있는 값읽기 
+	     태그.val() ===> input,select,textarea  (사용자 입력값을 읽을때)
+	     태그.text()
+	       <td>데이터</td> => 태그와 태그사이값을 읽을 경우에 
+	     태그.html()
+	       <td><a href="">데이터</a></td> ==> $('td').text() ==> 데이터
+	                                        $('td').html() ==> <a href="">데이터</a>
+	     태그.attr() <img src="데이터"> => $('img').attr("src") ==> 태그의 속성값
+	*/
+	$('#idBtn2').on('click',function(){
+		//1. 이름 입력여부 
+		let name=$('#tel_name').val();
+		if(name.trim()==="") //!==  ES6
+		{
+			$('#tel_name').focus();
+			$('#id_result2').text("이름을 입력하세요");
+			return; // 종료
+		}
+		//2. 전화번호 입력 여부 
+		let tel=$('#tel').val();
+		if(tel.trim()==="")
+		{
+			$('#tel').focus()
+			$('#id_result2').text("전화번호를 입력하세요");
+			return;
+		}
+		//3. ajax => 이름 => 전화번호 전송 ====> 결과값을 출력 ==> axios.get() , axios.post()
+		$.ajax({
+			type:'post',
+			url:'telfind_ok.jsp',
+			data:{"name":name,"tel":tel},//?tel=1111
+			success:function(result)
+			{
+				$('#id_result2').text(result);
+			}
+		})
+		//4. 출력된 결과값을 읽어 온다 
 	})
 })
 </script>
@@ -106,7 +145,7 @@ $(function(){
 		     </tr>
 		     <tr>
 		      <td colspan="2" class="text-center">
-		        <h3 id="id_result2"></h3>
+		        <h3 id="id_result2" style="color:red"></h3>
 		      </td>
 		     </tr>
 		    </table>

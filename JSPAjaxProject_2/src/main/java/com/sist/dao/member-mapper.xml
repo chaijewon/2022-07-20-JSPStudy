@@ -13,4 +13,14 @@
     SELECT RPAD(SUBSTR(id,1,1),LENGTH(id),'*') FROM project_member
     WHERE name=#{name} AND email=#{email}
   </select>
+  
+  <select id="memberGetTel" resultType="string" parameterType="string">
+    SELECT tel FROM project_member
+    WHERE name=#{name}
+  </select>
+  
+  <select id="telOdFind" resultType="string" parameterType="hashmap">
+    SELECT RPAD(SUBSTR(id,1,1),LENGTH(id),'*') FROM project_member
+    WHERE name=#{name} AND tel=#{tel}
+  </select>
 </mapper>

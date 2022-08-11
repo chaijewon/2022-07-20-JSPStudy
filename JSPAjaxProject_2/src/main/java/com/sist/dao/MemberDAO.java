@@ -62,6 +62,43 @@ public class MemberDAO {
 	   
 	   return result;
    }
+   /*
+    *  <select id="memberGetTel" resultType="string" parameterType="string">
+		    SELECT tel FROM project_member
+		    WHERE name=#{name}
+		  </select>
+		  
+		  <select id="telOdFind" resultType="string" parameterType="hashmap">
+		    SELECT RPAD(SUBSTR(id,1,1),LENGTH(id),'*') FROM project_member
+		    WHERE name=#{name} AND tel=#{tel}
+		  </select>
+    */
+   public static String telIdFind(String name,String tel)
+   {
+	   String result="";
+	   SqlSession session=ssf.openSession(); 
+	   int count=session.selectOne("memberNameCount", name);
+	   if(count==0)
+	   {
+		   result="존재하지 않는 이름입니다!!";
+	   }
+	   else
+	   {
+		   String db_tel=session.selectOne("memberGetTel", name);
+		   if(db_tel.equals(tel))
+		   {
+			   Map map=new HashMap();
+			   map.put("name", name);
+			   map.put("tel", tel);
+			   result=session.selectOne("telOdFind",map);
+		   }
+		   else
+		   {
+			   result="전화번호가 틀립니다!!";
+		   }
+	   }
+	   return result;
+   }
 }
 
 
