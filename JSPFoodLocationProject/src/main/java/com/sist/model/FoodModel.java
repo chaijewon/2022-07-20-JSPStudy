@@ -31,7 +31,9 @@ public class FoodModel {
 				"강동구" };
     	String no=req.getParameter("no");
     	String gu=guList[Integer.parseInt(no)];
-    	req.setAttribute("gu", gu);
+    	
+    	List<FoodVO> list=FoodDAO.foodFindData(gu);
+    	req.setAttribute("list", list);
     	return "../food/food_find_ok.jsp";
     }
 }

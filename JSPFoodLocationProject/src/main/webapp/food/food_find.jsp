@@ -38,14 +38,17 @@ $(function(){
 <body>
   <div class="container">
     <div class="row">
+     <div id="a">
+     <img src="map/1111.png" id="seoul_1">
      <c:forEach var="i" begin="1" end="25">
        <img src="map/gu_${i }_off.png" id="gu${i }" 
        onmouseover="this.src='map/gu_${i}_on.png'" onmouseout="this.src='map/gu_${i}_off.png'"
         class="gus" data-no="${i }"
        >
      </c:forEach>
+     </div>
     </div>
-    <div style="height: 20px"></div>
+    <div style="height: 80px"></div>
     <div class="row" id="print">
      
     </div>
