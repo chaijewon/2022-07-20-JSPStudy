@@ -16,6 +16,65 @@
    width: 600px;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<!-- <script type="text/javascript">
+$(function(){
+	$('#year').change(function(){
+		// <select> = onchange
+		// <img><button><span> = onclick
+		// hover (mouseover)
+		// keyup/keydown
+		let year=$('#year').val();//<input><select><textarea>
+		let month=$('#month').val();
+		location.href="diary.do?year="+year+"&month="+month; //sendRedirect
+	})
+	$('#month').change(function(){
+		let year=$('#year').val();//<input><select><textarea>
+		let month=$('#month').val();
+		location.href="diary.do?year="+year+"&month="+month; //sendRedirect
+	})
+	
+})
+</script> -->
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		type:'post',
+		url:'diary_ok.do',
+		success:function(result)
+		{
+			$('#print').html(result);
+		}
+	})
+	
+	$('#year').change(function(){
+		let year=$('#year').val();
+		let month=$('#month').val();
+		$.ajax({
+			type:'post',
+			url:'diary_ok.do',
+			data:{"year":year,"month":month},
+			success:function(result)
+			{
+				$('#print').html(result);
+			}
+		})
+	})
+	$('#month').change(function(){
+		let year=$('#year').val();
+		let month=$('#month').val();
+		$.ajax({
+			type:'post',
+			url:'diary_ok.do',
+			data:{"year":year,"month":month},
+			success:function(result)
+			{
+				$('#print').html(result);
+			}
+		})
+	})
+})
+</script>
 </head>
 <body>
   <div class="container">
@@ -24,59 +83,24 @@
       <table class="table">
         <tr>
           <td>
-            <select name="year" class="input-sm">
+            <select name="year" class="input-sm" id="year">
               <c:forEach var="i" begin="2022" end="2030">
                <option ${year==i?"selected":"" }>${i }</option>
               </c:forEach>
             </select>년도&nbsp;
-            <select name="month" class="input-sm">
+            <select name="month" class="input-sm" id="month">
               <c:forEach var="i" begin="1" end="12">
                <option ${month==i?"selected":"" }>${i }</option>
               </c:forEach>
-            </select>월&nbsp;
-            <input type=button value="선택" id="dateBtn" class="btn btn-sm btn-primary">
+            </select>월
+            
           </td>
         </tr>
       </table>
       <div style="height: 15px"></div>
-      <table class="table">
-        <tr class="success">
-          <c:forEach var="sw" items="${strWeek }" varStatus="s">
-            <c:choose>
-             <c:when test="${s.index==0 }">
-              <c:set var="color" value="red"/>
-             </c:when>
-             <c:when test="${s.index==6 }">
-              <c:set var="color" value="blue"/>
-             </c:when>
-             <c:otherwise>
-              <c:set var="color" value="black"/>
-             </c:otherwise>
-            </c:choose>
-            
-            <th class="text-center"><h3 style="color:${color}">${sw }</h3></th>
-          </c:forEach>
-        </tr>
-        <c:forEach var="i" begin="1" end="${lastday }">
-          <c:if test="${i==1 }">
-            <tr style="height: 70px">
-            <c:forEach var="j" begin="1" end="${week }">
-              <td>&nbsp;</td>
-            </c:forEach>
-            <%-- 요일만큼 공백 --%>
-          </c:if>
-          
-           <td class="text-center ${i==day?'danger':'' }">${i }</td><%--1일부터 출력 --%>
-         
-          <c:set var="week" value="${week+1 }"/>
-          <c:if test="${week>6 }"><%-- 일요일 다음에 출력  --%>
-            </tr>
-            <c:set var="week" value="0"/>
-            <tr style="height: 70px">
-          </c:if>
-        </c:forEach>
-        </tr>
-      </table>
+      <div class="row" id="print">
+      
+      </div>
     </div>
   </div>
 </body>

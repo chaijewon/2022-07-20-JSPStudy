@@ -46,7 +46,11 @@ public class Controller extends HttpServlet {
 			DiaryModel model=new DiaryModel();
 			jsp=model.diary_main(request);
 		}
-		
+		else if(uri.equals("diary/diary_ok.do"))
+		{
+			DiaryModel model=new DiaryModel();
+			jsp=model.diary_ok(request);
+		}
 		// 결과값을  JSP로 전송 
 		RequestDispatcher rd=request.getRequestDispatcher(jsp);
 		rd.forward(request, response);
