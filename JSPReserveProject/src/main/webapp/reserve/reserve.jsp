@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +20,25 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
+	$.ajax({
+		type:'post',
+		url:'select.do',
+		success:function(result)
+		{
+			$('#food').html(result);
+		}
+	})
 	$('#type').change(function(){
 		let type=$(this).val();
-		alert("음식종류:"+type)
+		$.ajax({
+			type:'post',
+			url:'select.do',
+			data:{"type":type},
+			success:function(result)
+			{
+				$('#food').html(result);
+			}
+		})
 	})
 })
 </script>
@@ -63,6 +80,17 @@ $(function(){
           <td class="success" width=30% rowspan="2" height="900">
             <table class="table">
              <caption><h3>예약 정보</h3></caption>
+             <tr>
+               <td>
+                 <table class="table">
+                  <tr>
+                    <td class="text-center">
+                      <img src="default.png" style="width: 300px;height: 300px" id="rImg">
+                    </td>
+                  </tr>
+                 </table>
+               </td>
+             </tr>
             </table>
           </td>
         </tr>
@@ -70,6 +98,7 @@ $(function(){
           <td class="warning" height="200">
             <table class="table">
              <caption><h3>시간 정보</h3></caption>
+             
             </table>
           </td>
           <td class="default" width=20% height="200">
