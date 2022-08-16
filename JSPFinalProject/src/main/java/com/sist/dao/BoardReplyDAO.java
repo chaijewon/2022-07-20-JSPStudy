@@ -227,6 +227,80 @@ public class BoardReplyDAO {
 				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
 		   }
 	   }
+	   
+	   public static BoardReplyVO boardReplyUpdateData(int no)
+	   {
+		   BoardReplyVO vo=null;
+		   SqlSession session=null;
+			  
+		   try
+		   {
+			   session=ssf.openSession();// getConnection() : 미리 생성된 Connection주소 읽기 
+			   vo=session.selectOne("boardReplyDetailData", no);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+		   return vo;
+	   }
+	   /*
+	    *   <update id="boardReplyUpdate" parameterType="BoardReplyVO">
+			    UPDATE project_replyBoard SET
+			    name=#{name},subject=#{subject},content=#{content}
+			    WHERE no=#{no}
+			  </update>
+	    */
+	   public static void boardReplyUpdate(BoardReplyVO vo)
+	   {
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.update("boardReplyUpdate",vo);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+	   }
+	   
+	   /*
+	    *   <select id="boardGetGroupId" resultType="int" parameterType="int">
+			    SELECT group_id FROM project_replyBoard
+			    WHERE no=#{no}
+			  </select>
+			  <delete id="boardDelete" parameterType="int">
+			   DELETE FROM project_replyBoard
+			   WHERE group_id=#{group_id}
+			  </delete>
+	    */
+	   public static void boardDelete(int no)
+	   {
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   int gi=session.selectOne("boardGetGroupId", no);
+			   session.delete("boardReplyDelete",gi);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+	   }
 }
 
 

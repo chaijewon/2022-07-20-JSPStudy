@@ -89,13 +89,49 @@ public class BoardReplyModel {
 	   request.setAttribute("main_jsp", "../board_reply/detail.jsp");
 	   return "../main/main.jsp";
    }
-   // .do ==> 처리 (Model)  board_reply/update.do?no=${vo.no }
+   // .do ==> 처리 (Model)  board_reply/update.do?no=${vo.no } 
    @RequestMapping("board_reply/update.do")
    public String board_reply_update(HttpServletRequest request,HttpServletResponse response)
    {
 	   // 출력할 데이터 전송 
+	   String no=request.getParameter("no");
+	   BoardReplyVO vo=BoardReplyDAO.boardReplyUpdateData(Integer.parseInt(no));
+	   request.setAttribute("vo", vo);
 	   request.setAttribute("main_jsp", "../board_reply/update.jsp");
 	   return "../main/main.jsp";
+   }
+   // _ok : 화면 출력이 아니고 => 요청 처리 => 이동할 페이지를 재호출 (redirect)
+   // board_reply/update_ok.do
+   @RequestMapping("board_reply/update_ok.do")
+   public String board_reply_update_ok(HttpServletRequest request,HttpServletResponse response)
+   {
+	   try
+	   {
+            request.setCharacterEncoding("UTF-8"); // 한글 처리 		   
+	   }catch(Exception ex) {}
+	   String name=request.getParameter("name");
+	   String subject=request.getParameter("subject");
+	   String content=request.getParameter("content");
+	   String pwd=request.getParameter("pwd");
+	   String no=request.getParameter("no");
+	   BoardReplyVO vo=new BoardReplyVO();
+	   vo.setName(name);
+	   vo.setSubject(subject);
+	   vo.setContent(content);
+	   vo.setPwd(pwd);
+	   vo.setNo(Integer.parseInt(no));
+	   // DAO연동 ==> 처리 
+	   BoardReplyDAO.boardReplyUpdate(vo);
+	   return "redirect:../board_reply/detail.do?no="+vo.getNo();
+   }
+   // board_reply/delete.do?no=${vo.no }
+   @RequestMapping("board_reply/delete.do")
+   public String board_reply_delete(HttpServletRequest request,HttpServletResponse response)
+   {
+	   String no=request.getParameter("no");
+	   //DAO 연동 
+	   BoardReplyDAO.boardDelete(Integer.parseInt(no));
+	   return "redirect:../board_reply/list.do";
    }
 }
 

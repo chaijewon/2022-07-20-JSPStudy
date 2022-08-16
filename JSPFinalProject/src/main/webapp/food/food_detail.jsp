@@ -65,10 +65,17 @@
         </td>
        </tr>
       </c:if>
+      <tr>
+       <td colspan="2" class="text-right">
+        <a href="#" class="btn btn-sm btn-danger">좋아요(1)</a>
+        <a href="#" class="btn btn-sm btn-info">찜하기</a>
+        <a href="javascript:history.back()" class="btn btn-sm btn-success">목록</a>
+       </td>
+      </tr>
       </table>
     </div>
     <div class="one_half">
-    
+     
     </div>
   </main>
 </div>
