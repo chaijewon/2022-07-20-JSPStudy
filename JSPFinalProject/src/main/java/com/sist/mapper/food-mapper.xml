@@ -56,6 +56,36 @@
     SELECT CEIL(COUNT(*)/12.0) FROM food_location
     WHERE address LIKE '%'||#{address}||'%'
   </select>
+  
+  <!-- 찜하기 -->
+  <insert id="foodJjimInsert" parameterType="com.sist.vo.JjimVO">
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(no)+1,1) as no FROM jjim
+    </selectKey>
+    INSERT INTO jjim VALUES(#{no},#{id},#{fno})
+  </insert>
+  
+  <!-- 찜 여부 확인 -->
+  <select id="foodJjimCount" resultType="int" parameterType="com.sist.vo.JjimVO">
+    SELECT COUNT(*) FROM jjim
+    WHERE fno=#{fno} AND id=#{id}
+  </select>
+  
+  <!-- 찜 출력 (마이페이지) : forEach -->
+  <select id="foodJjimListData" resultType="FoodVO" parameterType="int">
+    SELECT * FROM food_house
+    WHERE fno=#{fno}
+  </select>
+  
+  <select id="foodJjimGetFno" resultType="int" parameterType="string">
+    SELECT fno FROM Jjim
+    WHERE id=#{id}
+  </select>
+  <!--  찜 취소 -->
+  <delete id="foodJjimDelete" parameterType="com.sist.vo.JjimVO">
+   DELETE FROM Jjim
+   WHERE id=#{id} AND fno=#{fno}
+  </delete>
 </mapper>
 
 

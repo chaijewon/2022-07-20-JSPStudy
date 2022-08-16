@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.FoodCategoryVO;
 import com.sist.vo.FoodVO;
+import com.sist.vo.JjimVO;
 
 import java.io.*;
 public class FoodDAO {
@@ -187,6 +188,130 @@ public class FoodDAO {
 			   session.close();
 	   }
 	   return total;
+   }
+   /*
+    *   <insert id="foodJjimInsert" parameterType="com.sist.vo.JjimVO">
+		    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+		     SELECT NVL(MAX(no)+1,1) as no FROM jjim
+		    </selectKey>
+		    INSERT INTO jjim VALUS(#{no},#{id},#{fno})
+		  </insert>
+  
+		  <!-- 찜 여부 확인 -->
+		  <select id="foodJjimCount" resultType="int" parameterType="com.sist.vo.JjimVO">
+		    SELECT COUNT(*) FROM jjim
+		    WHERE fno=#{fno} AND id=#{id}
+		  </select>
+    */
+   public static void foodJjimInsert(JjimVO vo)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.insert("foodJjimInsert",vo);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+   }
+   public static int foodJjimCount(JjimVO vo)
+   {
+	   int count=0;
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   count=session.selectOne("foodJjimCount", vo);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return count;
+   }
+   /*
+    *   <select id="foodJjimListData" resultType="FoodVO" parameterType="int">
+		    SELECT * FROM food_house
+		    WHERE fno=#{fno}
+		  </select>
+    */
+   public static FoodVO foodJjimListData(int fno)
+   {
+	   FoodVO vo=null;
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   vo=session.selectOne("foodJjimListData", fno);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return vo;
+   }
+   /*
+    *   <select id="foodJjimGetFno" resultType="int" parameterType="string">
+		    SELECT fno FROM Jjim
+		    WHERE id=#{id}
+		  </select>
+    */
+   public static List<Integer> foodJjimGetFno(String id)
+   {
+	   List<Integer> list=null;
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   list=session.selectList("foodJjimGetFno",id);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return list;
+   }
+   // 찜 취소
+   /*
+    *   <delete id="foodJjimDelete" parameterType="com.sist.vo.JjimVO">
+   DELETE FROM Jjim
+   WHERE id=#{id} AND fno=#{fno}
+  </delete>
+    */
+   public static void foodJjimDelete(JjimVO vo)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.delete("foodJjimDelete",vo);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
    }
 }
 
