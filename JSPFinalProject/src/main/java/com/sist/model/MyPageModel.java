@@ -90,8 +90,16 @@ public class MyPageModel {
 	   String id=(String)session.getAttribute("id");
 	   String pwd=request.getParameter("pwd");
 	   // DAO연동 
-	   
+	   boolean bCheck=MemberDAO.memberDelete(id, pwd);
+	   if(bCheck==true)
+	   {
+		   session.invalidate();
+	   }
+	   request.setAttribute("bCheck",bCheck);
 	   return "../member/join_delete_ok.jsp";
+	   /*
+	    *   JSP 입문 : 회원,게시판 , 공지사항 ==> CURD
+	    */
    }
 }
 

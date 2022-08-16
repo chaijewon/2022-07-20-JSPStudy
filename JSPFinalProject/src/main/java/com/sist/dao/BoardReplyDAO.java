@@ -169,6 +169,8 @@ public class BoardReplyDAO {
 		   try
 		   {
 			   session=ssf.openSession();// getConnection() : 미리 생성된 Connection주소 읽기 
+			   session.update("boardReplyHitDecrement",no);// 조회수 증가
+			   session.commit();
 			   vo=session.selectOne("boardReplyDetailData", no);
 		   }catch(Exception ex)
 		   {

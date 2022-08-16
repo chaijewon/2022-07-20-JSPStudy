@@ -73,7 +73,30 @@ public class BoardReplyModel {
 	   return "redirect:../board_reply/list.do"; // insert_ok , update_ok , delete_ok
 	   // 데이터 전송은 없고 처리후 이전에 실행된 화면으로 이동 (list,detail)
    }
-   
+   // board_reply/detail.do
+   @RequestMapping("board_reply/detail.do")
+   public String board_reply_detail(HttpServletRequest request,HttpServletResponse response)
+   {
+	   // board_reply/detail.do?no=${vo.no }
+	   // C/S ==> 주고 받기 
+	   // Client (요청 => 데이터 전송) => ?
+	   // Server (요청 처리 => 결과값 => request,session => setAttribute())
+	   // primary key , 검색어 , id(보안유지 => session) , page
+	   // 장바구니 => 번호 
+	   String no=request.getParameter("no");
+	   BoardReplyVO vo=BoardReplyDAO.boardReplyDetailData(Integer.parseInt(no));
+	   request.setAttribute("vo", vo);
+	   request.setAttribute("main_jsp", "../board_reply/detail.jsp");
+	   return "../main/main.jsp";
+   }
+   // .do ==> 처리 (Model)  board_reply/update.do?no=${vo.no }
+   @RequestMapping("board_reply/update.do")
+   public String board_reply_update(HttpServletRequest request,HttpServletResponse response)
+   {
+	   // 출력할 데이터 전송 
+	   request.setAttribute("main_jsp", "../board_reply/update.jsp");
+	   return "../main/main.jsp";
+   }
 }
 
 

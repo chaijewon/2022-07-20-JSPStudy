@@ -51,7 +51,7 @@
     WHERE no=#{no}
   </update>
   <select id="boardReplyDetailData" resultType="BoardReplyVO" parameterType="int">
-    SELECT no,name,subject,content,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,group_id
+    SELECT no,name,subject,content,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,group_id,group_step
     FROM project_replyBoard
     WHERE no=#{no}
   </select>
