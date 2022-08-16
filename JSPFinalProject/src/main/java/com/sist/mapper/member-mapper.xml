@@ -71,7 +71,38 @@
       FROM project_member
       WHERE id=#{id}
     </select>
+    <!-- 회원 정보 읽기 -->
+    <select id="memberDetailData" resultType="MemberVO" parameterType="string">
+      SELECT * FROM project_member
+      WHERE id=#{id}
+    </select>
+    <!-- 회원 수정 -->
+    <!-- 
+       vo.setId(id);
+	   vo.setName(name);
+	   vo.setPost(post);
+	   vo.setPwd(pwd);
+	   vo.setSex(sex);
+	   vo.setEmail(email);
+	   vo.setAddr1(addr1);
+	   vo.setAddr2(addr2);
+	   vo.setTel(tel1+"-"+tel2);
+	   vo.setContent(content);
+     -->
+     <!--  session처리  -->
+    <update id="memberUpdate" parameterType="MemberVO">
+      UPDATE project_member SET
+      name=#{name},sex=#{sex},email=#{email},
+      addr1=#{addr1},addr2=#{addr2},tel=#{tel},
+      content=#{content}
+      WHERE id=#{id}
+    </update>
+    <delete id="memberDelete" parameterType="string">
+      DELETE FROM project_member
+      WHERE id=#{id}
+    </delete>
 </mapper>
+
 
 
 

@@ -196,6 +196,105 @@ public class MemberDAO {
 		   }
 		   return vo;
 	   }
+	   /*
+	    *   <select id="memberDetailData" resultType="MemberVO" parameterType="string">
+		      SELECT * FROM project_member
+		      WHERE id=#{id}
+		    </select>
+	    */
+	   // JSP(.do) ==> mapper ==> DAO ==> Model ==> JSP
+	   public static MemberVO memberDetailData(String id)
+	   {
+		   MemberVO vo=new MemberVO();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(); //getConnection()
+			   vo=session.selectOne("memberDetailData", id);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection()
+		   }
+		   return vo;
+	   }
+	   /*
+	    *    <update id="memberUpdate" parameterType="MemberVO">
+		      UPDATE project_member SET
+		      name=#{name},sex=#{sex},email=#{email},
+		      addr1=#{addr1},addr2=#{addr2},tel=#{tel},
+		      content=#{content}
+		      WHERE id=#{id}
+		    </update>
+	    */
+	   public static boolean memberUpdate(MemberVO vo)
+	   {
+		   boolean bCheck=false;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   MemberVO pvo=session.selectOne("memberInfoData", vo.getId());
+			   if(pvo.getPwd().equals(vo.getPwd()))
+			   {
+				   bCheck=true;
+				   session.update("memberUpdate",vo);
+				   session.commit();
+			   }
+			   else
+			   {
+				  bCheck=false; 
+			   }
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return bCheck;
+	   }
+	   /*
+	    *   <delete id="memberDelete" parameterType="string">
+		      DELETE FROM project_member
+		      WHERE id=#{id}
+		    </delete>
+	    */
+	   public static boolean memberDelete(String id,String pwd)
+	   {
+		   boolean bCheck=false;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   MemberVO pvo=session.selectOne("memberInfoData", id);
+			   if(pvo.getPwd().equals(pwd))
+			   {
+				   bCheck=true;
+				   session.delete("memberDelete",id);
+				   session.commit();
+			   }
+			   else
+			   {
+				  bCheck=false; 
+			   }
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return bCheck;
+	   }
 	   
 }
 

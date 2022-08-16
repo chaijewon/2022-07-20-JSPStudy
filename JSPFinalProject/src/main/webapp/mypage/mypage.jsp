@@ -32,8 +32,8 @@
         <ul>
           <li><a href="#">개인정보</a>
             <ul>
-              <li><a href="#">회원 수정</a></li>
-              <li><a href="#">회원 탈퇴</a></li>
+              <li><a href="../member/join_update.do">회원 수정</a></li>
+              <li><a href="../member/join_delete.do">회원 탈퇴</a></li>
             </ul>
           </li>
           <li><a href="#">게시판 활동내역</a></li>
@@ -49,7 +49,7 @@
     <!-- ################################################################################################ --> 
     <!-- ################################################################################################ -->
     <div class="content three_quarter"> 
-      
+       <jsp:include page="${mypage_jsp }"></jsp:include>
     </div>
     <!-- / main body -->
     <div class="clear"></div>
