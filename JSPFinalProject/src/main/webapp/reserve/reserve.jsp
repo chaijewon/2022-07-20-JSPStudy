@@ -17,6 +17,10 @@ $(function(){
 		}
 	})
 	$('#f_name_lab').hide();
+	$('#date_lab').hide();
+	$('#time_lab').hide();
+	$('#inwon_lab').hide();
+	$('#reserve_btn').hide();
 	$('#type').change(function(){
 		let type=$('#type').val();
 		$.ajax({
@@ -100,6 +104,23 @@ $(function(){
                     <td id="f_name_lab" width="30%">상호명</td>
                     <td id="f_name" width="70%"></td>
                   </tr>
+                  <tr>
+                    <td id="date_lab" width="30%">예약일</td>
+                    <td id="date_result" width="70%"></td>
+                  </tr>
+                  <tr>
+                    <td id="time_lab" width="30%">예약시간</td>
+                    <td id="time_result" width="70%"></td>
+                  </tr>
+                  <tr>
+                    <td id="inwon_lab" width="30%">예약인원</td>
+                    <td id="inwon_result" width="70%"></td>
+                  </tr>
+                  <tr id="reserve_btn">
+                    <td colspan="2" class="text-center">
+                      <button class="btn btn-sm btn-primary">예약</button>
+                    </td>
+                  </tr>
                  </table>
                </td>
              </tr>
@@ -110,12 +131,17 @@ $(function(){
           <td class="warning" height="100">
             <table class="table">
              <caption><h3>시간 정보</h3></caption>
-             
+             <tr>
+               <td id="r_time"></td>
+             </tr>
             </table>
           </td>
           <td class="default" width=20% height="100">
             <table class="table">
              <caption><h3>인원 정보</h3></caption>
+             <tr>
+               <td id="r_inwon"></td>
+             </tr>
             </table>
           </td>
         </tr>

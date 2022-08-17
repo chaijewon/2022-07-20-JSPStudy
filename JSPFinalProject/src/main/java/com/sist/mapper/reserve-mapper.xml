@@ -6,4 +6,17 @@
     FROM (SELECT fno,poster,name FROM food_house WHERE type LIKE '%'||#{type}||'%' ORDER BY fno ASC)
     WHERE rownum&lt;=50
   </select>
+  <!-- 예약 날짜 -->
+  <select id="reserveGetDate" resultType="string" parameterType="int">
+    SELECT rday FROM food_house
+    WHERE fno=#{fno}
+  </select>
+  <select id="reserveGetTime" resultType="string" parameterType="int">
+    SELECT time FROM reserve_day
+    WHERE rno=#{rno}
+  </select>
+  <select id="reserveRealTime" resultType="string" parameterType="int">
+    SELECT time FROM reserve_time
+    WHERE tno=#{tno}
+  </select>
 </mapper>

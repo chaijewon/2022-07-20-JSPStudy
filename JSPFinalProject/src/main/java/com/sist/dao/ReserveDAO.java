@@ -48,6 +48,81 @@ public class ReserveDAO {
 	   }
 	   return list;
    }
+   // 예약일 읽기
+   /*
+    *   <select id="reserveGetDate" resultType="string" parameterType="int">
+		    SELECT rday FROM food_house
+		    WHERE fno=#{fno}
+		  </select>
+    */
+   public static String reserveGetDate(int fno)
+   {
+	   String rday="";
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   rday=session.selectOne("reserveGetDate", fno);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return rday;
+   }
+   /*
+    *  <select id="reserveGetTime" resultType="string" parameterType="int">
+		    SELECT time FROM reserve_day
+		    WHERE rno=#{rno}
+		  </select>
+		  <select id="reserveRealTime" resultType="string" parameterType="int">
+		    SELECT time FROM reserve_time
+		    WHERE tno=#{tno}
+		  </select>
+    */
+   public static String reserveGetTime(int rno)
+   {
+	   String rtime="";
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   rtime=session.selectOne("reserveGetTime", rno);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return rtime;
+   }
+   
+   public static String reserveRealTime(int tno)
+   {
+	   String rtime="";
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   rtime=session.selectOne("reserveRealTime", tno);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return rtime;
+   }
 }
 
 

@@ -105,7 +105,7 @@
       <c:forEach var="vo" items="${cList }" varStatus="s">
         <c:if test="${s.index<=9 }">
          <a href="../food/food_detail.do?fno=${vo.fno }" >
-          <img src="${vo.poster }" style="width: 100px;height: 100px"
+          <img src="${vo.poster }" style="width: 105px;height: 100px"
            title="${vo.name }"
           >
          </a>

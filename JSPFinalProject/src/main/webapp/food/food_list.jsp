@@ -22,7 +22,7 @@
              <table class="table">
                <tr>
                  <td width=30% class="text-center" rowspan="4">
-                   <a href="../food/food_detail_before.do?fno=${fvo.fno }"><img src="${fvo.poster }" style="width: 260px;height: 200px"></a>
+                   <a href="../food/food_detail_before.do?fno=${fvo.fno }"><img src="${fvo.poster }" style="width: 280px;height: 220px;"></a>
                  </td>
                  <td width=70%>
                    <h4><a href="../food/food_detail_before.do?fno=${fvo.fno }">${fvo.name }</a>&nbsp;<span style="color:orange">${fvo.score }</span></h4>

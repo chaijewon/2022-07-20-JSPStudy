@@ -56,8 +56,52 @@ public class ReserveModel {
     	int lastday=cal.getActualMaximum(Calendar.DATE);
     	
     	// DAO => 예약이 가능한 날 체크 
+    	request.setAttribute("year", year);
+    	request.setAttribute("month", month);
+    	request.setAttribute("day", day);
+    	request.setAttribute("week", week-1);
+    	request.setAttribute("lastday", lastday);
+    	String[] strWeek={"일","월","화","수","목","금","토"};
+    	request.setAttribute("strWeek", strWeek);
     	
+    	String rdays=ReserveDAO.reserveGetDate(Integer.parseInt(fno));
+    	// 맛집에 대한 예약일을 가지고 온다 
+    	StringTokenizer st1=new StringTokenizer(rdays,",");
+    	int[] days=new int[32];
+    	
+    	while(st1.hasMoreTokens())
+    	{
+    		int d=Integer.parseInt(st1.nextToken());
+    		if(d>=day) // 오늘 이후 
+    		{
+    		   days[d]=1;
+    		}
+    	}
+    	// 0=> 예약이 없는 날 , 1=>예약이 있는 날 
+    	request.setAttribute("days", days);
     	return "../reserve/reserve_date.jsp";
+    }
+    @RequestMapping("reserve/reserve_time.do")
+    public String reserve_time(HttpServletRequest request,HttpServletResponse response)
+    {
+    	String day=request.getParameter("day");
+    	// DAO ==> 시간대 읽기 
+    	String times=ReserveDAO.reserveGetTime(Integer.parseInt(day));
+    	List<String> list=new ArrayList<String>();
+    	StringTokenizer st=new StringTokenizer(times,",");
+    	while(st.hasMoreTokens())
+    	{
+    		int tno=Integer.parseInt(st.nextToken());
+    		String time=ReserveDAO.reserveRealTime(tno);
+    		list.add(time);
+    	}
+    	request.setAttribute("list", list);
+    	return "../reserve/reserve_time.jsp";
+    }
+    @RequestMapping("reserve/reserve_inwon.do")
+    public String reserve_inwon(HttpServletRequest request,HttpServletResponse response)
+    {
+    	return "../reserve/reserve_inwon.jsp";
     }
 }
 
