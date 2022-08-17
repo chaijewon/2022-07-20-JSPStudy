@@ -86,6 +86,8 @@
    DELETE FROM Jjim
    WHERE id=#{id} AND fno=#{fno}
   </delete>
+  
+ 
 </mapper>
 
 

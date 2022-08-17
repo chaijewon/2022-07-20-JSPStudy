@@ -52,7 +52,7 @@
           <li><a href="../food/food_find.do">지역별 맛집</a></li>
           <c:if test="${sessionScope.id!=null }">
            <li><a href="pages/full-width.html">맛집 추천</a></li>
-           <li><a href="pages/sidebar-left.html">맛집 예약</a></li>
+           <li><a href="../reserve/reserve.do">맛집 예약</a></li>
           </c:if>
         </ul>
       </li>

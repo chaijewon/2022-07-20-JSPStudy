@@ -68,19 +68,23 @@
       <tr>
        <td colspan="2" class="text-right">
        <c:if test="${sessionScope.id!=null }">
-        <c:if test="${lcount==0 }">
-          <a href="#" class="btn btn-sm btn-danger">좋아요(1)</a>
-        </c:if>
-        <c:if test="${lcount!=0 }">
-          <span class="btn btn-sm btn-default">좋아요(1)</span>
-        </c:if>
-        <c:if test="${jcount==0 }">
-         <a href="../food/jjim.do?fno=${vo.fno }" class="btn btn-sm btn-info">찜하기</a>
-        </c:if>
-        <c:if test="${jcount!=0 }">
+         <c:choose>
+            <c:when test="${likecount==0 }">
+	          <a href="#" class="btn btn-sm btn-danger">좋아요(1)</a>
+	        </c:when>
+	        <c:otherwise>
+	          <span class="btn btn-sm btn-default">좋아요(1)</span>
+	        </c:otherwise>
+         </c:choose>
+         <c:choose>
+          <c:when test="${jcount==0 }">
+           <a href="../food/jjim.do?fno=${vo.fno }" class="btn btn-sm btn-info">찜하기</a>
+          </c:when>
+        <c:otherwise>
          <span class="btn btn-sm btn-default">찜하기</span>
-        </c:if>
-       </c:if>
+        </c:otherwise>
+       </c:choose>
+      </c:if>
         <a href="javascript:history.back()" class="btn btn-sm btn-success">목록</a>
        </td>
       </tr>

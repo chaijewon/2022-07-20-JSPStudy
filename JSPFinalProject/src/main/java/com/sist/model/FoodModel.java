@@ -73,10 +73,13 @@ public class FoodModel {
 	   String id=(String)session.getAttribute("id");
 	   
 	   jvo.setId(id);
-	   int jcount=FoodDAO.foodJjimCount(jvo);
-		   
+	   int jcount=0;
+	   if(id!=null)
+	   {
+	     jcount=FoodDAO.foodJjimCount(jvo);
+	   }  
 	   request.setAttribute("jcount", jcount);
-	   
+	   request.setAttribute("likecount", 0);
 	   return "../main/main.jsp";
    }
    @RequestMapping("food/jjim.do")

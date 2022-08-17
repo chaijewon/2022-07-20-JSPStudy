@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 <div class="wrapper row3">
@@ -101,18 +102,16 @@
     <h2 class="sectiontitle">최신 방문 맛집</h2>
     <!-- ################################################################################################ -->
     <ul class="nospace group">
-      <li class="one_half first">
-        <article><img class="imgl radius-10" src="../images/demo/100x100.gif" alt="">
-          <h6 class="heading"><a href="#">Lorem Ipsum Dolor</a></h6>
-          <p>Aenean semper elementum tellus, ut placerat leo. Quisque vehicula, urna sit amet.</p>
-        </article>
-      </li>
-      <li class="one_half">
-        <article><img class="imgl radius-10" src="../images/demo/100x100.gif" alt="">
-          <h6 class="heading"><a href="#">Lorem Ipsum Dolor</a></h6>
-          <p>Aenean semper elementum tellus, ut placerat leo. Quisque vehicula, urna sit amet.</p>
-        </article>
-      </li>
+      <c:forEach var="vo" items="${cList }" varStatus="s">
+        <c:if test="${s.index<=9 }">
+         <a href="../food/food_detail.do?fno=${vo.fno }" >
+          <img src="${vo.poster }" style="width: 100px;height: 100px"
+           title="${vo.name }"
+          >
+         </a>
+        </c:if>
+        
+      </c:forEach>
     </ul>
     <!-- ################################################################################################ --> 
     <!-- / main body -->

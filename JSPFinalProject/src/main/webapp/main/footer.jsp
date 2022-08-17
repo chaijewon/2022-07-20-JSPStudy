@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +27,9 @@
     <div class="one_quarter">
       <h6 class="title">맛집 Top5</h6>
       <ul class="nospace linklist">
-        <li><a href="#">Home Page</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <%-- <c:forEach var="vo" items="${fList }">
+         <li><a href="#">${vo.name }</a><span style="color:orange">${vo.score }</span>(${ vo.type})</li>
+        </c:forEach> --%>
       </ul>
     </div>
     <div class="one_quarter">
@@ -68,7 +67,7 @@
 <div class="wrapper row5">
   <div id="copyright" class="clear"> 
     <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2022 - All Rights Reserved - <a href="#">SIST.CO.KR</a></p>
+    <p class="fl_left">&copy; 2022 - 08 - 20 <a href="#">SIST.CO.KR</a></p>
     <p class="fl_right">강남 쌍용 교육센터<a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">&nbsp;3강의장</a></p>
     <!-- ################################################################################################ --> 
   </div>
