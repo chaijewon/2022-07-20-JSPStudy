@@ -5,6 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		type:'post',
+		url:'../reserve/food_list.do', // Model
+		success:function(result)
+		{
+			$('#food').html(result);
+		}
+	})
+	$('#f_name_lab').hide();
+	$('#type').change(function(){
+		let type=$('#type').val();
+		$.ajax({
+			type:'post',
+			url:'../reserve/food_list.do', // Model
+			data:{"type":type},
+			success:function(result)
+			{
+				$('#food').html(result);
+			}
+		})
+	})
+})
+</script>
 </head>
 <body>
 <div class="wrapper row3">
@@ -28,7 +54,7 @@
     <div class="row">
        <table class="table">
         <tr>
-          <td class="danger" width=30% height="700">
+          <td class="danger" width=30% height="600">
             <table class="table">
              <caption><h3>맛집 정보</h3></caption>
              <tr>
@@ -44,28 +70,35 @@
              </tr>
              <tr>
                <td>
-                 <div style="overflow-y:scroll; height: 600px" id="food">
+                 <div style="overflow-y:scroll; height: 500px" id="food">
                    
                  </div>
                </td>
              </tr>
             </table>
           </td>
-          <td class="info" width=40% height="700">
+          <td class="info" width=40% height="600">
             <table class="table">
              <caption><h3>날짜 정보</h3></caption>
+             <tr>
+               <td class="text-center" id="r_date"></td>
+             </tr>
             </table>
           </td>
-          <td class="success" width=30% rowspan="2" height="900">
+          <td class="success" width=30% rowspan="2" height="800">
             <table class="table">
              <caption><h3>예약 정보</h3></caption>
              <tr>
                <td>
                  <table class="table">
                   <tr>
-                    <td class="text-center">
+                    <td class="text-center" colspan="2">
                       <img src="default.png" style="width: 300px;height: 300px" id="rImg">
                     </td>
+                  </tr>
+                  <tr>
+                    <td id="f_name_lab" width="30%">상호명</td>
+                    <td id="f_name" width="70%"></td>
                   </tr>
                  </table>
                </td>
@@ -74,13 +107,13 @@
           </td>
         </tr>
         <tr>
-          <td class="warning" height="200">
+          <td class="warning" height="100">
             <table class="table">
              <caption><h3>시간 정보</h3></caption>
              
             </table>
           </td>
-          <td class="default" width=20% height="200">
+          <td class="default" width=20% height="100">
             <table class="table">
              <caption><h3>인원 정보</h3></caption>
             </table>

@@ -49,7 +49,7 @@ $(function(){
      <div class="row">
        <table class="table">
         <tr>
-          <td class="danger" width=30% height="700">
+          <td class="danger" width=30% height="500">
             <table class="table">
              <caption><h3>맛집 정보</h3></caption>
              <tr>
@@ -65,19 +65,19 @@ $(function(){
              </tr>
              <tr>
                <td>
-                 <div style="overflow-y:scroll; height: 600px" id="food">
+                 <div style="overflow-y:scroll; height: 400px" id="food">
                    
                  </div>
                </td>
              </tr>
             </table>
           </td>
-          <td class="info" width=40% height="700">
+          <td class="info" width=40% height="500">
             <table class="table">
              <caption><h3>날짜 정보</h3></caption>
             </table>
           </td>
-          <td class="success" width=30% rowspan="2" height="900">
+          <td class="success" width=30% rowspan="2" height="700">
             <table class="table">
              <caption><h3>예약 정보</h3></caption>
              <tr>
@@ -95,13 +95,13 @@ $(function(){
           </td>
         </tr>
         <tr>
-          <td class="warning" height="200">
+          <td class="warning" height="100">
             <table class="table">
              <caption><h3>시간 정보</h3></caption>
              
             </table>
           </td>
-          <td class="default" width=20% height="200">
+          <td class="default" width=20% height="100">
             <table class="table">
              <caption><h3>인원 정보</h3></caption>
             </table>

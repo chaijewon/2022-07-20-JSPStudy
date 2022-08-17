@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.reserve-mapper">
+  <select id="reserveFoodData" resultType="FoodVO" parameterType="string">
+    SELECT fno,poster,name,rownum
+    FROM (SELECT fno,poster,name FROM food_house WHERE type LIKE '%'||#{type}||'%' ORDER BY fno ASC)
+    WHERE rownum&lt;=50
+  </select>
+</mapper>

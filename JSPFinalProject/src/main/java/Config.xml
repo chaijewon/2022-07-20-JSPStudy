@@ -35,5 +35,6 @@
      <mapper resource="com/sist/mapper/member-mapper.xml"/>
      <mapper resource="com/sist/mapper/reply-mapper.xml"/>
      <mapper resource="com/sist/mapper/board_reply-mapper.xml"/>
+     <mapper resource="com/sist/mapper/reserve-mapper.xml"/>
    </mappers>
  </configuration>
