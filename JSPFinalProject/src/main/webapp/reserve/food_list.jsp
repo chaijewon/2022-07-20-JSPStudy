@@ -23,7 +23,7 @@ $(function(){
 		$('#f_name_lab').show();
 		$('#f_name').text(name);
 		$('#rImg').attr("src",poster);
-		
+		$('#re_fno').val(fno);
 		// 달력 
 		$.ajax({
 			type:'post',

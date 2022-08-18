@@ -13,6 +13,7 @@ $(function(){
 		let inwon=$(this).text();
 		$('#inwon_lab').show();
 		$('#inwon_result').text(inwon)
+		$('#re_inwon').val(inwon)
 		$('#reserve_btn').show()
 	})
 })

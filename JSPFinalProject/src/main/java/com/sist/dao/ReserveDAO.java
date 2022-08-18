@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.FoodVO;
+import com.sist.vo.ReserveVO;
 
 import java.io.*;
 public class ReserveDAO {
@@ -122,6 +123,121 @@ public class ReserveDAO {
 			   session.close();
 	   }
 	   return rtime;
+   }
+   /*
+    *   <insert id="reserveInsert" parameterType="com.sist.vo.ReserveVO">
+		   <selectKey keyProperty="no" resultType="int" order="BEFORE">
+		     SELECT NVL(Max(no)+1,1) as no FROM reserve
+		   </selectKey>
+		   INSERT INTO reserve(no,id,fno,rday,rtime,inwon)
+		   VALUES(#{no},#{id},#{fno},#{rday},#{rtime},#{inwon})
+		  </insert>
+    */
+   // 예약 
+   public static void reserveInsert(ReserveVO vo)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);//autocommit
+		   session.insert("reserveInsert",vo);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+   }
+   /*
+    *   <select id="reserveMypageData" resultType="com.sist.vo.ReserveVO" parameterType="string">
+		    SELECT no,rday,rtime,inwon,ischeck,regdate,
+		           (SELECT name FROM food_house WHERE fno=reserve.fno) as name,
+		           (SELECT poster FROM food_house WHERE fno=reserve.fno) as poster,
+		           (SELECT address FROM food_house WHERE fno=reserve.fno) as address,
+		           (SELECT tel FROM food_house WHERE fno=reserve.fno) as tel,
+		           (SELECT type FROM food_house WHERE fno=reserve.fno) as type
+		    FROM reserve
+		    WHERE id=#{id}
+		    ORDER BY no DESC
+		  </select>
+    */
+   public static List<ReserveVO> reserveMypageData(String id)
+   {
+	   List<ReserveVO> list=null;
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   list=session.selectList("reserveMypageData", id);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return list;
+   }
+   /*
+    *   <select id="reserveAdminpageData" resultType="com.sist.vo.ReserveVO">
+	    SELECT no,rday,rtime,inwon,ischeck,regdate,id,
+	           (SELECT name FROM food_house WHERE fno=reserve.fno) as name,
+	           (SELECT poster FROM food_house WHERE fno=reserve.fno) as poster,
+	           (SELECT address FROM food_house WHERE fno=reserve.fno) as address,
+	           (SELECT tel FROM food_house WHERE fno=reserve.fno) as tel,
+	           (SELECT type FROM food_house WHERE fno=reserve.fno) as type
+	    FROM reserve
+	    WHERE ischeck&lt;&gt;'y'
+	    ORDER BY no DESC
+	  </select>
+    */
+   public static List<ReserveVO> reserveAdminpageData()
+   {
+	   List<ReserveVO> list=null;
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   list=session.selectList("reserveAdminpageData");
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return list;
+   }
+   /*
+    *   <update id="reserveAdminUpdate" parameterType="int">
+		    UPDATE reserve SET
+		    ischeck='y'
+		    WHERE no=#{no}
+		  </update>
+    */
+   public static void reserveAdminUpdate(int no)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.update("reserveAdminUpdate",no);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
    }
 }
 

@@ -15,9 +15,10 @@ $(function(){
 		let month=$(this).attr("data-month");
 		let day=$(this).text();
 		let days=year+"년도 "+month+"월 "+day+"일"
+		
 		$('#date_lab').show()
 		$('#date_result').text(days);
-		
+		$('#re_rday').val(year+"-"+month+"-"+day)
 		// 시간 읽기 
 		$.ajax({
 			type:'post',

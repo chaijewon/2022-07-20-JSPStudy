@@ -34,7 +34,7 @@
           <li><a href="../adminpage/member.do">회원 관리</a></li>
           <li><a href="../adminpage/board.do">게시판 관리</a></li>
           <li><a href="../adminpage/reply.do">게시판 답변 관리</a></li>
-          <li><a href="#">예약 관리</a></li>
+          <li><a href="../adminpage/adminpage_reserve.do">예약 관리</a></li>
           <li><a href="#">구매 관리</a></li>
           <li><a href="#">공지 관리</a></li>
           <li><a href="#">이벤트 관리</a></li>

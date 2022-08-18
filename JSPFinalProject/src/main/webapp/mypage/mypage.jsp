@@ -37,7 +37,7 @@
             </ul>
           </li>
           <li><a href="#">게시판 활동내역</a></li>
-          <li><a href="#">예매 내역</a></li>
+          <li><a href="../mypage/mypage_reserve.do">예매 내역</a></li>
           <li><a href="#">장바구니</a></li>
           <li><a href="#">구매 내역</a></li>
           <li><a href="../food/jjim_list.do">찜 내역</a></li>

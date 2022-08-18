@@ -19,4 +19,63 @@
     SELECT time FROM reserve_time
     WHERE tno=#{tno}
   </select>
+  
+  <!-- 예약 등록 
+       NO      NOT NULL NUMBER       
+	ID               VARCHAR2(20) 
+	FNO              NUMBER       
+	RDAY    NOT NULL VARCHAR2(50) 
+	RTIME   NOT NULL VARCHAR2(50) 
+	INWON   NOT NULL VARCHAR2(30) 
+	REGDATE          DATE         
+	ISCHECK          CHAR(1) 
+  -->
+  <insert id="reserveInsert" parameterType="com.sist.vo.ReserveVO">
+   <selectKey keyProperty="no" resultType="int" order="BEFORE">
+     SELECT NVL(Max(no)+1,1) as no FROM reserve
+   </selectKey>
+   INSERT INTO reserve(no,id,fno,rday,rtime,inwon)
+   VALUES(#{no},#{id},#{fno},#{rday},#{rtime},#{inwon})
+  </insert>
+  <!-- mypage에서 출력 -->
+  <select id="reserveMypageData" resultType="com.sist.vo.ReserveVO" parameterType="string">
+    SELECT no,rday,rtime,inwon,ischeck,regdate,
+           (SELECT name FROM food_house WHERE fno=reserve.fno) as name,
+           (SELECT poster FROM food_house WHERE fno=reserve.fno) as poster,
+           (SELECT address FROM food_house WHERE fno=reserve.fno) as address,
+           (SELECT tel FROM food_house WHERE fno=reserve.fno) as tel,
+           (SELECT type FROM food_house WHERE fno=reserve.fno) as type
+    FROM reserve
+    WHERE id=#{id}
+    ORDER BY no DESC
+  </select>
+  
+  <select id="reserveAdminpageData" resultType="com.sist.vo.ReserveVO">
+    SELECT no,rday,rtime,inwon,ischeck,regdate,id,
+           (SELECT name FROM food_house WHERE fno=reserve.fno) as name,
+           (SELECT poster FROM food_house WHERE fno=reserve.fno) as poster,
+           (SELECT address FROM food_house WHERE fno=reserve.fno) as address,
+           (SELECT tel FROM food_house WHERE fno=reserve.fno) as tel,
+           (SELECT type FROM food_house WHERE fno=reserve.fno) as type
+    FROM reserve
+    ORDER BY no DESC
+  </select>
+  <!-- 예약 완료 -->
+  <update id="reserveAdminUpdate" parameterType="int">
+    UPDATE reserve SET
+    ischeck='y'
+    WHERE no=#{no}
+  </update>
+  <!-- 예약 취소 -->
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

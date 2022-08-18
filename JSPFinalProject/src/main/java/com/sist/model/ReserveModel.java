@@ -2,6 +2,7 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -102,6 +103,74 @@ public class ReserveModel {
     public String reserve_inwon(HttpServletRequest request,HttpServletResponse response)
     {
     	return "../reserve/reserve_inwon.jsp";
+    }
+    
+    @RequestMapping("reserve/reserve_ok.do")
+    public String reserve_ok(HttpServletRequest request,HttpServletResponse response)
+    {
+    	try
+    	{
+    		request.setCharacterEncoding("UTF-8");
+    	}catch(Exception ex){}
+    	/*
+    	 *              <input type="hidden" name=fno  id="re_fno">
+                        <input type="hidden" name=rday id="re_rday">
+                        <input type="hidden" name=rtime id="re_rtime">
+                        <input type="hidden" name=inwon id="re_inwon">
+                        
+                        NO      NOT NULL NUMBER       
+						ID               VARCHAR2(20) 
+						FNO              NUMBER       
+						RDAY    NOT NULL VARCHAR2(50) 
+						RTIME   NOT NULL VARCHAR2(50) 
+						INWON   NOT NULL VARCHAR2(30) 
+						REGDATE          DATE         
+						ISCHECK          CHAR(1)   
+    	 */
+    	String fno=request.getParameter("fno");
+    	String rday=request.getParameter("rday");
+    	String rtime=request.getParameter("rtime");
+    	String inwon=request.getParameter("inwon");
+    	
+    	HttpSession session=request.getSession();
+    	String id=(String)session.getAttribute("id");
+    	
+    	ReserveVO vo=new ReserveVO();
+    	vo.setFno(Integer.parseInt(fno));
+    	vo.setId(id);
+    	vo.setRday(rday);
+    	vo.setRtime(rtime);
+    	vo.setInwon(inwon);
+    	
+    	ReserveDAO.reserveInsert(vo);
+    	return "redirect:../mypage/mypage_reserve.do";
+    }
+    @RequestMapping("mypage/mypage_reserve.do")
+    public String mypage_reserve(HttpServletRequest request,HttpServletResponse response)
+    {
+    	HttpSession session=request.getSession();
+    	String id=(String)session.getAttribute("id");
+    	List<ReserveVO> list=ReserveDAO.reserveMypageData(id);
+    	request.setAttribute("list", list);
+    	request.setAttribute("mypage_jsp", "../mypage/mypage_reserve.jsp");
+    	request.setAttribute("main_jsp", "../mypage/mypage.jsp");
+    	return "../main/main.jsp";
+    }
+    @RequestMapping("adminpage/adminpage_reserve.do")
+    public String adminpage_reserve(HttpServletRequest request,HttpServletResponse response)
+    {
+    	List<ReserveVO> list=ReserveDAO.reserveAdminpageData();
+    	request.setAttribute("list", list);
+    	request.setAttribute("admin_jsp", "../adminpage/admin_reserve.jsp");
+    	request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
+    	return "../main/main.jsp";
+    }
+    @RequestMapping("adminpage/reserve_ok.do")
+    public String adminpage_reserve_ok(HttpServletRequest request,HttpServletResponse response)
+    {
+    	String no=request.getParameter("no");
+    	ReserveDAO.reserveAdminUpdate(Integer.parseInt(no));
+    	return "redirect:../adminpage/adminpage_reserve.do";
     }
 }
 
