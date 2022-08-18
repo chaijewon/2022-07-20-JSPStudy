@@ -172,6 +172,25 @@ public class ReserveModel {
     	ReserveDAO.reserveAdminUpdate(Integer.parseInt(no));
     	return "redirect:../adminpage/adminpage_reserve.do";
     }
+    
+    @RequestMapping("reserve/reserve_cancel.do")
+    public String reserve_cancel(HttpServletRequest request,HttpServletResponse response)
+    {
+    	String no=request.getParameter("no");
+    	//DAO
+    	ReserveDAO.reserveCancel(Integer.parseInt(no));
+    	return "redirect:../mypage/mypage_reserve.do";
+    }
+    
+    @RequestMapping("reserve/reserve_info.do")
+    public String reserve_info(HttpServletRequest request,HttpServletResponse response)
+    {
+    	String no=request.getParameter("no");
+    	// DAO
+    	ReserveVO vo=ReserveDAO.reserveInfoData(Integer.parseInt(no));
+    	request.setAttribute("vo", vo);
+    	return "../reserve/reserve_info.jsp";
+    }
 }
 
 

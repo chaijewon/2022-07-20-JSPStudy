@@ -14,7 +14,14 @@ public class ReserveVO {
     private int no,fno;
     private String id,rday,rtime,inwon,ischeck;
     private Date regdate;
-    private String name,tel,address,type,poster;
+    private String name,tel,address,type,poster,dbday;
+    
+	public String getDbday() {
+		return dbday;
+	}
+	public void setDbday(String dbday) {
+		this.dbday = dbday;
+	}
 	public int getNo() {
 		return no;
 	}

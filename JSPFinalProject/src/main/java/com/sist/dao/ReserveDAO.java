@@ -239,6 +239,61 @@ public class ReserveDAO {
 			   session.close();
 	   }
    }
+   /*
+    *   <delete id="reserveCancel" parameterType="int">
+		    DELETE FROM reserve
+		    WHERE no=#{no}
+		  </delete>
+    */
+   public static void reserveCancel(int no)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.delete("reserveCancel",no);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+   }
+   
+   /*
+    *  <select id="reserveInfoData" resultType="com.sist.vo.ReserveVO" parameterType="int">
+		    SELECT no,rday,rtime,inwon,ischeck,TO_CHAR(regdate,'YYYY"년도" MM"월" DD"일" HH24:MI:SS') as dbday,
+		           (SELECT name FROM food_house WHERE fno=reserve.fno) as name,
+		           (SELECT poster FROM food_house WHERE fno=reserve.fno) as poster,
+		           (SELECT address FROM food_house WHERE fno=reserve.fno) as address,
+		           (SELECT tel FROM food_house WHERE fno=reserve.fno) as tel,
+		           (SELECT type FROM food_house WHERE fno=reserve.fno) as type
+		    FROM reserve
+		    WHERE no=#{no}
+		  </select>
+    */
+   public static ReserveVO reserveInfoData(int no)
+   {
+	   ReserveVO vo=new ReserveVO();
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   vo=session.selectOne("reserveInfoData", no);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return vo;
+   }
 }
 
 

@@ -67,6 +67,21 @@
     WHERE no=#{no}
   </update>
   <!-- 예약 취소 -->
+  <delete id="reserveCancel" parameterType="int">
+    DELETE FROM reserve
+    WHERE no=#{no}
+  </delete>
+  
+  <select id="reserveInfoData" resultType="com.sist.vo.ReserveVO" parameterType="int">
+    SELECT no,rday,rtime,inwon,ischeck,TO_CHAR(regdate,'YYYY"년도" MM"월" DD"일" HH24:MI:SS') as dbday,
+           (SELECT name FROM food_house WHERE fno=reserve.fno) as name,
+           (SELECT poster FROM food_house WHERE fno=reserve.fno) as poster,
+           (SELECT address FROM food_house WHERE fno=reserve.fno) as address,
+           (SELECT tel FROM food_house WHERE fno=reserve.fno) as tel,
+           (SELECT type FROM food_house WHERE fno=reserve.fno) as type
+    FROM reserve
+    WHERE no=#{no}
+  </select>
 </mapper>
 
 

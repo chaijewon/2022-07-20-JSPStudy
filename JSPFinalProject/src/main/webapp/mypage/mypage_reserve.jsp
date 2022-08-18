@@ -6,6 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.reserves').click(function(){
+		let no=$(this).attr("data-no");
+		$.ajax({
+			type:'post',
+			url:'../reserve/reserve_info.do',
+			data:{"no":no},
+			success:function(result)
+			{
+				$('#print').html(result);
+			}
+		})
+	})
+})
+</script>
 </head>
 <body>
   <h2 class="sectiontitle">예약목록</h2>
@@ -32,14 +49,18 @@
           <td class="text-center">
            <c:if test="${vo.ischeck=='n' }">
             <span class="btn btn-xs btn-danger">예약대기</span>
-            <a href="#" class="btn btn-xs btn-primary">취소</a>
+            <a href="../reserve/reserve_cancel.do?no=${vo.no }" class="btn btn-xs btn-primary">취소</a>
            </c:if>
            <c:if test="${vo.ischeck=='y' }">
-            <span class="btn btn-xs btn-default">예약완료</span>
+            <span class="btn btn-xs btn-default reserves" data-no="${vo.no }">예약완료</span>
            </c:if>
           </td>
         </tr>
       </c:forEach>
     </table>
+    <div style="height: 30px"></div>
+    <div id="print">
+      
+    </div>
 </body>
 </html>
