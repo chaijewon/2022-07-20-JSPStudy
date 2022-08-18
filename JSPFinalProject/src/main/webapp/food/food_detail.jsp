@@ -132,6 +132,32 @@
 		    } 
 		});    
 		</script>
+		<div style="height: 20px"></div>
+		<table class="table">
+		  <tr>
+		   <td>
+		     <c:forEach  var="rvo" items="${rList }">
+		      <table class="table">
+		       <tr>
+		        <td width=30% class="text-center" rowspan="3">
+		         <img src="${rvo.poster }" style="width:100%">
+		        </td>
+		        <td width=70%>
+		          ${rvo.title }
+		        </td>
+		       </tr>
+		       <tr>
+		         <td width=70%>${rvo.chef }</td>
+		       </tr>
+		       <tr>
+		         <td width=70%>${vo.type }</td>
+		       </tr>
+		      </table>
+		     </c:forEach>
+		      
+		   </td>
+		  </tr>
+		</table>
     </div>
   </main>
 </div>

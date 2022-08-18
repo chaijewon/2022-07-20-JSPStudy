@@ -86,8 +86,35 @@
    DELETE FROM Jjim
    WHERE id=#{id} AND fno=#{fno}
   </delete>
-  
- 
+  <!--  닭 | 오리 요리 -->
+  <select id="foodRecipeMakeData" resultType="RecipeVO" parameterType="string">
+    SELECT no,title,poster,rownum,chef
+    FROM recipe
+    WHERE REGEXP_LIKE(title,#{type})
+    AND rownum&lt;=5
+  </select>
+  <!-- 
+              REGEXP_LIKE(컬럼명,'regex')
+              정규식
+               [] = 범위  
+                    [A-C] A,B,C
+                    [1-5] 1,2,3,4,5
+                    [가-다] 가,나,다
+                    [A-Z]
+               {} = 갯수
+                    [A-Z]{1,3}  A AA AAA 
+                    [0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3} IP
+                    211.63.89.131
+                    127.0.0.1
+                    
+                    ^[A-Z] 알파벳 시작
+                    [^A-Z] 알파벳제외
+                    [A-Z]$ 알파벳으로 종료
+                    [A-Z]+ 알파벳이 1개 이상 
+                    [A-Z]* 알파벳이 0개이상 
+                    
+                    [0-9] , [가-힣]
+   -->
 </mapper>
 
 

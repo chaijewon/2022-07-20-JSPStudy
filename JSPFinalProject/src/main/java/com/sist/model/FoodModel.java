@@ -80,6 +80,13 @@ public class FoodModel {
 	   }  
 	   request.setAttribute("jcount", jcount);
 	   request.setAttribute("likecount", 0);
+	   // 브런치|버거|샌드위치
+	   // 관련 레시피 전송 
+	   String type=vo.getType();
+	   type=type.replace("/", "|").replace(" ", "");
+	   
+	   List<RecipeVO> rList=FoodDAO.foodRecipeMakeData(type);
+	   request.setAttribute("rList", rList);
 	   return "../main/main.jsp";
    }
    @RequestMapping("food/jjim.do")

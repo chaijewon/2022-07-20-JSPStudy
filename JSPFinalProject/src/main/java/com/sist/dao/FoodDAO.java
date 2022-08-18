@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.sist.vo.FoodCategoryVO;
 import com.sist.vo.FoodVO;
 import com.sist.vo.JjimVO;
+import com.sist.vo.RecipeVO;
 
 import java.io.*;
 public class FoodDAO {
@@ -312,6 +313,34 @@ public class FoodDAO {
 		   if(session!=null)
 			   session.close();
 	   }
+   }
+   /*
+    *   <select id="foodRecipeMakeData" resultType="RecipeVO" parameterType="string">
+		    SELECT no,title,poster,rownum
+		    FROM recipe
+		    WHERE REGEXP_LIKE(title,#{type})  '오리|돼지'
+		                            ${type}  ===> 테이블명, 컬럼명
+		    AND rownum&lt;=5
+		  </select>
+    */
+   public static List<RecipeVO> foodRecipeMakeData(String type)
+   {
+	   List<RecipeVO> list=null;
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   list=session.selectList("foodRecipeMakeData",type);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return list;
    }
    
    
