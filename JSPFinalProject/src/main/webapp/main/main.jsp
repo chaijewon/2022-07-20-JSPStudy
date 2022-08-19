@@ -39,6 +39,11 @@ $(function(){
 	$('#logoutImg').click(function(){
 		location.href="../member/logout.do";
 	})
+	// store를 별도로 출력
+	$('#storeImg').click(function(){
+		// 화면 이동 
+		location.href="../goods_main/goods_main.do"
+	})
 })
 </script>
 </head>

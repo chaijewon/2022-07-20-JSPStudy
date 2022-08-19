@@ -19,6 +19,6 @@
       </environment>
    </environments>
    <mappers>
-     <mapper resource="com/sist/mapper/board-mapper.xml"/>
+     <mapper resource="com/sist/temp/goods-mapper.xml"/>
    </mappers>
  </configuration>

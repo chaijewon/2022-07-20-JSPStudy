@@ -40,6 +40,7 @@ public class FreBoardModel {
    }
    
    @RequestMapping("freeboard/insert_ok.do")
+   //  (FreeBoardVO vo)
    public String freeboard_insert_ok(HttpServletRequest request,HttpServletResponse response)
    {
 	   try
