@@ -33,9 +33,9 @@
     <div style="height: 20px"></div>
     <div style="width:100%">
       <div style="text-align: center">
-        <a href="#">이전</a>&nbsp;
+        <a href="../goods_main/goods_new.do?page=${curpage>1?curpage-1:curpage }">이전</a>&nbsp;
         ${curpage } page / ${totalpage } pages &nbsp;
-        <a href="#">다음</a>
+        <a href="../goods_main/goods_new.do?page=${curpage<totalpage?curpage+1:curpage }">다음</a>
       </div>
     </div>
 </div>

@@ -155,6 +155,31 @@ public class GoodsDAO {
     	}
     	return total;
     }
+    /*
+     *   <select id="goodsDetailData" resultType="GoodsVO" parameterType="hashmap">
+		    SELECT * FROM ${table_name}
+		    WHERE no=#{no}
+		  </select>
+     */
+    public static GoodsVO goodsDetailData(Map map)
+    {
+    	GoodsVO vo=new GoodsVO();
+    	SqlSession session=null;
+    	try
+    	{
+    		session=ssf.openSession();
+    		vo=session.selectOne("goodsDetailData", map);
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		if(session!=null)
+    			session.close();
+    	}
+    	return vo;
+    }
 }
 
 

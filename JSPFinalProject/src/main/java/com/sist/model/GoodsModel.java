@@ -127,6 +127,29 @@ public class GoodsModel {
 	   request.setAttribute("goods_jsp", "../goods_main/goods_new.jsp");
 	   return "../goods_main/goods_main.jsp";
    }
+   
+   @RequestMapping("goods_main/goods_detail.do")
+   public String goods_detail(HttpServletRequest request,HttpServletResponse response)
+   {
+	   String strNo=request.getParameter("no");
+	   String strCno=request.getParameter("cno");
+	   int no=Integer.parseInt(strNo);
+	   int cno=Integer.parseInt(strCno);
+	   String table_name="";
+	   if(cno==1) table_name="goods_all";
+	   else if(cno==2) table_name="goods_best";
+	   else if(cno==3) table_name="goods_special";
+	   else if(cno==4) table_name="goods_new";
+	   
+	   Map map=new HashMap();
+	   map.put("no", no);
+	   map.put("table_name", table_name);
+	   GoodsVO vo=GoodsDAO.goodsDetailData(map);
+	   
+	   request.setAttribute("vo", vo);
+	   request.setAttribute("goods_jsp", "../goods_main/goods_detail.jsp");
+	   return "../goods_main/goods_main.jsp";
+   }
 }
 
 
