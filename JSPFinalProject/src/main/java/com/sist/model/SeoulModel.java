@@ -7,6 +7,7 @@ import javax.sql.RowSet;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.SeoulDAO;
+import com.sist.vo.FoodVO;
 import com.sist.vo.SeoulLNSVO;
 
 import java.util.*;
@@ -244,6 +245,28 @@ public class SeoulModel {
 	   request.setAttribute("vo", vo);
 	   request.setAttribute("main_jsp", "../seoul/lns_detail.jsp");
 	   return "../main/main.jsp";
+   }
+   @RequestMapping("seoul/seoul_make.do")
+   public String seoul_make(HttpServletRequest request,HttpServletResponse response)
+   {
+	  try
+	  {
+		  request.setCharacterEncoding("UTF-8");
+	  }catch(Exception ex) {}
+	  String fd=request.getParameter("fd");
+	  
+ 	  if(fd==null)
+ 		  fd="강남";
+ 	  /*SeoulLNSVO svo=dao.seoulMyLocationData(fd);
+ 	  FoodVO fvo1=dao.seoulMyFoodData1(fd);
+ 	  FoodVO fvo2=dao.seoulMyFoodData2(fd);
+ 	  SeoulLNSVO nvo=dao.seoulMyNatureData(fd);
+ 	  request.setAttribute("svo", svo);
+ 	  request.setAttribute("fvo1", fvo1);
+ 	  request.setAttribute("fvo2", fvo2);
+ 	  request.setAttribute("nvo", nvo);*/
+ 	  request.setAttribute("main_jsp", "../seoul/seoul_make.jsp");
+ 	  return "../main/main.jsp";
    }
 }
 

@@ -5,6 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel="stylesheet" href="./cart/style.css">
+<style type="text/css">
+.badge {
+  background-color: #FFF;
+  border-radius: 10px;
+  color: black;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+</style>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="./cart/script.js"></script>
 </head>
 <body>
 <header>
@@ -23,9 +42,11 @@
 		   <a href="../goods_main/goods_best.do">베스트</a> 
 		   <a href="../goods_main/goods_special.do">특가</a> 
 		   <a href="../goods_main/goods_new.do">신상품</a> 
-		   <a href="">문의사항</a>
+		   <a href=""><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
 		</div>
-
+        
+	</div>
+	
 	</div>
 	<span class="border"></span>
 </header>

@@ -33,15 +33,15 @@
       <li class="one_third first">
         <article class="service"><i class="icon fa fa-ambulance"></i>
           <h6 class="heading"><a href="#">오늘의 뉴스</a></h6>
-          <p>'세계 최초' 3나노 양산에 수익 개선, 美 지원법까지 메모리 '다운사이클'에도 파운드리 호조로 '위안'</p>
-          <footer><a href="#">Read More &raquo;</a></footer>
+          <p>${vo.description}</p>
+          <footer><a href="../news/news_list.do">Read More &raquo;</a></footer>
         </article>
       </li>
       <li class="one_third">
         <article class="service"><i class="icon fa fa-umbrella"></i>
           <h6 class="heading"><a href="#">오늘의 날씨</a></h6>
           <p>체감온도 35도 육박…무더위 이어져 중부지방 중심 폭염특보 강화 가능성 오후부터 경기북부 등 소나기 소식도</p>
-          <footer><a href="#">Read More &raquo;</a></footer>
+          <footer><a href="../weather/weather.do">Read More &raquo;</a></footer>
         </article>
       </li>
       <li class="one_third">

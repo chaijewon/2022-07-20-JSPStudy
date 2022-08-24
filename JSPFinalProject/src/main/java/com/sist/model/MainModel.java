@@ -8,6 +8,8 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import java.util.*;
 import com.sist.dao.*;
+import com.sist.manager.NewsManager;
+import com.sist.manager.NewsVO;
 import com.sist.vo.*;
 @Controller
 public class MainModel {
@@ -32,7 +34,8 @@ public class MainModel {
 	   List<FoodCategoryVO> list=FoodDAO.foodCategoryData();
 	   request.setAttribute("list", list);
 	   request.setAttribute("main_jsp", "../main/home.jsp");// 데이터 출력
-	   
+	   List<NewsVO> nList=NewsManager.newsFind("맛집");
+	   request.setAttribute("vo", nList.get(0));
 	   return "../main/main.jsp"; // include
    }
    

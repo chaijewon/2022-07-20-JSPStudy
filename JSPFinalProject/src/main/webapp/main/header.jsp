@@ -85,7 +85,7 @@
           <li><a href="../seoul/hotel.do">호텔</a></li>
           <li><a href="../seoul/guest.do">게스트하우스</a></li>
           <c:if test="${sessionScope.id!=null }">
-            <li><a href="pages/sidebar-left.html">코스 추천</a></li>
+            <li><a href="../seoul/seoul_make.do">코스 추천</a></li>
           </c:if>
         </ul>
       </li>
